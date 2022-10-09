@@ -5,6 +5,8 @@ This is the main controller to my videogame
 """
 from tkinter import *
 from tkinter import PhotoImage
+
+from grpc import RpcContext
 from control import Control
 from player import *
 from stateMachine import *
@@ -91,7 +93,24 @@ class Controller:
         self.menuOptionsSM.addNode("clock")
         self.menuOptionsSM.addNode("save")
         self.menuOptionsSM.addNode("load")
-        self.menuOptionsSM.addNode("")
+        self.menuOptionsSM.addNode("exit")
+        self.menuOptionsSM.addNode("matrix")
+        self.menuOptionsSM.setInitialPointer("mobile")
+        self.menuOptionsSM.addConection("mobile","items",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("mobile","matrix",self.control.key_UP)
+        self.menuOptionsSM.addConection("items","clock",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("items","mobile",self.control.key_UP)
+        self.menuOptionsSM.addConection("clock","save",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("clock","items",self.control.key_UP)
+        self.menuOptionsSM.addConection("save","load",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("save","clock",self.control.key_UP)
+        self.menuOptionsSM.addConection("load","exit",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("load","save",self.control.key_UP)
+        self.menuOptionsSM.addConection("exit","matrix",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("exit","load",self.control.key_UP)
+        self.menuOptionsSM.addConection("matrix","mobile",self.control.key_DOWN)
+        self.menuOptionsSM.addConection("matrix","exit",self.control.key_UP)
+
 
     def keyPressed(self, keycode):
         if self.SMgame.pointer == "gameStart":
@@ -135,6 +154,14 @@ class Controller:
                 self.mainMenuSM.mouvePointer(self.control.key_LEFT)
             if str(keycode) == self.control.key_START:
                 self.executeGameConfig()
+
+        if self.SMgame.pointer == "gameOptions":
+            if str(keycode) == self.control.key_UP:
+                self.menuOptionsSM.mouvePointer(self.control.key_UP)
+
+            if str(keycode) == self.control.key_DOWN:
+                self.menuOptionsSM.mouvePointer(self.control.key_DOWN)
+
 
 
     def executeGameConfig(self):
@@ -236,15 +263,33 @@ class Controller:
 
     def showOptions(self, canvas):
         try:
-            _x = int(canvas['width'])*0.5
-            _y = int(canvas['height'])*0.5
+            _x = int(canvas['width'])*0.8
+            _y = int(canvas['height'])*0.3
         except:
             _x = 200
             _y = 200
-        _x = 1000
-        _y = 100
+
+        _y0 = _y + (len(self.menuOptionsSM.node)*25)
         self._deleteCanvasNotGameItems(canvas)
-        canvas.create_rectangle(_x-50, _y-20, _x+100, _y+300, fill="snow",tag="optionsGame")
+        canvas.create_rectangle(_x*0.9, _y*0.6, _x*1.1, _y*0.85, fill="snow",tag="optionsGame")
+        canvas.create_rectangle(_x*0.9, _y*0.9, _x*1.1, _y0, fill="snow",tag="optionsGame")
+    
+
+        count = 0
+        self.itemPosition = {} # Save x, y of [item]
+        for i in self.menuOptionsSM.node:
+            if i not in self.itemPosition.keys():
+                self.itemPosition[i] = [_x+30, _y+(count*25)]
+            canvas.create_text(_x*0.98, _y+(count*25), text=str(i).upper(), tag="optionsGame")
+            count = count + 1
+
+        pointer_x0 = _x*0.9
+        pointer_y0 = self.itemPosition[self.menuOptionsSM.pointer][1]*0.99
+        pointer_x1 = _x*1.1
+        pointer_y1 = self.itemPosition[self.menuOptionsSM.pointer][1]*1.01
+
+        canvas.create_rectangle(pointer_x0,pointer_y0,pointer_x1,pointer_y1, fill="red", tag="optionsGame")
+        canvas.create_text(_x*1.05, _y*0.7, text=str(self.menuOptionsSM.pointer).upper(), tag="optionsGame")
 
 
     def _deleteCanvasNotGameItems(self, canvas):

@@ -42,8 +42,7 @@ class Software:
             self.controller.showGame(self.canvas)
         
         if self.controller.SMgame.pointer == "gameOptions":
-            self.controller.showOptions(self.canvas)
-
+            pass
 
         
         

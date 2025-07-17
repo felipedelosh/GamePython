@@ -47,12 +47,12 @@ my_game_project/
 
 ## :play_or_pause_button:How to execute a project
 
-Double click
+Execute main.py
 
 ## :hammer_and_wrench:Tech.
 
-- code programing
-- framework
+- Python
+- ...
 
 ## :warning:Warning.
 

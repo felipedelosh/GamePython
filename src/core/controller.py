@@ -37,12 +37,9 @@ class Controller:
         # -------------------------------
         self.player = Player()
         self._setPlayer()
-        
-        self.mainMenuSM = StateMachine()
-        self._initStateMachineMainMenuGame()
-        
         self.gameStateManager = GameStateManager(self.configuration["statesMachines"], self.control)
         self.SMgame = self.gameStateManager.getStateMachine("game")
+        self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         self.world = World()
          # -------------------------------
@@ -57,24 +54,10 @@ class Controller:
         self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
 
 
-    def _initStateMachineMainMenuGame(self):
-        self.mainMenuSM.addNode("newGame")
-        self.mainMenuSM.addNode("continueGame")
-        self.mainMenuSM.addNode("optionsGame")
-        self.mainMenuSM.addNode("exitGame")
-        self.mainMenuSM.setInitialPointer("newGame")
-        self.mainMenuSM.addConection("newGame", "continueGame", self.control.key_DOWN)
-        self.mainMenuSM.addConection("continueGame", "newGame", self.control.key_UP)
-        self.mainMenuSM.addConection("continueGame", "optionsGame", self.control.key_DOWN)
-        self.mainMenuSM.addConection("optionsGame", "continueGame", self.control.key_UP)
-        self.mainMenuSM.addConection("optionsGame", "exitGame", self.control.key_DOWN)
-        self.mainMenuSM.addConection("exitGame", "optionsGame", self.control.key_UP)
-        self.mainMenuSM.addConection("exitGame", "newGame", self.control.key_DOWN)
-        self.mainMenuSM.addConection("newGame", "exitGame", self.control.key_UP)
-
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
-            
+
+
     def loadLanguage(self, language="ESP"):
         try:
             f = open(f"assets/LAN/{language}/text.txt", 'r')

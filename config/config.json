@@ -23,34 +23,32 @@
   "key_L": 65,
   "key_R": 83,
   "statesMachines": {
-    "game":{
+    "game": {
       "initial": "intro",
       "states": ["intro", "mainMenu", "gameStart", "gamePause", "gameOptions"],
       "conections": [
-        "intro:mainMenu:t",
-        "mainMenu:gameStart:gameStart",
-        "gameStart:gameStart:key_direction_buttons",
-        "gameStart:gameStart:key_action_buttons",
-        "gameStart:gamePause:key_START",
-        "gamePause:gameStart:key_START",
-        "gameStart:gameOptions:key_SELECT",
-        "gameOptions:gameStart:key_SELECT",
-        "gamePause:gameOptions:key_SELECT",
-        "gameOptions:gamePause:key_START"
+        "intro:mainMenu:symbol:t",
+        "mainMenu:gameStart:symbol:gameStart",
+        "gameStart:gameStart:controls:direction_buttons",
+        "gameStart:gameStart:controls:action_buttons",
+        "gameStart:gamePause:controls:key_START",
+        "gamePause:gameStart:controls:key_START",
+        "gameStart:gameOptions:controls:key_SELECT",
+        "gameOptions:gameStart:controls:key_SELECT",
+        "gamePause:gameOptions:controls:key_SELECT",
+        "gameOptions:gamePause:controls:key_START"
       ]
     },
-    "mainMenu":{
+    "mainMenu": {
       "initial": "newGame",
       "states": ["newGame", "continueGame", "optionsGame", "exitGame"],
       "conections": [
-        "newGame:continueGame:key_DOWN",
-        "continueGame:newGame:key_UP",
-        "continueGame:optionsGame:key_DOWN",
-        "optionsGame:continueGame:key_UP",
-        "optionsGame:exitGame:key_DOWN",
-        "exitGame:optionsGame:key_UP",
-        "exitGame:newGame:key_DOWN",
-        "newGame:exitGame:key_UP"
+        "newGame:continueGame:controls:key_DOWN",
+        "continueGame:newGame:controls:key_UP",
+        "continueGame:optionsGame:controls:key_DOWN",
+        "optionsGame:continueGame:controls:key_UP",
+        "optionsGame:exitGame:controls:key_DOWN",
+        "exitGame:optionsGame:controls:key_UP"
       ]
     }
   }

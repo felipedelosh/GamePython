@@ -19,23 +19,25 @@ class GameStateManager:
             # ADD Edges
             for itterEdges in jsonStateMachines[itterStateMachine]["conections"]:
                 try:
-                    a,b,key = str(itterEdges).split(":")
-                    if not "key_" in key:
+                    a,b,condition,key = str(itterEdges).split(":")
+
+                    if condition == "symbol":
                         self.machines[itterStateMachine].addConection(a,b,key)
                         continue
 
-                    if key == "key_direction_buttons":
-                        for key_code in self.control.direction_buttons:
-                            self.machines[itterStateMachine].addConection(a, b, key_code)
-                            continue
+                    if condition == "controls":
+                        if key == "direction_buttons":
+                            for key_code in self.control.direction_buttons:
+                                self.machines[itterStateMachine].addConection(a, b, key_code)
+                                continue
 
-                    if key == "key_action_buttons":
-                        for key_code in self.control.action_buttons:
-                            self.machines[itterStateMachine].addConection(a, b, key_code)
-                            continue
+                        if key == "action_buttons":
+                            for key_code in self.control.action_buttons:
+                                self.machines[itterStateMachine].addConection(a, b, key_code)
+                                continue
 
-                    key_code = getattr(self.control, key)
-                    self.machines[itterStateMachine].addConection(a, b, key_code)
+                        key_code = getattr(self.control, key)
+                        self.machines[itterStateMachine].addConection(a, b, key_code)
                 except:
                     pass
 

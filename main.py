@@ -3,7 +3,7 @@ FelipedelosH
 This is my first MotorVideoGame
 """
 from tkinter import *
-from controller import *
+from src.core.controller import *
 
 class Software:
     def __init__(self) -> None:
@@ -21,7 +21,7 @@ class Software:
 
     def VizualizedAndRun(self):
         self.display.title(self.controller.language["gameTitle"])
-        self.display.geometry(self.controller.configuration["displayW"]+"x"+self.controller.configuration["displayH"])
+        self.display.geometry(f"{self.controller.configuration["displayW"]}x{self.controller.configuration["displayH"]}")
         self.canvas['height']=int(self.controller.configuration["displayH"])
         self.canvas['width']=int(self.controller.configuration["displayW"])
         self.canvas.place(x=0, y=0)

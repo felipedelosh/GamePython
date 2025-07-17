@@ -3,6 +3,7 @@ FelipedelosH
 This is the main controller to my videogame
 
 """
+import json
 from tkinter import *
 from tkinter import PhotoImage
 from control import Control
@@ -151,12 +152,13 @@ class Controller:
 
     def loadConfiguration(self):
         try:
-            f = open('resources/config.txt', 'r')
-            for i in f.read().split("\n"):
-                if str(i).strip() != "":
-                    info = i.split("=")
-                    self.configuration[str(info[0])]=str(info[1])
-        except:
+            with open('config/config.json', 'r') as f:
+                self.configuration = json.load(f)
+        except FileNotFoundError:
+            print("¡Archivo config.json no encontrado! Usando configuración por defecto.")
+            self.setConfigDefaultOptions()
+        except json.JSONDecodeError:
+            print("¡Error en el formato del JSON! Usando configuración por defecto.")
             self.setConfigDefaultOptions()
 
     def getFPS(self):

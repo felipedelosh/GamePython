@@ -42,9 +42,7 @@ class Controller:
         self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         self.world = World()
-         # -------------------------------
-
-
+        # -------------------------------
 
         # VARS
         self.intro_shown_time = 0

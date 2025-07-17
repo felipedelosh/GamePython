@@ -138,7 +138,7 @@ class Controller:
 
     def loadLanguage(self, language="ESP"):
         try:
-            f = open('resources/LAN/'+language+"/game.txt", 'r')
+            f = open(f"assets/LAN/{language}/text.txt", 'r')
             for i in f.read().split("\n"):
                 if str(i).strip() != "":
                     info = i.split("=")

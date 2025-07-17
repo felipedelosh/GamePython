@@ -8,8 +8,8 @@ from tkinter import PhotoImage
 from control import Control
 from player import *
 from stateMachine import *
+from world import *
 from time import sleep
-import sys
 
 
 class Controller:
@@ -35,10 +35,11 @@ class Controller:
         self._initStateMachineGame()
         self.mainMenuSM = StateMachine()
         self._initStateMachineMainMenuGame()
-        self.menuOptionsSM = StateMachine()
-        self._initStateMachineOptionsMenu()
         self.player = Player()
         self._setPlayer()
+        self.world = World()
+        self.IdTempWorldToPaint = ""
+        
 
         # Game resources:
         self.imgIntro =  PhotoImage(file="resources/images/intro.gif")
@@ -52,8 +53,7 @@ class Controller:
         self.SMgame.addNode("gameOptions")
         self.SMgame.addConection("intro", "mainMenu", "t")
         self.SMgame.addConection("mainMenu", "gameStart", "gameStart")
-        self.SMgame.addConection("mainMenu", "gameOptions", "gameOptions")
-        self.SMgame.addConection("gameOptions", "mainMenu", "mainMenu")
+
 
 
         self.SMgame.setInitialPointer("intro")
@@ -62,8 +62,6 @@ class Controller:
             self.SMgame.addConection("gameStart", "gameStart", i)
         for i in self.control.action_buttons:
             self.SMgame.addConection("gameStart", "gameStart", i)
-        self.SMgame.addConection("mainMenu", "gameOptions", self.control.key_SELECT)
-        self.SMgame.addConection("gameOptions", "mainMenu", self.control.key_B)
         self.SMgame.addConection("gameStart", "gamePause", self.control.key_START)
         self.SMgame.addConection("gamePause", "gameStart", self.control.key_START)
         self.SMgame.addConection("gameStart", "gameOptions", self.control.key_SELECT)
@@ -72,7 +70,6 @@ class Controller:
         self.SMgame.addConection("gameOptions", "gamePause", self.control.key_START)       
 
     def _initStateMachineMainMenuGame(self):
-        # to options Main Menu
         self.mainMenuSM.addNode("newGame")
         self.mainMenuSM.addNode("continueGame")
         self.mainMenuSM.addNode("optionsGame")
@@ -86,27 +83,6 @@ class Controller:
         self.mainMenuSM.addConection("exitGame", "optionsGame", self.control.key_UP)
         self.mainMenuSM.addConection("exitGame", "newGame", self.control.key_DOWN)
         self.mainMenuSM.addConection("newGame", "exitGame", self.control.key_UP)
-
-    def _initStateMachineOptionsMenu(self):
-        self.menuOptionsSM.addNode("mobile")
-        self.menuOptionsSM.addNode("items")
-        self.menuOptionsSM.addNode("clock")
-        self.menuOptionsSM.addNode("save")
-        self.menuOptionsSM.addNode("load")
-        self.menuOptionsSM.addNode("matrix")
-        self.menuOptionsSM.setInitialPointer("mobile")
-        self.menuOptionsSM.addConection("mobile","items",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("mobile","matrix",self.control.key_UP)
-        self.menuOptionsSM.addConection("items","clock",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("items","mobile",self.control.key_UP)
-        self.menuOptionsSM.addConection("clock","save",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("clock","items",self.control.key_UP)
-        self.menuOptionsSM.addConection("save","load",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("save","clock",self.control.key_UP)
-        self.menuOptionsSM.addConection("load","save",self.control.key_UP)
-        self.menuOptionsSM.addConection("exit","matrix",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("matrix","mobile",self.control.key_DOWN)
-
 
     def keyPressed(self, keycode):
         if self.SMgame.pointer == "gameStart":
@@ -131,7 +107,7 @@ class Controller:
             if str(keycode) == self.control.key_X:
                 print("X")
             if str(keycode) == self.control.key_SELECT:
-                self.SMgame.mouvePointer()
+                print("Select")
             if str(keycode) == self.control.key_START:
                 print("Start")
             if str(keycode) == self.control.key_L:
@@ -151,54 +127,16 @@ class Controller:
             if str(keycode) == self.control.key_START:
                 self.executeGameConfig()
 
-        if self.SMgame.pointer == "gameOptions":
-            if str(keycode) == self.control.key_UP:
-                self.menuOptionsSM.mouvePointer(self.control.key_UP)
-
-            if str(keycode) == self.control.key_DOWN:
-                self.menuOptionsSM.mouvePointer(self.control.key_DOWN)
-            
-            if str(keycode) == self.control.key_START:
-                self.executeOptionConfig()
-
-            if str(keycode) == self.control.key_A:
-                self.executeOptionConfig()
-
-            if str(keycode) == self.control.key_B:
-                self.SMgame.mouvePointer(self.control.key_B)
-
-
 
     def executeGameConfig(self):
         """
         Execute a option of self.mainMenuSM
         """
-       
         if self.mainMenuSM.pointer == "newGame":
             self.SMgame.mouvePointer("gameStart")
 
         if self.mainMenuSM.pointer == "continueGame":
-            print("Hay partida guardata?")
-
-        if self.mainMenuSM.pointer == "optionsGame":     
-            self.SMgame.mouvePointer("gameOptions")
-
-        if self.mainMenuSM.pointer == "exitGame":  
-            sys.exit()
-
-    def executeOptionConfig(self):
-        if self.menuOptionsSM.pointer == "mobile":
-            print("Celular Ring")
-        if self.menuOptionsSM.pointer == "items":
-            print("Cosas estas y aquellas")
-        if self.menuOptionsSM.pointer == "clock":
-            print("La hora es")
-        if self.menuOptionsSM.pointer == "save":
-            print("Guardar juego")
-        if self.menuOptionsSM.pointer == "load":
-            print("Cargar juego")
-        if self.menuOptionsSM.pointer == "matrix":
-            print("Matrix")
+            self.SMgame.mouvePointer("gameStart")
             
 
     def loadLanguage(self, language="ESP"):
@@ -279,43 +217,13 @@ class Controller:
 
     def showGame(self, canvas):
         self._deleteCanvasNotGameItems(canvas)
+        self._paintMatrix(canvas)
         self.paintPlayer(canvas)
-
-    def showOptions(self, canvas):
-        try:
-            _x = int(canvas['width'])*0.8
-            _y = int(canvas['height'])*0.3
-        except:
-            _x = 200
-            _y = 200
-
-        _y0 = _y + (len(self.menuOptionsSM.node)*25)
-        self._deleteCanvasNotGameItems(canvas)
-        canvas.create_rectangle(_x*0.9, _y*0.6, _x*1.1, _y*0.85, fill="snow",tag="optionsGame")
-        canvas.create_rectangle(_x*0.9, _y*0.9, _x*1.1, _y0, fill="snow",tag="optionsGame")
-    
-
-        count = 0
-        self.itemPosition = {} # Save x, y of [item]
-        for i in self.menuOptionsSM.node:
-            if i not in self.itemPosition.keys():
-                self.itemPosition[i] = [_x+30, _y+(count*25)]
-            canvas.create_text(_x*0.98, _y+(count*25), text=str(i).upper(), tag="optionsGame")
-            count = count + 1
-
-        pointer_x0 = _x*0.9
-        pointer_y0 = self.itemPosition[self.menuOptionsSM.pointer][1]*0.99
-        pointer_x1 = _x*1.1
-        pointer_y1 = self.itemPosition[self.menuOptionsSM.pointer][1]*1.01
-
-        canvas.create_rectangle(pointer_x0,pointer_y0,pointer_x1,pointer_y1, fill="red", tag="optionsGame")
-        canvas.create_text(_x*1.05, _y*0.7, text=str(self.menuOptionsSM.pointer).upper(), tag="optionsGame")
-
+        
 
     def _deleteCanvasNotGameItems(self, canvas):
         canvas.delete("intro")
         canvas.delete("mainMenu")
-        canvas.delete("optionsGame")
 
         
 
@@ -327,6 +235,9 @@ class Controller:
         self.player.posX = 100
         self.player.posY = 100
         self.player.velocity = int(self.configuration["playerVelocity"])
+
+
+
 
 
 
@@ -342,9 +253,19 @@ class Controller:
         canvas.delete("player")
         canvas.create_image(self.player.posX,self.player.posY,image=self.player.getPlayerSprite(), anchor=NW, tag="player")
 
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
+
+    def _paintMatrix(self, canvas):
+        # Divide a screem in world dimensions
+        if self.world.idWorld != self.IdTempWorldToPaint:
+            canvas.delete("world")
+            if self.SMgame.pointer == "gameStart":
+                _x = float(self.configuration["displayW"])/84
+                _y = float(self.configuration["displayH"])/48
+                for i in range(0, self.world.maxY):
+                    for j in range(0, self.world.maxX):
+                        if i%2==0 and j%2==0:
+                            canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="black", tags="world")
+                        else:
+                            canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="red", tags="world")
+
+                self.IdTempWorldToPaint = self.world.idWorld

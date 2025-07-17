@@ -10,7 +10,7 @@ from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
 from src.core.entities.player import *
 from src.core.stateMachine import *
-from src.core.world import *
+from src.core.entities.world import *
 from time import sleep
 
 

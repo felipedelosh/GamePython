@@ -7,6 +7,7 @@ import json
 from tkinter import *
 from tkinter import PhotoImage
 from src.core.inputHandler import InputHandler
+from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
 from src.core.player import *
 from src.core.stateMachine import *
@@ -43,6 +44,7 @@ class Controller:
 
         # -------------------------------
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
+        self.gameStateManager = GameStateManager
         # -------------------------------
 
 
@@ -97,19 +99,6 @@ class Controller:
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
             
-        # if self.SMgame.pointer == "mainMenu":
-        #     if keycode == self.control.key_UP:
-        #         self.mainMenuSM.mouvePointer(self.control.key_UP)
-        #     if keycode == self.control.key_RIGTH:
-        #         self.executeGameConfig()
-        #     if keycode == self.control.key_DOWN:
-        #         self.mainMenuSM.mouvePointer(self.control.key_DOWN)
-        #     if keycode == self.control.key_LEFT:
-        #         self.mainMenuSM.mouvePointer(self.control.key_LEFT)
-        #     if keycode == self.control.key_START:
-        #         self.executeGameConfig()
-            
-
     def loadLanguage(self, language="ESP"):
         try:
             f = open(f"assets/LAN/{language}/text.txt", 'r')

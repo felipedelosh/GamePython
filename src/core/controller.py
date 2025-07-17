@@ -6,6 +6,7 @@ This is the main controller to my videogame
 import json
 from tkinter import *
 from tkinter import PhotoImage
+from src.core.inputHandler import InputHandler
 from src.core.control import Control
 from src.core.player import *
 from src.core.stateMachine import *
@@ -39,6 +40,10 @@ class Controller:
         self.player = Player()
         self._setPlayer()
         self.world = World()
+
+        # -------------------------------
+        self.inputHandler = InputHandler(self.player, self.control, self.SMgame)
+        # -------------------------------
 
 
         # VARS
@@ -91,30 +96,7 @@ class Controller:
 
     def keyPressed(self, keycode):
         if self.SMgame.pointer == "gameStart":
-            if keycode == self.control.key_UP:
-                self.player.player_mouve_up()
-            if keycode == self.control.key_RIGTH:
-                self.player.player_mouve_rigth()
-            if keycode == self.control.key_DOWN:
-                self.player.player_mouve_down()
-            if keycode == self.control.key_LEFT:
-                self.player.player_mouve_left()    
-            if keycode == self.control.key_B:
-                print("B")
-            if keycode == self.control.key_A:
-                print("A")
-            if keycode == self.control.key_Y:
-                print("Y")
-            if keycode == self.control.key_X:
-                print("X")
-            if keycode == self.control.key_SELECT:
-                print("Select")
-            if keycode == self.control.key_START:
-                print("Start")
-            if keycode == self.control.key_L:
-                print("L")
-            if keycode == self.control.key_R:
-                print("R")
+            self.inputHandler.handleKeypress(keycode)
 
         if self.SMgame.pointer == "mainMenu":
             if keycode == self.control.key_UP:

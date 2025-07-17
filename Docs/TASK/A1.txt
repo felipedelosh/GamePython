@@ -1,7 +1,8 @@
 FelipedelosH
 
-Problema: se necesita un controlador especial que se encargue de todos los inputs (BOTONES)
+Problema: Separar Controller en módulos especializados|Crear InputHandler, GameStateManager, y UIManager.
 
+__________________________________________________________________________________________
 Para ello se creo: src\core\input_handler.py la cual resuelve:
 
 "El player realiza acciones cuando se presionan teclas"
@@ -21,4 +22,6 @@ Para ello se creo: src\core\gameStateManager.py la cual resuelve:
 Dependencias:
 
 * Archivo de config\config.json
-* 
+* Control (mando).
+__________________________________________________________________________________________
+

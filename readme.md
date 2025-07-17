@@ -1,6 +1,6 @@
 <h1 align="center"> FelipedelosH </h1>
 <br>
-<h4>El alto de las viudas</h4>
+<h4>El Alto De Las Viudas</h4>
 
 ![Banner](Docs/banner.png)
 :construction: Status of project :construction:
@@ -15,6 +15,35 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - `Function 3a`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
 - `Function 4`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
 
+## :hammer:FuntionsArchitecture:
+
+```
+my_game_project/
+├── assets/          
+│   ├── images/
+│   ├── sounds/
+│   ├── music/
+│   └── fonts/
+│
+├── src/                   
+│   ├── core/              
+│   ├── entities/          
+│   ├── levels/            
+│   ├── ui/                
+│   |── systems/           
+│
+├── config/         
+│
+├── data/                 
+│
+├── tests/                 
+│
+├── docs/                  
+│
+├── main.py 
+├── readme.md             
+└── requirements.txt      
+```
 
 ## :play_or_pause_button:How to execute a project
 

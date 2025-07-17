@@ -29,8 +29,10 @@ class Software:
         self.display.mainloop()
 
     def refreshGame(self):
-        
         if self.controller.SMgame.pointer == "intro":
+            self.controller.intro_shown_time += self.controller.getFPS()
+            if self.controller.intro_shown_time >= self.controller.configuration["intro_duration"]:
+                self.controller.SMgame.mouvePointer("t")
             self.controller.showIntro(self.canvas)
 
         if self.controller.SMgame.pointer == "mainMenu":

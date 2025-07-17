@@ -39,6 +39,10 @@ class Controller:
         self.player = Player()
         self._setPlayer()
         self.world = World()
+
+
+        # VARS
+        self.intro_shown_time = 0
         self.IdTempWorldToPaint = ""
         
 
@@ -167,6 +171,7 @@ class Controller:
         self.configuration["playerAge"]="0"
         self.configuration["playerSpriteLookUP"]="player_look_up.png"
         self.configuration["FPS"]="30"
+        self.configuration["intro_duration"]=1000
         self._setConfigDefaultOptionsController()  
     
     def _setConfigDefaultOptionsController(self):
@@ -189,14 +194,11 @@ class Controller:
 
     def showIntro(self, canvas):
         try:
-            _x = int(canvas['width'])*0.35
+            _x = int(canvas['width'])*0.2
         except:
             _x = 200
 
-
-        
         canvas.create_image(_x,20,image=self.imgIntro, anchor=NW, tag="intro")
-        self.SMgame.mouvePointer("t")
         
 
     def showMainMenu(self, canvas):

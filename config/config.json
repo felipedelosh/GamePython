@@ -1,7 +1,8 @@
 {
-  "displayW": 1280,
-  "displayH": 720,
+  "displayW": 640,
+  "displayH": 480,
   "FPS": 24,
+  "intro_duration": 2200,
   "playerName": "Human",
   "playerAge": 0,
   "playerVelocity": 5,

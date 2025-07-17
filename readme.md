@@ -38,7 +38,7 @@ my_game_project/
 │
 ├── tests/                 
 │
-├── docs/                  
+├── Docs/                  
 │
 ├── main.py 
 ├── readme.md             

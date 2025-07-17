@@ -6,10 +6,10 @@ This is the main controller to my videogame
 import json
 from tkinter import *
 from tkinter import PhotoImage
-from control import Control
-from player import *
-from stateMachine import *
-from world import *
+from src.core.control import Control
+from src.core.player import *
+from src.core.stateMachine import *
+from src.core.world import *
 from time import sleep
 
 
@@ -87,45 +87,41 @@ class Controller:
 
     def keyPressed(self, keycode):
         if self.SMgame.pointer == "gameStart":
-            if str(keycode) == self.control.key_UP:
-                #print("Arriba")
+            if keycode == self.control.key_UP:
                 self.player.player_mouve_up()
-            if str(keycode) == self.control.key_RIGTH:
-                #print("Derecha")
+            if keycode == self.control.key_RIGTH:
                 self.player.player_mouve_rigth()
-            if str(keycode) == self.control.key_DOWN:
-                #print("Abajo")
+            if keycode == self.control.key_DOWN:
                 self.player.player_mouve_down()
-            if str(keycode) == self.control.key_LEFT:
-                #print("Izquierda")
+            if keycode == self.control.key_LEFT:
                 self.player.player_mouve_left()    
-            if str(keycode) == self.control.key_B:
+            if keycode == self.control.key_B:
                 print("B")
-            if str(keycode) == self.control.key_A:
+            if keycode == self.control.key_A:
                 print("A")
-            if str(keycode) == self.control.key_Y:
+            if keycode == self.control.key_Y:
                 print("Y")
-            if str(keycode) == self.control.key_X:
+            if keycode == self.control.key_X:
                 print("X")
-            if str(keycode) == self.control.key_SELECT:
+            if keycode == self.control.key_SELECT:
                 print("Select")
-            if str(keycode) == self.control.key_START:
+            if keycode == self.control.key_START:
                 print("Start")
-            if str(keycode) == self.control.key_L:
+            if keycode == self.control.key_L:
                 print("L")
-            if str(keycode) == self.control.key_R:
+            if keycode == self.control.key_R:
                 print("R")
 
         if self.SMgame.pointer == "mainMenu":
-            if str(keycode) == self.control.key_UP:
+            if keycode == self.control.key_UP:
                 self.mainMenuSM.mouvePointer(self.control.key_UP)
-            if str(keycode) == self.control.key_RIGTH:
+            if keycode == self.control.key_RIGTH:
                 self.executeGameConfig()
-            if str(keycode) == self.control.key_DOWN:
+            if keycode == self.control.key_DOWN:
                 self.mainMenuSM.mouvePointer(self.control.key_DOWN)
-            if str(keycode) == self.control.key_LEFT:
+            if keycode == self.control.key_LEFT:
                 self.mainMenuSM.mouvePointer(self.control.key_LEFT)
-            if str(keycode) == self.control.key_START:
+            if keycode == self.control.key_START:
                 self.executeGameConfig()
 
 

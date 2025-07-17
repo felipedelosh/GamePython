@@ -11,10 +11,8 @@ class Software:
         self.canvas = Canvas(self.display, bg="snow")
         self.canvas.bind_all("<Key>", self.keyPressed)
 
-
         self.controller = Controller()
         self.controller.gameCanvas = self.canvas
-
 
         self.VizualizedAndRun()
 
@@ -50,7 +48,7 @@ class Software:
 
 
     def keyPressed(self, Event):
-        if str(Event.keycode) in self.controller.control.keyResult:
+        if Event.keycode in self.controller.control.keyResult:
             self.controller.keyPressed(Event.keycode)
 
 

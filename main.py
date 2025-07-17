@@ -29,7 +29,7 @@ class Software:
 
     def refreshGame(self):
         if self.controller.SMgame.pointer == "intro":
-            self.controller.intro_shown_time += self.controller.getFPS()
+            self.controller.intro_shown_time = self.controller.intro_shown_time + self.controller.FPS
             if self.controller.intro_shown_time >= self.controller.configuration["intro_duration"]:
                 self.controller.SMgame.mouvePointer("t")
             self.controller.showIntro()
@@ -45,7 +45,7 @@ class Software:
 
         
         
-        self.display.after(self.controller.getFPS(), self.refreshGame)
+        self.display.after(self.controller.FPS, self.refreshGame)
 
 
     def keyPressed(self, Event):

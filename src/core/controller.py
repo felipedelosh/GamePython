@@ -19,6 +19,7 @@ class Controller:
         self.canvas = canvas
         self.configuration = {} # game configuration
         self.loadConfiguration()
+        self.FPS = int(1000/int(self.configuration["FPS"]))
         self.control = Control(
             self.configuration["key_UP"],
             self.configuration["key_RIGTH"],
@@ -76,10 +77,6 @@ class Controller:
         except json.JSONDecodeError:
             print("¡Error en el formato del JSON! Usando configuración por defecto.")
             self.setConfigDefaultOptions()
-
-
-    def getFPS(self):
-        return int(1000/int(self.configuration["FPS"]))
 
 
     def setConfigDefaultOptions(self):

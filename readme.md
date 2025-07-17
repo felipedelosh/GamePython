@@ -1,6 +1,6 @@
 <h1 align="center"> FelipedelosH </h1>
 <br>
-<h4>Name of project</h4>
+<h4>El alto de las viudas</h4>
 
 ![Banner](Docs/banner.png)
 :construction: Status of project :construction:

@@ -152,38 +152,38 @@ class Controller:
     def setLanguageDefault(self):
         self.language["gameTitle"]="LokoGame"
 
-    def showIntro(self, canvas):
+    def showIntro(self):
         try:
-            _x = int(canvas['width'])*0.2
+            _x = int(self.canvas['width'])*0.2
         except:
             _x = 200
 
-        canvas.create_image(_x,20,image=self.imgIntro, anchor=NW, tag="intro")
+        self.canvas.create_image(_x,20,image=self.imgIntro, anchor=NW, tag="intro")
         
 
-    def showMainMenu(self, canvas):
+    def showMainMenu(self):
         try:
-            _x = int(canvas['width'])*0.5
-            _y = int(canvas['height'])*0.5
+            _x = int(self.canvas['width'])*0.5
+            _y = int(self.canvas['height'])*0.5
         except:
             _x = 200
             _y = 200
         
-        self._deleteCanvasNotGameItems(canvas)
-        canvas.create_line(_x, _y-5, _x, _y-35, fill="red", arrow=LAST, tag="mainMenu")
-        canvas.create_line(_x, _y+15, _x, _y+35, fill="red", arrow=LAST, tag="mainMenu")
-        canvas.create_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
-        canvas.create_text(_x, _y, text=self.mainMenuSM.pointer, tag="mainMenu")
+        self._deleteCanvasNotGameItems()
+        self.canvas.create_line(_x, _y-5, _x, _y-35, fill="red", arrow=LAST, tag="mainMenu")
+        self.canvas.create_line(_x, _y+15, _x, _y+35, fill="red", arrow=LAST, tag="mainMenu")
+        self.canvas.create_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
+        self.canvas.create_text(_x, _y, text=self.mainMenuSM.pointer, tag="mainMenu")
 
-    def showGame(self, canvas):
-        self._deleteCanvasNotGameItems(canvas)
-        self._paintMatrix(canvas)
-        self.paintPlayer(canvas)
+    def showGame(self):
+        self._deleteCanvasNotGameItems()
+        self._paintMatrix(self.canvas)
+        self.paintPlayer(self.canvas)
         
 
-    def _deleteCanvasNotGameItems(self, canvas):
-        canvas.delete("intro")
-        canvas.delete("mainMenu")
+    def _deleteCanvasNotGameItems(self):
+        self.canvas.delete("intro")
+        self.canvas.delete("mainMenu")
 
         
 

@@ -27,18 +27,19 @@ class Software:
         self.display.after(0, self.refreshGame)
         self.display.mainloop()
 
+
     def refreshGame(self):
         if self.controller.SMgame.pointer == "intro":
             self.controller.intro_shown_time += self.controller.getFPS()
             if self.controller.intro_shown_time >= self.controller.configuration["intro_duration"]:
                 self.controller.SMgame.mouvePointer("t")
-            self.controller.showIntro(self.canvas)
+            self.controller.showIntro()
 
         if self.controller.SMgame.pointer == "mainMenu":
-            self.controller.showMainMenu(self.canvas)
+            self.controller.showMainMenu()
 
         if self.controller.SMgame.pointer == "gameStart":
-            self.controller.showGame(self.canvas)
+            self.controller.showGame()
         
         if self.controller.SMgame.pointer == "gameOptions":
             pass

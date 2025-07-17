@@ -5,9 +5,10 @@ FelipedelosH
 Input Key EXCUTOR Controller
 """
 class InputHandler:
-    def __init__(self, palyer, config, stateMachineGame):
+    def __init__(self, palyer, config, stateMachineMainMenu, stateMachineGame):
         self.player = palyer
         self.control = config
+        self.stateMachineMainMenu = stateMachineMainMenu
         self.stateMachineGame = stateMachineGame
 
 
@@ -37,3 +38,12 @@ class InputHandler:
                 print("L")
             if keycode == self.control.key_R:
                 print("R")
+
+
+        if self.stateMachineGame.pointer == "mainMenu":
+            if keycode == self.control.key_UP:
+                self.stateMachineMainMenu.mouvePointer(self.control.key_UP)
+            if keycode == self.control.key_DOWN:
+                self.stateMachineMainMenu.mouvePointer(self.control.key_DOWN)
+            if keycode == self.control.key_START:
+                self.stateMachineGame.mouvePointer("gameStart")

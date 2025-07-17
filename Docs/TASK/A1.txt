@@ -10,4 +10,5 @@ Dependencias:
 
 * player.
 * control (mando).
+* Maquina de estados del menú principal.
 * Maquina de estados de juego.

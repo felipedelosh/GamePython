@@ -42,7 +42,7 @@ class Controller:
         self.world = World()
 
         # -------------------------------
-        self.inputHandler = InputHandler(self.player, self.control, self.SMgame)
+        self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         # -------------------------------
 
 
@@ -95,31 +95,19 @@ class Controller:
         self.mainMenuSM.addConection("newGame", "exitGame", self.control.key_UP)
 
     def keyPressed(self, keycode):
-        if self.SMgame.pointer == "gameStart":
-            self.inputHandler.handleKeypress(keycode)
-
-        if self.SMgame.pointer == "mainMenu":
-            if keycode == self.control.key_UP:
-                self.mainMenuSM.mouvePointer(self.control.key_UP)
-            if keycode == self.control.key_RIGTH:
-                self.executeGameConfig()
-            if keycode == self.control.key_DOWN:
-                self.mainMenuSM.mouvePointer(self.control.key_DOWN)
-            if keycode == self.control.key_LEFT:
-                self.mainMenuSM.mouvePointer(self.control.key_LEFT)
-            if keycode == self.control.key_START:
-                self.executeGameConfig()
-
-
-    def executeGameConfig(self):
-        """
-        Execute a option of self.mainMenuSM
-        """
-        if self.mainMenuSM.pointer == "newGame":
-            self.SMgame.mouvePointer("gameStart")
-
-        if self.mainMenuSM.pointer == "continueGame":
-            self.SMgame.mouvePointer("gameStart")
+        self.inputHandler.handleKeypress(keycode)
+            
+        # if self.SMgame.pointer == "mainMenu":
+        #     if keycode == self.control.key_UP:
+        #         self.mainMenuSM.mouvePointer(self.control.key_UP)
+        #     if keycode == self.control.key_RIGTH:
+        #         self.executeGameConfig()
+        #     if keycode == self.control.key_DOWN:
+        #         self.mainMenuSM.mouvePointer(self.control.key_DOWN)
+        #     if keycode == self.control.key_LEFT:
+        #         self.mainMenuSM.mouvePointer(self.control.key_LEFT)
+        #     if keycode == self.control.key_START:
+        #         self.executeGameConfig()
             
 
     def loadLanguage(self, language="ESP"):

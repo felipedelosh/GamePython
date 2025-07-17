@@ -175,18 +175,18 @@ class Controller:
         self._setConfigDefaultOptionsController()  
     
     def _setConfigDefaultOptionsController(self):
-        self.configuration["key_U"]="38"
-        self.configuration["key_RIGTH"]="39"
-        self.configuration["key_DOWN"]="40"
-        self.configuration["key_LEFT"]="37"
-        self.configuration["key_SELECT"]="32"
-        self.configuration["key_START"]="13"
-        self.configuration["key_B"]="90"
-        self.configuration["key_A"]="88"
-        self.configuration["key_Y"]="67"
-        self.configuration["key_X"]="86"
-        self.configuration["key_L"]="65"
-        self.configuration["key_R"]="83"
+        self.configuration["key_U"]=38
+        self.configuration["key_RIGTH"]=39
+        self.configuration["key_DOWN"]=40
+        self.configuration["key_LEFT"]=37
+        self.configuration["key_SELECT"]=32
+        self.configuration["key_START"]=13
+        self.configuration["key_B"]=90
+        self.configuration["key_A"]=88
+        self.configuration["key_Y"]=67
+        self.configuration["key_X"]=86
+        self.configuration["key_L"]=65
+        self.configuration["key_R"]=83
 
 
     def setLanguageDefault(self):
@@ -235,10 +235,6 @@ class Controller:
         self.player.posX = 100
         self.player.posY = 100
         self.player.velocity = int(self.configuration["playerVelocity"])
-
-
-
-
 
 
 #----------------------------------------------------------------------------------------------

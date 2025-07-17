@@ -5,8 +5,6 @@ This is the main controller to my videogame
 """
 from tkinter import *
 from tkinter import PhotoImage
-
-from grpc import RpcContext
 from control import Control
 from player import *
 from stateMachine import *
@@ -54,7 +52,8 @@ class Controller:
         self.SMgame.addNode("gameOptions")
         self.SMgame.addConection("intro", "mainMenu", "t")
         self.SMgame.addConection("mainMenu", "gameStart", "gameStart")
-
+        self.SMgame.addConection("mainMenu", "gameOptions", "gameOptions")
+        self.SMgame.addConection("gameOptions", "mainMenu", "mainMenu")
 
 
         self.SMgame.setInitialPointer("intro")
@@ -64,6 +63,7 @@ class Controller:
         for i in self.control.action_buttons:
             self.SMgame.addConection("gameStart", "gameStart", i)
         self.SMgame.addConection("mainMenu", "gameOptions", self.control.key_SELECT)
+        self.SMgame.addConection("gameOptions", "mainMenu", self.control.key_B)
         self.SMgame.addConection("gameStart", "gamePause", self.control.key_START)
         self.SMgame.addConection("gamePause", "gameStart", self.control.key_START)
         self.SMgame.addConection("gameStart", "gameOptions", self.control.key_SELECT)
@@ -93,7 +93,6 @@ class Controller:
         self.menuOptionsSM.addNode("clock")
         self.menuOptionsSM.addNode("save")
         self.menuOptionsSM.addNode("load")
-        self.menuOptionsSM.addNode("exit")
         self.menuOptionsSM.addNode("matrix")
         self.menuOptionsSM.setInitialPointer("mobile")
         self.menuOptionsSM.addConection("mobile","items",self.control.key_DOWN)
@@ -104,12 +103,9 @@ class Controller:
         self.menuOptionsSM.addConection("clock","items",self.control.key_UP)
         self.menuOptionsSM.addConection("save","load",self.control.key_DOWN)
         self.menuOptionsSM.addConection("save","clock",self.control.key_UP)
-        self.menuOptionsSM.addConection("load","exit",self.control.key_DOWN)
         self.menuOptionsSM.addConection("load","save",self.control.key_UP)
         self.menuOptionsSM.addConection("exit","matrix",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("exit","load",self.control.key_UP)
         self.menuOptionsSM.addConection("matrix","mobile",self.control.key_DOWN)
-        self.menuOptionsSM.addConection("matrix","exit",self.control.key_UP)
 
 
     def keyPressed(self, keycode):
@@ -135,7 +131,7 @@ class Controller:
             if str(keycode) == self.control.key_X:
                 print("X")
             if str(keycode) == self.control.key_SELECT:
-                print("Select")
+                self.SMgame.mouvePointer()
             if str(keycode) == self.control.key_START:
                 print("Start")
             if str(keycode) == self.control.key_L:
@@ -161,6 +157,15 @@ class Controller:
 
             if str(keycode) == self.control.key_DOWN:
                 self.menuOptionsSM.mouvePointer(self.control.key_DOWN)
+            
+            if str(keycode) == self.control.key_START:
+                self.executeOptionConfig()
+
+            if str(keycode) == self.control.key_A:
+                self.executeOptionConfig()
+
+            if str(keycode) == self.control.key_B:
+                self.SMgame.mouvePointer(self.control.key_B)
 
 
 
@@ -168,6 +173,7 @@ class Controller:
         """
         Execute a option of self.mainMenuSM
         """
+       
         if self.mainMenuSM.pointer == "newGame":
             self.SMgame.mouvePointer("gameStart")
 
@@ -175,10 +181,24 @@ class Controller:
             print("Hay partida guardata?")
 
         if self.mainMenuSM.pointer == "optionsGame":     
-            self.SMgame.mouvePointer(self.control.key_SELECT)
+            self.SMgame.mouvePointer("gameOptions")
 
         if self.mainMenuSM.pointer == "exitGame":  
             sys.exit()
+
+    def executeOptionConfig(self):
+        if self.menuOptionsSM.pointer == "mobile":
+            print("Celular Ring")
+        if self.menuOptionsSM.pointer == "items":
+            print("Cosas estas y aquellas")
+        if self.menuOptionsSM.pointer == "clock":
+            print("La hora es")
+        if self.menuOptionsSM.pointer == "save":
+            print("Guardar juego")
+        if self.menuOptionsSM.pointer == "load":
+            print("Cargar juego")
+        if self.menuOptionsSM.pointer == "matrix":
+            print("Matrix")
             
 
     def loadLanguage(self, language="ESP"):
@@ -322,4 +342,9 @@ class Controller:
         canvas.delete("player")
         canvas.create_image(self.player.posX,self.player.posY,image=self.player.getPlayerSprite(), anchor=NW, tag="player")
 
-
+#----------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------

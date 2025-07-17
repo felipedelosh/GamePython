@@ -11,8 +11,7 @@ class Software:
         self.canvas = Canvas(self.display, bg="snow")
         self.canvas.bind_all("<Key>", self.keyPressed)
 
-        self.controller = Controller()
-        self.controller.gameCanvas = self.canvas
+        self.controller = Controller(self.canvas)
 
         self.VizualizedAndRun()
 

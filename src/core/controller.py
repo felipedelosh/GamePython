@@ -16,7 +16,8 @@ from time import sleep
 
 
 class Controller:
-    def __init__(self) -> None:
+    def __init__(self, canvas) -> None:
+        self.canvas = canvas
         self.configuration = {} # game configuration
         self.loadConfiguration()
         self.control = Control(

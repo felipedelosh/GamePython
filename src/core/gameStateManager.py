@@ -5,7 +5,7 @@ class GameStateManager:
         self.machines = {}
         self.control = contol
         self._init_states(jsonStateMachines)
-        self.verifyStateMachines()
+
 
     def _init_states(self, jsonStateMachines):
         for itterStateMachine in jsonStateMachines:

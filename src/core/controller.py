@@ -43,7 +43,7 @@ class Controller:
         
 
         # Game resources:
-        self.imgIntro =  PhotoImage(file="resources/images/intro.gif")
+        self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
 
 
     def _initStateMachineGame(self):

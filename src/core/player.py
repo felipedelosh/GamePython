@@ -50,7 +50,7 @@ class Player:
         return self.sprite[key]
 
     def set_player_sprites(self, sprites_routes):
-        self.sprite["player_look_up"] = PhotoImage(file="resources/images/player/"+sprites_routes["player_look_up"])
-        self.sprite["player_look_left"] = PhotoImage(file="resources/images/player/"+sprites_routes["player_look_left"])
-        self.sprite["player_look_rigth"] = PhotoImage(file="resources/images/player/"+sprites_routes["player_look_rigth"])
-        self.sprite["player_look_down"] = PhotoImage(file="resources/images/player/"+sprites_routes["player_look_down"])
+        self.sprite["player_look_up"] = PhotoImage(file="assets/images/player/"+sprites_routes["player_look_up"])
+        self.sprite["player_look_left"] = PhotoImage(file="assets/images/player/"+sprites_routes["player_look_left"])
+        self.sprite["player_look_rigth"] = PhotoImage(file="assets/images/player/"+sprites_routes["player_look_rigth"])
+        self.sprite["player_look_down"] = PhotoImage(file="assets/images/player/"+sprites_routes["player_look_down"])

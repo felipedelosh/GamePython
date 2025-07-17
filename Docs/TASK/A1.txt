@@ -12,3 +12,13 @@ Dependencias:
 * control (mando).
 * Maquina de estados del menú principal.
 * Maquina de estados de juego.
+__________________________________________________________________________________________
+Para ello se creo: src\core\gameStateManager.py la cual resuelve:
+
+"Manejos de los estados y transiciones de Menú principal y Juego"
+
+
+Dependencias:
+
+* Archivo de config\config.json
+* 

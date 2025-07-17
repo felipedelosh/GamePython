@@ -21,5 +21,30 @@
   "key_Y": 67,
   "key_X": 86,
   "key_L": 65,
-  "key_R": 83
+  "key_R": 83,
+  "statesMachines": {
+    "game":{
+      "initial": "intro",
+      "states": ["intro", "mainMenu", "gameStart", "gamePause", "gameOptions"],
+      "conections": [
+        "intro:mainMenu:t",
+        "mainMenu:gameStart:gameStart",
+        "gameStart:gameStart:key_direction_buttons",
+        "gameStart:gameStart:key_action_buttons",
+        "gameStart:gamePause:key_START",
+        "gamePause:gameStart:key_START",
+        "gameStart:gameOptions:key_SELECT",
+        "gameOptions:gameStart:key_SELECT",
+        "gamePause:gameOptions:key_SELECT",
+        "gameOptions:gamePause:key_START"
+      ]
+    },
+    "mainMenu":{
+      "initial": "",
+      "states": ["newGame", "continueGame", "optionsGame", "exitGame"],
+      "conections": [
+        "::"
+      ]
+    }
+  }
 }

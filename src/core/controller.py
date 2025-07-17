@@ -1,7 +1,6 @@
 """
 FelipedelosH
 This is the main controller to my videogame
-
 """
 import json
 from tkinter import *
@@ -35,52 +34,28 @@ class Controller:
             self.configuration["key_R"])
         self.language = {} # Containt a language
         self.loadLanguage()
-        self.SMgame = StateMachine()
-        self._initStateMachineGame()
-        self.mainMenuSM = StateMachine()
-        self._initStateMachineMainMenuGame()
+        # -------------------------------
         self.player = Player()
         self._setPlayer()
-        self.world = World()
-
-        # -------------------------------
+        
+        self.mainMenuSM = StateMachine()
+        self._initStateMachineMainMenuGame()
+        
+        self.gameStateManager = GameStateManager(self.configuration["statesMachines"], self.control)
+        self.SMgame = self.gameStateManager.getStateMachine("game")
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
-        self.gameStateManager = GameStateManager
-        # -------------------------------
+        self.world = World()
+         # -------------------------------
+
 
 
         # VARS
         self.intro_shown_time = 0
         self.IdTempWorldToPaint = ""
         
-
         # Game resources:
         self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
 
-
-    def _initStateMachineGame(self):
-        self.SMgame.addNode("intro")
-        self.SMgame.addNode("mainMenu")
-        self.SMgame.addNode("gameStart")
-        self.SMgame.addNode("gamePause")
-        self.SMgame.addNode("gameOptions")
-        self.SMgame.addConection("intro", "mainMenu", "t")
-        self.SMgame.addConection("mainMenu", "gameStart", "gameStart")
-
-
-
-        self.SMgame.setInitialPointer("intro")
-        # To game Running
-        for i in self.control.direction_buttons: 
-            self.SMgame.addConection("gameStart", "gameStart", i)
-        for i in self.control.action_buttons:
-            self.SMgame.addConection("gameStart", "gameStart", i)
-        self.SMgame.addConection("gameStart", "gamePause", self.control.key_START)
-        self.SMgame.addConection("gamePause", "gameStart", self.control.key_START)
-        self.SMgame.addConection("gameStart", "gameOptions", self.control.key_SELECT)
-        self.SMgame.addConection("gameOptions", "gameStart", self.control.key_SELECT)
-        self.SMgame.addConection("gamePause", "gameOptions", self.control.key_SELECT)
-        self.SMgame.addConection("gameOptions", "gamePause", self.control.key_START)       
 
     def _initStateMachineMainMenuGame(self):
         self.mainMenuSM.addNode("newGame")
@@ -121,8 +96,10 @@ class Controller:
             print("¡Error en el formato del JSON! Usando configuración por defecto.")
             self.setConfigDefaultOptions()
 
+
     def getFPS(self):
         return int(1000/int(self.configuration["FPS"]))
+
 
     def setConfigDefaultOptions(self):
         self.configuration["displayW"]="1280"
@@ -134,6 +111,7 @@ class Controller:
         self.configuration["intro_duration"]=1000
         self._setConfigDefaultOptionsController()  
     
+
     def _setConfigDefaultOptionsController(self):
         self.configuration["key_U"]=38
         self.configuration["key_RIGTH"]=39
@@ -151,6 +129,7 @@ class Controller:
 
     def setLanguageDefault(self):
         self.language["gameTitle"]="LokoGame"
+
 
     def showIntro(self):
         try:
@@ -175,6 +154,7 @@ class Controller:
         self.canvas.create_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
         self.canvas.create_text(_x, _y, text=self.mainMenuSM.pointer, tag="mainMenu")
 
+
     def showGame(self):
         self._deleteCanvasNotGameItems()
         self._paintMatrix(self.canvas)
@@ -186,7 +166,6 @@ class Controller:
         self.canvas.delete("mainMenu")
 
         
-
     def _setPlayer(self):
         # Load all player images
         self.player.set_player_sprites(self.configuration)
@@ -195,15 +174,12 @@ class Controller:
         self.player.posX = 100
         self.player.posY = 100
         self.player.velocity = int(self.configuration["playerVelocity"])
-
-
 #----------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------
 #----------------------------------------------------------------------------------------------
-
     def paintPlayer(self, canvas):
         # Delete a player anf then paitn a sprite
         canvas.delete("player")

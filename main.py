@@ -10,7 +10,6 @@ class Software:
         self.display = Tk()
         self.canvas = Canvas(self.display, bg="snow")
         self.canvas.bind_all("<Key>", self.keyPressed)
-
         self.controller = Controller(self.canvas)
 
         self.VizualizedAndRun()

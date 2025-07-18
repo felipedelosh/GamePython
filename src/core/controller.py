@@ -67,10 +67,6 @@ class Controller:
     def showGame(self):
         self.UImanager.showGame()
 
-    def _deleteCanvasNotGameItems(self):
-        self.canvas.delete("intro")
-        self.canvas.delete("mainMenu")
-
     def _setPlayer(self):
         # Load all player images
         self.player.set_player_sprites(self.config._config)

@@ -1,0 +1,14 @@
+FelipedelosH
+
+Problema: Se describe el problema.
+
+__________________________________________________________________________________________
+Para ello se creo: "RUTA/ARCHIVO" la cual resuelve:
+
+"Para que se creo"
+
+Dependencias:
+
+* Modelos.
+* Servicios.
+* Librerias.

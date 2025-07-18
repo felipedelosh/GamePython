@@ -1,0 +1,13 @@
+FelipedelosH
+
+Problema: El sistema de configuración es demasiado complicado... hay que crear un archivo que resuelva.
+__________________________________________________________________________________________
+Para ello se creo: "src\core\gameConfig.py" la cual resuelve:
+
+"Toma config\config.json y gestiona la configuracción."
+
+Dependencias:
+
+* Modelos.
+* Servicios.
+* Json.

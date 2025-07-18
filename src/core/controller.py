@@ -3,6 +3,7 @@ FelipedelosH
 This is the main controller to my videogame
 """
 import json
+from src.core.GameConfig import GameConfig
 from src.UI.TkinterRenderer import TkinterRenderer
 from src.UI.UIManager import UIManager
 from tkinter import NW
@@ -19,22 +20,25 @@ from time import sleep
 class Controller:
     def __init__(self, canvas) -> None:
         self.canvas = canvas
+        self.config = GameConfig()
+        self.config.load('config/config.json')
         self.configuration = {}
         self.loadConfiguration()
         self.FPS = int(1000/int(self.configuration["FPS"]))
         self.control = Control(
-            self.configuration["key_UP"],
-            self.configuration["key_RIGTH"],
-            self.configuration["key_DOWN"],
-            self.configuration["key_LEFT"],
-            self.configuration["key_SELECT"],
-            self.configuration["key_START"],
-            self.configuration["key_B"],
-            self.configuration["key_A"],
-            self.configuration["key_Y"],
-            self.configuration["key_X"],
-            self.configuration["key_L"],
-            self.configuration["key_R"])
+            self.config.get('key_UP', 38),
+            self.config.get('key_RIGTH', 39),
+            self.config.get('key_DOWN', 40),
+            self.config.get('key_LEFT', 37),
+            self.config.get('key_SELECT', 32),
+            self.config.get('key_START', 13),
+            self.config.get('key_B', 90),
+            self.config.get('key_A', 88),
+            self.config.get('key_Y', 67),
+            self.config.get('key_X', 86),
+            self.config.get('key_L', 65),
+            self.config.get('key_R', 83)
+        )
         self.language = {} # Containt a language
         self.loadLanguage()
         # Sprites & IMAGES

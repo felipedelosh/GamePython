@@ -51,12 +51,14 @@ my_game_project/
 
 ## :play_or_pause_button:How to execute a project
 
-Execute main.py
+```
+python main.py
+```
 
 ## :hammer_and_wrench:Tech.
 
 - Python
-- ...
+- Tkinter
 
 ## :warning:Warning.
 

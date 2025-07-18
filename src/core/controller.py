@@ -3,14 +3,15 @@ FelipedelosH
 This is the main controller to my videogame
 """
 import json
-from tkinter import *
+from tkinter import NW
+from tkinter import LAST
 from tkinter import PhotoImage
 from src.core.inputHandler import InputHandler
 from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
-from src.entities.player import *
-from src.core.stateMachine import *
-from src.entities.world import *
+from src.entities.player import Player
+from src.core.stateMachine import StateMachine
+from src.entities.world import World
 from time import sleep
 
 

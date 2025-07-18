@@ -23,7 +23,7 @@ class Controller:
         self.config = GameConfig()
         self.config.load('config/config.json')
         self.configuration = self.config._config
-        self.FPS = int(1000/int(self.configuration["FPS"]))
+        self.FPS = int(1000/int(self.config.get("FPS")))
         self.control = Control(
             self.config.get('key_UP', 38),
             self.config.get('key_RIGTH', 39),

@@ -114,9 +114,9 @@ class Controller:
     def showMainMenu(self):
         self.UImanager.showMainMenu()
 
-
     def showGame(self):
-        self._deleteCanvasNotGameItems()
+        self.UImanager.showGame()
+        #self._deleteCanvasNotGameItems()
         self._paintMatrix(self.canvas)
         self.paintPlayer(self.canvas)
         

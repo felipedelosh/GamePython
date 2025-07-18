@@ -1,5 +1,7 @@
 {
   "displayW": 640,
+  "floorW":84,
+  "floorH":48,
   "displayH": 480,
   "FPS": 32,
   "intro_duration": 1500,

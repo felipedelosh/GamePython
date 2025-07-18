@@ -18,6 +18,12 @@ class IUIRenderer(ABC):
     def render_text(self, x, y, text, tag): pass
 
     @abstractmethod
+    def render_player(self): pass
+
+    @abstractmethod
+    def render_floor(self): pass
+
+    @abstractmethod
     def delete_no_game_items(self): pass
 
     @abstractmethod

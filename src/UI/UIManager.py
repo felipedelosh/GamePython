@@ -48,4 +48,5 @@ class UIManager:
 
     def showGame(self):
         self.renderer.delete_no_game_items()
-        
+        self.renderer.render_floor()
+        self.renderer.render_player()

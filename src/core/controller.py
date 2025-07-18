@@ -48,18 +48,15 @@ class Controller:
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         self.world = World()
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas)
+        self.renderer = TkinterRenderer(self.canvas, self.configuration, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         self.UImanager.set_intro_image(self.imgIntro)
         self.UImanager.set_game_state_manager(self.gameStateManager)
         # VARS
         self.intro_shown_time = 0
-        self.IdTempWorldToPaint = ""
-
 
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
-
 
     def loadLanguage(self, language="ESP"):
         try:
@@ -78,7 +75,6 @@ class Controller:
         except:
             self.setConfigDefaultOptions()
 
-
     def setConfigDefaultOptions(self):
         self.configuration["displayW"]="1280"
         self.configuration["displayH"]="720"
@@ -89,7 +85,6 @@ class Controller:
         self.configuration["intro_duration"]=1000
         self._setConfigDefaultOptionsController()  
     
-
     def _setConfigDefaultOptionsController(self):
         self.configuration["key_U"]=38
         self.configuration["key_RIGTH"]=39
@@ -104,7 +99,6 @@ class Controller:
         self.configuration["key_L"]=65
         self.configuration["key_R"]=83
 
-
     def setLanguageDefault(self):
         self.language["gameTitle"]="LokoGame"
 
@@ -116,16 +110,11 @@ class Controller:
 
     def showGame(self):
         self.UImanager.showGame()
-        #self._deleteCanvasNotGameItems()
-        self._paintMatrix(self.canvas)
-        self.paintPlayer(self.canvas)
-        
 
     def _deleteCanvasNotGameItems(self):
         self.canvas.delete("intro")
         self.canvas.delete("mainMenu")
 
-        
     def _setPlayer(self):
         # Load all player images
         self.player.set_player_sprites(self.configuration)
@@ -134,30 +123,3 @@ class Controller:
         self.player.posX = 100
         self.player.posY = 100
         self.player.velocity = int(self.configuration["playerVelocity"])
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-#----------------------------------------------------------------------------------------------
-    def paintPlayer(self, canvas):
-        # Delete a player anf then paitn a sprite
-        canvas.delete("player")
-        canvas.create_image(self.player.posX,self.player.posY,image=self.player.getPlayerSprite(), anchor=NW, tag="player")
-
-
-    def _paintMatrix(self, canvas):
-        # Divide a screem in world dimensions
-        if self.world.idWorld != self.IdTempWorldToPaint:
-            canvas.delete("world")
-            if self.SMgame.pointer == "gameStart":
-                _x = float(self.configuration["displayW"])/84
-                _y = float(self.configuration["displayH"])/48
-                for i in range(0, self.world.maxY):
-                    for j in range(0, self.world.maxX):
-                        if i%2==0 and j%2==0:
-                            canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="black", tags="world")
-                        else:
-                            canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="red", tags="world")
-
-                self.IdTempWorldToPaint = self.world.idWorld

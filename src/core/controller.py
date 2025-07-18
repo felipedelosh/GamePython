@@ -22,8 +22,7 @@ class Controller:
         self.canvas = canvas
         self.config = GameConfig()
         self.config.load('config/config.json')
-        self.configuration = {}
-        self.loadConfiguration()
+        self.configuration = self.config._config
         self.FPS = int(1000/int(self.configuration["FPS"]))
         self.control = Control(
             self.config.get('key_UP', 38),
@@ -39,8 +38,6 @@ class Controller:
             self.config.get('key_L', 65),
             self.config.get('key_R', 83)
         )
-        self.language = {} # Containt a language
-        self.loadLanguage()
         # Sprites & IMAGES
         self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
         # Player
@@ -62,23 +59,6 @@ class Controller:
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
 
-    def loadLanguage(self, language="ESP"):
-        try:
-            f = open(f"assets/LAN/{language}/text.txt", 'r')
-            for i in f.read().split("\n"):
-                if str(i).strip() != "":
-                    info = i.split("=")
-                    self.language[str(info[0])]=str(info[1])
-        except:
-            self.setLanguageDefault()
-
-    def loadConfiguration(self):
-        try:
-            with open('config/config.json', 'r') as f:
-                self.configuration = json.load(f)
-        except:
-            self.setConfigDefaultOptions()
-
     def setConfigDefaultOptions(self):
         self.configuration["displayW"]="1280"
         self.configuration["displayH"]="720"
@@ -87,24 +67,6 @@ class Controller:
         self.configuration["playerSpriteLookUP"]="player_look_up.png"
         self.configuration["FPS"]="30"
         self.configuration["intro_duration"]=1000
-        self._setConfigDefaultOptionsController()  
-    
-    def _setConfigDefaultOptionsController(self):
-        self.configuration["key_U"]=38
-        self.configuration["key_RIGTH"]=39
-        self.configuration["key_DOWN"]=40
-        self.configuration["key_LEFT"]=37
-        self.configuration["key_SELECT"]=32
-        self.configuration["key_START"]=13
-        self.configuration["key_B"]=90
-        self.configuration["key_A"]=88
-        self.configuration["key_Y"]=67
-        self.configuration["key_X"]=86
-        self.configuration["key_L"]=65
-        self.configuration["key_R"]=83
-
-    def setLanguageDefault(self):
-        self.language["gameTitle"]="LokoGame"
 
     def showIntro(self):
         self.UImanager.showIntro()

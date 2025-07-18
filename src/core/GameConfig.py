@@ -6,19 +6,30 @@ import json
 
 class GameConfig:
     def __init__(self):
+        self.LAN = None
         self._config = {}
-        self._default_config = self.defaultConfig()
+        self._default_config = self.defaultConfig() 
 
     def load(self, config_path: str) -> None:
+        # LOAD CONFIG FILE
         try:
             with open(config_path, 'r') as f:
-                self._config = {**self._default_config, **json.load(f)}
-        except FileNotFoundError:
-            print("Config file not found, using defaults")
+                self._config = json.load(f)
+        except:
             self._config = self._default_config.copy()
-        except json.JSONDecodeError:
-            print("Invalid JSON config, using defaults")
-            self._config = self._default_config.copy()
+
+        # LOAD TEXT FILE
+        try:
+            self.LAN = self._config["LAN"]
+            text_path = f"assets/LAN/{self.LAN}/TEXT.json"
+
+            with open(text_path, 'r', encoding='utf-8') as f:
+                text_data = json.load(f)
+
+            self._config = {**self._config, **text_data}
+        except:
+            pass
+
 
     def get(self, key: str, default=None):
         return self._config.get(key, default)
@@ -44,6 +55,46 @@ class GameConfig:
         return {
             "displayW": 640,
             "displayH": 480,
-            "FPS": 30,
-            "playerVelocity": 5
+            "floorW":84,
+            "floorH":48,
+            "LAN": "ESP",
+            "FPS": 32,
+            "intro_duration": 1500,
+            "playerName": "Human",
+            "playerAge": 0,
+            "playerVelocity": 5,
+            "player_look_up": "player_look_up.png",
+            "player_look_left": "player_look_left.png",
+            "player_look_rigth": "player_look_rigth.png",
+            "player_look_down": "player_look_down.png",
+            "statesMachines": {
+                "game": {
+                "initial": "intro",
+                "states": ["intro", "mainMenu", "gameStart", "gamePause", "gameOptions"],
+                "conections": [
+                    "intro:mainMenu:symbol:t",
+                    "mainMenu:gameStart:symbol:gameStart",
+                    "gameStart:gameStart:controls:direction_buttons",
+                    "gameStart:gameStart:controls:action_buttons",
+                    "gameStart:gamePause:controls:key_START",
+                    "gamePause:gameStart:controls:key_START",
+                    "gameStart:gameOptions:controls:key_SELECT",
+                    "gameOptions:gameStart:controls:key_SELECT",
+                    "gamePause:gameOptions:controls:key_SELECT",
+                    "gameOptions:gamePause:controls:key_START"
+                ]
+                },
+                "mainMenu": {
+                "initial": "newGame",
+                "states": ["newGame", "continueGame", "optionsGame", "exitGame"],
+                "conections": [
+                    "newGame:continueGame:controls:key_DOWN",
+                    "continueGame:newGame:controls:key_UP",
+                    "continueGame:optionsGame:controls:key_DOWN",
+                    "optionsGame:continueGame:controls:key_UP",
+                    "optionsGame:exitGame:controls:key_DOWN",
+                    "exitGame:optionsGame:controls:key_UP"
+                ]
+                }
+            }
         }

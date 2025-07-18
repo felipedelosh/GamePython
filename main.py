@@ -16,7 +16,7 @@ class Software:
 
 
     def VizualizedAndRun(self):
-        self.display.title(self.controller.language["gameTitle"])
+        self.display.title(self.controller.config.get("gameTitle"))
         self.display.geometry(f"{self.controller.configuration["displayW"]}x{self.controller.configuration["displayH"]}")
         self.canvas['height']=int(self.controller.configuration["displayH"])
         self.canvas['width']=int(self.controller.configuration["displayW"])

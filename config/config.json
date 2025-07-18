@@ -1,8 +1,9 @@
 {
   "displayW": 640,
+  "displayH": 480,
   "floorW":84,
   "floorH":48,
-  "displayH": 480,
+  "LAN": "ESP",
   "FPS": 32,
   "intro_duration": 1500,
   "playerName": "Human",

@@ -29,7 +29,7 @@ my_game_project/
 │   ├── core/              
 │   ├── entities/          
 │   ├── levels/            
-│   ├── ui/                
+│   ├── UI/                
 │   |── systems/           
 │
 ├── config/         

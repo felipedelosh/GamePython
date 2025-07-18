@@ -3,6 +3,8 @@ FelipedelosH
 This is the main controller to my videogame
 """
 import json
+from src.UI.TkinterRenderer import TkinterRenderer
+from src.UI.UIManager import UIManager
 from tkinter import NW
 from tkinter import LAST
 from tkinter import PhotoImage
@@ -17,7 +19,7 @@ from time import sleep
 class Controller:
     def __init__(self, canvas) -> None:
         self.canvas = canvas
-        self.configuration = {} # game configuration
+        self.configuration = {}
         self.loadConfiguration()
         self.FPS = int(1000/int(self.configuration["FPS"]))
         self.control = Control(
@@ -35,7 +37,9 @@ class Controller:
             self.configuration["key_R"])
         self.language = {} # Containt a language
         self.loadLanguage()
-        # -------------------------------
+        # Sprites & IMAGES
+        self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
+        # Player
         self.player = Player()
         self._setPlayer()
         self.gameStateManager = GameStateManager(self.configuration["statesMachines"], self.control)
@@ -43,14 +47,13 @@ class Controller:
         self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         self.world = World()
-        # -------------------------------
-
+        # GRAPHICS
+        self.renderer = TkinterRenderer(self.canvas)
+        self.UImanager = UIManager(self.renderer)
+        self.UImanager.set_intro_image(self.imgIntro)
         # VARS
         self.intro_shown_time = 0
         self.IdTempWorldToPaint = ""
-        
-        # Game resources:
-        self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
 
 
     def keyPressed(self, keycode):
@@ -106,12 +109,13 @@ class Controller:
 
 
     def showIntro(self):
-        try:
-            _x = int(self.canvas['width'])*0.2
-        except:
-            _x = 200
+        self.UImanager.showIntro()
+        # try:
+        #     _x = int(self.canvas['width'])*0.2
+        # except:
+        #     _x = 200
 
-        self.canvas.create_image(_x,20,image=self.imgIntro, anchor=NW, tag="intro")
+        # self.canvas.create_image(_x,20,image=self.imgIntro, anchor=NW, tag="intro")
         
 
     def showMainMenu(self):

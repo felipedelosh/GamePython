@@ -24,5 +24,16 @@ Dependencias:
 * Archivo de config\config.json
 * Control (mando).
 __________________________________________________________________________________________
-Para ello se creo: src\core\gameStateManager.py la cual resuelve:
+Para ello se creo: src\UI la cual resuelve:
 
+"Manejo de todo lo que se grafica en pantalla e implemetación de la lógica"
+
+PATRONES:
+
+* Strategy Pattern: Permite cambiar el motor de renderizado (Hoy tkinter mañana no sabemos).
+* Bridge Pattern: Separar las librerias de nuestra lógica de implementación.
+
+Dependencias:
+
+* Tkinter.
+* Elementos de Tkinter.

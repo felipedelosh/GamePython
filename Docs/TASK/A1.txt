@@ -40,7 +40,7 @@ from src.UI.UIManager import UIManager
 self.renderer = TkinterRenderer(self.canvas)
 self.UImanager = UIManager(self.renderer)
 //SETTERS
-self.UImanager.set...
+self.UImanager.set_<RESOURCE>
 
 PATRONES:
 

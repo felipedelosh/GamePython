@@ -28,6 +28,19 @@ Para ello se creo: src\UI la cual resuelve:
 
 "Manejo de todo lo que se grafica en pantalla e implemetación de la lógica"
 
+Archivos:
+src\UI\UIManager.py: Clase donde se declaran los métodos usando lógica y llamadas a métodos de contratos.
+src\UI\IUIRenderer.py: Es la Interfaz (contrato) donde se define la firma de los métodos. 
+src\UI\TkinterRenderer.py: Es donde se aplica la lógica del contrato.
+
+Inyección:
+from src.UI.TkinterRenderer import TkinterRenderer
+from src.UI.UIManager import UIManager
+...
+self.renderer = TkinterRenderer(self.canvas)
+self.UImanager = UIManager(self.renderer)
+//SETTERS
+
 PATRONES:
 
 * Strategy Pattern: Permite cambiar el motor de renderizado (Hoy tkinter mañana no sabemos).

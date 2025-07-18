@@ -51,6 +51,7 @@ class Controller:
         self.renderer = TkinterRenderer(self.canvas)
         self.UImanager = UIManager(self.renderer)
         self.UImanager.set_intro_image(self.imgIntro)
+        self.UImanager.set_game_state_manager(self.gameStateManager)
         # VARS
         self.intro_shown_time = 0
         self.IdTempWorldToPaint = ""
@@ -107,30 +108,11 @@ class Controller:
     def setLanguageDefault(self):
         self.language["gameTitle"]="LokoGame"
 
-
     def showIntro(self):
         self.UImanager.showIntro()
-        # try:
-        #     _x = int(self.canvas['width'])*0.2
-        # except:
-        #     _x = 200
-
-        # self.canvas.create_image(_x,20,image=self.imgIntro, anchor=NW, tag="intro")
         
-
     def showMainMenu(self):
-        try:
-            _x = int(self.canvas['width'])*0.5
-            _y = int(self.canvas['height'])*0.5
-        except:
-            _x = 200
-            _y = 200
-        
-        self._deleteCanvasNotGameItems()
-        self.canvas.create_line(_x, _y-5, _x, _y-35, fill="red", arrow=LAST, tag="mainMenu")
-        self.canvas.create_line(_x, _y+15, _x, _y+35, fill="red", arrow=LAST, tag="mainMenu")
-        self.canvas.create_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
-        self.canvas.create_text(_x, _y, text=self.mainMenuSM.pointer, tag="mainMenu")
+        self.UImanager.showMainMenu()
 
 
     def showGame(self):

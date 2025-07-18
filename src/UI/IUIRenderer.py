@@ -18,4 +18,7 @@ class IUIRenderer(ABC):
     def render_text(self, x, y, text, tag): pass
 
     @abstractmethod
+    def delete_no_game_items(self): pass
+
+    @abstractmethod
     def clear_by_tag(self, tag): pass

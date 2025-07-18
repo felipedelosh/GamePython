@@ -17,6 +17,10 @@ class TkinterRenderer(IUIRenderer):
 
     def render_rectangle(self, x1, y1, x2, y2, fill="", tag=None):
         return self.canvas.create_rectangle(x1, y1, x2, y2, fill=fill, tag=tag)
+    
+    def delete_no_game_items(self):
+        self.clear_by_tag("intro")
+        self.clear_by_tag("mainMenu")
 
     def render_text(self, x, y, text, tag=None):
         return self.canvas.create_text(x, y, text=text, tag=tag)

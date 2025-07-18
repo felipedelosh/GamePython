@@ -43,8 +43,6 @@ class Software:
         if self.controller.SMgame.pointer == "gameOptions":
             pass
 
-        
-        
         self.display.after(self.controller.FPS, self.refreshGame)
 
 

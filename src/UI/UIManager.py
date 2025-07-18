@@ -13,7 +13,11 @@ class UIManager:
         self.imgIntro = image
 
     def showIntro(self):
-        _x = 800 * 0.2
+        try:
+            _x = int(self.renderer.canvas['width'])*0.2
+        except:
+            _x = 200
+            
         self.renderer.render_image(self.imgIntro, _x, 20, anchor="nw", tag="intro")
 
     def showMainMenu(self):

@@ -74,7 +74,7 @@ class Controller:
 
     def _setPlayer(self):
         # Load all player images
-        self.player.set_player_sprites(self.configuration)
+        self.player.set_player_sprites(self.config._config)
         self.player.max_pos_x = int(self.config.get("displayW"))
         self.player.max_pos_y = int(self.config.get("displayH"))
         self.player.posX = 100

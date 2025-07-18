@@ -9,6 +9,4 @@ Para ello se creo: "src\core\gameConfig.py" la cual resuelve:
 
 Dependencias:
 
-* Modelos.
-* Servicios.
 * Json.

@@ -2,7 +2,6 @@
 FelipedelosH
 This is the main controller to my videogame
 """
-import json
 from src.core.GameConfig import GameConfig
 from src.UI.TkinterRenderer import TkinterRenderer
 from src.UI.UIManager import UIManager

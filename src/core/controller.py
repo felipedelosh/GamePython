@@ -25,18 +25,18 @@ class Controller:
         self.configuration = self.config._config
         self.FPS = int(1000/int(self.config.get("FPS")))
         self.control = Control(
-            self.config.get('key_UP', 38),
-            self.config.get('key_RIGTH', 39),
-            self.config.get('key_DOWN', 40),
-            self.config.get('key_LEFT', 37),
-            self.config.get('key_SELECT', 32),
-            self.config.get('key_START', 13),
-            self.config.get('key_B', 90),
-            self.config.get('key_A', 88),
-            self.config.get('key_Y', 67),
-            self.config.get('key_X', 86),
-            self.config.get('key_L', 65),
-            self.config.get('key_R', 83)
+            self.config.get('key_UP'),
+            self.config.get('key_RIGTH'),
+            self.config.get('key_DOWN'),
+            self.config.get('key_LEFT'),
+            self.config.get('key_SELECT'),
+            self.config.get('key_START'),
+            self.config.get('key_B'),
+            self.config.get('key_A'),
+            self.config.get('key_Y'),
+            self.config.get('key_X'),
+            self.config.get('key_L'),
+            self.config.get('key_R')
         )
         # Sprites & IMAGES
         self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
@@ -58,15 +58,6 @@ class Controller:
 
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
-
-    def setConfigDefaultOptions(self):
-        self.configuration["displayW"]="1280"
-        self.configuration["displayH"]="720"
-        self.configuration["playerName"]="Human"
-        self.configuration["playerAge"]="0"
-        self.configuration["playerSpriteLookUP"]="player_look_up.png"
-        self.configuration["FPS"]="30"
-        self.configuration["intro_duration"]=1000
 
     def showIntro(self):
         self.UImanager.showIntro()

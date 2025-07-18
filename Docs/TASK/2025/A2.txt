@@ -5,6 +5,7 @@ ________________________________________________________________________________
 Para ello se creo: "src\core\gameConfig.py" la cual resuelve:
 
 "Toma config\config.json y gestiona la configuracción."
+"Toma assets\LAN\<LANGIAGE>\TEXT.json y gestiona los textos"
 
 Dependencias:
 

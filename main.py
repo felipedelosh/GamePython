@@ -17,9 +17,9 @@ class Software:
 
     def VizualizedAndRun(self):
         self.display.title(self.controller.config.get("gameTitle"))
-        self.display.geometry(f"{self.controller.configuration["displayW"]}x{self.controller.configuration["displayH"]}")
-        self.canvas['height']=int(self.controller.configuration["displayH"])
-        self.canvas['width']=int(self.controller.configuration["displayW"])
+        self.display.geometry(f"{self.controller.config.get("displayW")}x{self.controller.config.get("displayH")}")
+        self.canvas['height']=int(self.controller.config.get("displayH"))
+        self.canvas['width']=int(self.controller.config.get("displayW"))
         self.canvas.place(x=0, y=0)
         
         self.display.resizable(0,0)

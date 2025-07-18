@@ -43,7 +43,7 @@ class Controller:
         # Player
         self.player = Player()
         self._setPlayer()
-        self.gameStateManager = GameStateManager(self.configuration["statesMachines"], self.control)
+        self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
         self.SMgame = self.gameStateManager.getStateMachine("game")
         self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)

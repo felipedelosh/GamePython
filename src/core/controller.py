@@ -22,7 +22,6 @@ class Controller:
         self.canvas = canvas
         self.config = GameConfig()
         self.config.load('config/config.json')
-        self.configuration = self.config._config
         self.FPS = int(1000/int(self.config.get("FPS")))
         self.control = Control(
             self.config.get('key_UP'),
@@ -49,7 +48,7 @@ class Controller:
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         self.world = World()
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.configuration, self.player, self.world)
+        self.renderer = TkinterRenderer(self.canvas, self.config, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         self.UImanager.set_intro_image(self.imgIntro)
         self.UImanager.set_game_state_manager(self.gameStateManager)

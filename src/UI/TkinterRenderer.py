@@ -33,8 +33,8 @@ class TkinterRenderer(IUIRenderer):
     def render_floor(self):
         if self.world.idWorld != self.IdTempWorldToPaint:
             self.clear_by_tag("world")
-            _x = float(self.configuration["displayW"])/84
-            _y = float(self.configuration["displayH"])/48
+            _x = float(self.configuration.get("displayW"))/84
+            _y = float(self.configuration.get("displayH"))/48
             for i in range(0, self.world.maxY):
                 for j in range(0, self.world.maxX):
                     if i%2==0 and j%2==0:

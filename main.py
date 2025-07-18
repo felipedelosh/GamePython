@@ -30,7 +30,7 @@ class Software:
     def refreshGame(self):
         if self.controller.SMgame.pointer == "intro":
             self.controller.intro_shown_time = self.controller.intro_shown_time + self.controller.FPS
-            if self.controller.intro_shown_time >= self.controller.configuration["intro_duration"]:
+            if self.controller.intro_shown_time >= self.controller.config.get("intro_duration"):
                 self.controller.SMgame.mouvePointer("t")
             self.controller.showIntro()
 

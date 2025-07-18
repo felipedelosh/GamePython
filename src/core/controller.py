@@ -10,7 +10,6 @@ from src.core.inputHandler import InputHandler
 from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
 from src.entities.player import Player
-from src.core.stateMachine import StateMachine
 from src.entities.world import World
 from time import sleep
 

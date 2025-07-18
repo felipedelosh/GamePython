@@ -24,4 +24,5 @@ Dependencias:
 * Archivo de config\config.json
 * Control (mando).
 __________________________________________________________________________________________
+Para ello se creo: src\core\gameStateManager.py la cual resuelve:
 

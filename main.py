@@ -8,7 +8,7 @@ from src.core.controller import *
 class Software:
     def __init__(self) -> None:
         self.display = Tk()
-        self.canvas = Canvas(self.display, bg="snow")
+        self.canvas = Canvas(self.display)
         self.canvas.bind_all("<Key>", self.keyPressed)
         self.controller = Controller(self.canvas)
 

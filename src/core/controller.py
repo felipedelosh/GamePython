@@ -3,6 +3,7 @@ FelipedelosH
 This is the main controller to my videogame
 """
 from src.core.GameConfig import GameConfig
+from src.core.assetManager import AssetManager
 from src.UI.TkinterRenderer import TkinterRenderer
 from src.UI.UIManager import UIManager
 from tkinter import NW
@@ -37,10 +38,12 @@ class Controller:
             self.config.get('key_R')
         )
         # Sprites & IMAGES
+        self.assetManager = AssetManager.get_instance()
         self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
         # Player
         self.player = Player()
-        self._setPlayer()
+        self._setPlayer() # Refactor>>TO DELETE 
+        self._load_assets()
         self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
         self.SMgame = self.gameStateManager.getStateMachine("game")
         self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
@@ -66,9 +69,17 @@ class Controller:
     def showGame(self):
         self.UImanager.showGame()
 
+    def _load_assets(self):
+        player_sprites = {
+            "up": f"assets/images/player/{self.config.get("player_look_up")}",
+            "left": f"assets/images/player/{self.config.get("player_look_left")}",
+            "right": f"assets/images/player/{self.config.get("player_look_right")}",
+            "down": f"assets/images/player/{self.config.get("player_look_down")}"
+        }
+        self.assetManager.load_sprite_group("player", player_sprites)
+
     def _setPlayer(self):
-        # Load all player images
-        self.player.set_player_sprites(self.config._config)
+        # Refactor... LOAD ALL from CONFIG.
         self.player.max_pos_x = int(self.config.get("displayW"))
         self.player.max_pos_y = int(self.config.get("displayH"))
         self.player.posX = 100

@@ -11,7 +11,7 @@
   "playerVelocity": 5,
   "player_look_up": "player_look_up.png",
   "player_look_left": "player_look_left.png",
-  "player_look_rigth": "player_look_rigth.png",
+  "player_look_right": "player_look_right.png",
   "player_look_down": "player_look_down.png",
   "key_UP": 38,
   "key_RIGTH": 39,

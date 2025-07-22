@@ -1,0 +1,20 @@
+FelipedelosH
+
+Problema: Se están cargando los sprites de manera independiente por cada entidad. Hay que centrazilar la lógica.
+
+__________________________________________________________________________________________
+Para ello se creo: "src\core\assetManager.py" la cual resuelve:
+
+"Carga sprites"
+
+Patrón:
+
+* Singleton.
+
+Dependencias:
+
+* Tkinter.PhotoImage
+
+Advertencia: Hubo un error ortografico en config\config.json >> rigth
+Advertencia: Queda pendiente cargar los aspectos del jugador desde config\config.json para elimar el método _setPlayer(self) de src\core\controller.py
+

@@ -2,12 +2,12 @@
 FelipedelosH
 """
 from src.core.assetManager import AssetManager
-from tkinter import PhotoImage
 from src.core.stateMachine import *
 
 class Player:
-    def __init__(self) -> None:
+    def __init__(self, config) -> None:
         self.assetManager = AssetManager.get_instance()
+        self.config = config # Inyect config in Player
         self.sprite = {}
         self.player_look_to = "up"
         self.posX = 500
@@ -22,6 +22,8 @@ class Player:
         self.inteligence = 1
         self.stanmina = 10
         self.velocity = 3
+        # SET PLAYER VALUES
+        self._init_player()
 
     def player_mouve_up(self):
         if (self.posY-self.velocity>0):
@@ -45,3 +47,10 @@ class Player:
 
     def getPlayerSprite(self):
         return self.assetManager.get_sprite("player", self.player_look_to)
+    
+    def _init_player(self):
+        self.max_pos_x = int(self.config.get("displayW"))
+        self.max_pos_y = int(self.config.get("displayH"))
+        self.posX = 200
+        self.posY = 100
+        self.velocity = int(self.config.get("playerVelocity"))

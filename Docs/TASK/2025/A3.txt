@@ -12,9 +12,7 @@ Patrón:
 * Singleton.
 
 Dependencias:
-
+s
 * Tkinter.PhotoImage
 
 Advertencia: Hubo un error ortografico en config\config.json >> rigth
-Advertencia: Queda pendiente cargar los aspectos del jugador desde config\config.json para elimar el método _setPlayer(self) de src\core\controller.py
-

@@ -41,8 +41,7 @@ class Controller:
         self.assetManager = AssetManager.get_instance()
         self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
         # Player
-        self.player = Player()
-        self._setPlayer() # Refactor>>TO DELETE 
+        self.player = Player(self.config)
         self._load_assets()
         self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
         self.SMgame = self.gameStateManager.getStateMachine("game")
@@ -77,11 +76,3 @@ class Controller:
             "down": f"assets/images/player/{self.config.get("player_look_down")}"
         }
         self.assetManager.load_sprite_group("player", player_sprites)
-
-    def _setPlayer(self):
-        # Refactor... LOAD ALL from CONFIG.
-        self.player.max_pos_x = int(self.config.get("displayW"))
-        self.player.max_pos_y = int(self.config.get("displayH"))
-        self.player.posX = 100
-        self.player.posY = 100
-        self.player.velocity = int(self.config.get("playerVelocity"))

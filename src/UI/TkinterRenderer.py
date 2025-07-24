@@ -6,12 +6,22 @@ from src.UI.IUIRenderer import IUIRenderer
 import tkinter as tk
 
 class TkinterRenderer(IUIRenderer):
-    def __init__(self, canvas: tk.Canvas, configuration, player, world):
+    def __init__(self, canvas: tk.Canvas, FPS, configuration, player, world):
         self.canvas = canvas
+        self.FPS = FPS
         self.configuration = configuration
         self.player = player
         self.world = world
         self.IdTempWorldToPaint = ""
+        self.currentSpriteDisplayed = 0
+        self.animating = False
+        self.animatingCounter = 0
+        self.sprites = [
+            (0, 0, 50, 100),
+            (50, 0, 50, 100),
+            (100, 0, 50, 100),
+            (150, 0, 50, 100)
+        ]
 
     def render_image(self, image, x, y, anchor="nw", tag=None):
         return self.canvas.create_image(x, y, image=image, anchor=anchor, tag=tag)
@@ -26,10 +36,24 @@ class TkinterRenderer(IUIRenderer):
         return self.canvas.create_text(x, y, text=text, tag=tag)
     
     def render_player(self):
+        if self.animatingCounter > 1000:
+            self.animatingCounter = 0
+            self.currentSpriteDisplayed = self.currentSpriteDisplayed + 1
+            if self.currentSpriteDisplayed > 3:
+                self.currentSpriteDisplayed = 0
+        sprite_x, sprite_y, w, h = self.sprites[self.currentSpriteDisplayed]
         self.clear_by_tag("player")
         _player_img = self.player.getPlayerSprite()
-        self.render_image(_player_img, self.player.posX, self.player.posY, anchor="nw", tag="player")
-    
+
+        sprite_img = tk.PhotoImage()
+        sprite_img.tk.call(sprite_img, 'copy', _player_img,
+                        '-from', sprite_x, sprite_y, sprite_x+w, sprite_y+h,
+                        '-to', 0, 0)
+        
+        self.render_image(sprite_img, self.player.posX, self.player.posY, anchor="nw", tag="player")
+        self.animatingCounter = self.animatingCounter + self.FPS
+        self.player.current_sprite_img = sprite_img
+
     def render_floor(self):
         if self.world.idWorld != self.IdTempWorldToPaint:
             self.clear_by_tag("world")

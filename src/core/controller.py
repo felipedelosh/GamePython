@@ -49,7 +49,7 @@ class Controller:
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
         self.world = World()
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.config, self.player, self.world)
+        self.renderer = TkinterRenderer(self.canvas, self.FPS, self.config, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         self.UImanager.set_intro_image(self.imgIntro)
         self.UImanager.set_game_state_manager(self.gameStateManager)

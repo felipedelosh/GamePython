@@ -13,6 +13,7 @@ class TkinterRenderer(IUIRenderer):
         self.player = player
         self.world = world
         self.IdTempWorldToPaint = ""
+        self.IdTempPlayerToPaint = ""
         self.currentSpriteDisplayed = 0
         self.animating = False
         self.animatingCounter = 0
@@ -36,23 +37,28 @@ class TkinterRenderer(IUIRenderer):
         return self.canvas.create_text(x, y, text=text, tag=tag)
     
     def render_player(self):
+        # WIP: NEEDs Optimization
         if self.animatingCounter > 1000:
             self.animatingCounter = 0
             self.currentSpriteDisplayed = self.currentSpriteDisplayed + 1
             if self.currentSpriteDisplayed > 3:
                 self.currentSpriteDisplayed = 0
         sprite_x, sprite_y, w, h = self.sprites[self.currentSpriteDisplayed]
-        self.clear_by_tag("player")
         _player_img = self.player.getPlayerSprite()
-
+        IdTempPlayerToPaint = f"{sprite_x}:{sprite_y}:{_player_img}"
         sprite_img = tk.PhotoImage()
-        sprite_img.tk.call(sprite_img, 'copy', _player_img,
-                        '-from', sprite_x, sprite_y, sprite_x+w, sprite_y+h,
-                        '-to', 0, 0)
-        
+        sprite_img.tk.call(sprite_img, 'copy', _player_img, '-from', sprite_x, sprite_y, sprite_x+w, sprite_y+h, '-to', 0, 0)
+        if IdTempPlayerToPaint != self.IdTempWorldToPaint:
+            self.IdTempPlayerToPaint = IdTempPlayerToPaint
+            self.clear_by_tag("player")
         self.render_image(sprite_img, self.player.posX, self.player.posY, anchor="nw", tag="player")
+        
+        # Render
+        if hasattr(self, '_last_sprite_img'):
+            del self._last_sprite_img
+        self._last_sprite_img = sprite_img # Dont KIll by Garbage Collector
+
         self.animatingCounter = self.animatingCounter + self.FPS
-        self.player.current_sprite_img = sprite_img
 
     def render_floor(self):
         if self.world.idWorld != self.IdTempWorldToPaint:

@@ -61,7 +61,7 @@ class TkinterRenderer(IUIRenderer):
         self.animatingCounter = self.animatingCounter + self.FPS
 
     def render_floor(self):
-        if self.world.idWorld != self.IdTempWorldToPaint:
+        if self.world.id != self.IdTempWorldToPaint:
             self.clear_by_tag("world")
             _x = float(self.configuration.get("displayW"))/self.world.w
             _y = float(self.configuration.get("displayH"))/self.world.h
@@ -72,7 +72,7 @@ class TkinterRenderer(IUIRenderer):
                     else:
                         self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="red", tags="world")
             
-            self.IdTempWorldToPaint = self.world.idWorld
+            self.IdTempWorldToPaint = self.world.id
     
     def delete_no_game_items(self):
         self.clear_by_tag("intro")

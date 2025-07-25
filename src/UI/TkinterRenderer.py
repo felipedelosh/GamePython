@@ -46,15 +46,18 @@ class TkinterRenderer(IUIRenderer):
             self.currentSpriteDisplayed = self.currentSpriteDisplayed + 1
             if self.currentSpriteDisplayed > 3:
                 self.currentSpriteDisplayed = 0
+
         sprite_x, sprite_y, w, h = self.sprites[self.currentSpriteDisplayed]
         _player_img = self.player.getPlayerSprite()
+        _x, _y = self.player.getSpriteRenderCoords()
         IdTempPlayerToPaint = f"{sprite_x}:{sprite_y}:{_player_img}"
         sprite_img = tk.PhotoImage()
         sprite_img.tk.call(sprite_img, 'copy', _player_img, '-from', sprite_x, sprite_y, sprite_x+w, sprite_y+h, '-to', 0, 0)
         if IdTempPlayerToPaint != self.IdTempWorldToPaint:
             self.IdTempPlayerToPaint = IdTempPlayerToPaint
             self.clear_by_tag("player")
-        self.render_image(sprite_img, self.player.posX, self.player.posY, anchor="nw", tag="player")
+
+        self.render_image(sprite_img, _x, _y, anchor="nw", tag="player")
         self.render_circle(self.player.posX, self.player.posY, 5, "green", "player")
         
         # Render

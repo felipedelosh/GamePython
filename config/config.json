@@ -13,6 +13,8 @@
   "player_look_left": "player_look_left.png",
   "player_look_right": "player_look_right.png",
   "player_look_down": "player_look_down.png",
+  "player_w": 50,
+  "player_h": 100,
   "key_UP": 38,
   "key_RIGTH": 39,
   "key_DOWN": 40,

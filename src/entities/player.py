@@ -10,10 +10,12 @@ class Player:
         self.name = "Player"
         self.sprite = {}
         self.player_look_to = "up"
-        self.posX = int(self.config.get("displayW")) / 4
-        self.posY = int(self.config.get("displayH")) / 4
-        self.max_pos_x = int(self.config.get("displayW"))
-        self.max_pos_y = int(self.config.get("displayH"))
+        self.posX = self.config.get("displayW") / 4
+        self.posY = self.config.get("displayH") / 4
+        self.max_pos_x = self.config.get("displayW")
+        self.max_pos_y = self.config.get("displayH")
+        self.w = self.config.get("player_w")
+        self.h = self.config.get("player_h")
         self.age = 0
         self.health = 100
         self.attack = 1
@@ -44,3 +46,9 @@ class Player:
 
     def getPlayerSprite(self):
         return self.assetManager.get_sprite("player", self.player_look_to)
+    
+    def getSpriteRenderCoords(self):
+        _x = self.posX - (self.w / 2)
+        _y = self.posY - (self.h / 2)
+
+        return _x, _y

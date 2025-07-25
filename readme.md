@@ -29,6 +29,10 @@ my_game_project/
 │   ├── music/
 │   └── fonts/
 │
+├── config/ 
+│
+├── Docs/
+│
 ├── src/                   
 │   ├── core/              
 │   ├── entities/          
@@ -36,14 +40,15 @@ my_game_project/
 │   ├── UI/                
 │   |── systems/           
 │
-├── config/         
+│
+├── UTILS/
+│   ├── MapGenerator/
 │
 ├── data/                 
 │
 ├── tests/                 
-│
-├── Docs/                  
-│
+│                
+├── .gitignore 
 ├── main.py 
 ├── readme.md             
 └── requirements.txt      

@@ -3,7 +3,7 @@ FelipedelosH
 This is my first MotorVideoGame
 """
 from tkinter import *
-from src.core.controller import *
+from src.core.controller import Controller
 
 class Software:
     def __init__(self) -> None:

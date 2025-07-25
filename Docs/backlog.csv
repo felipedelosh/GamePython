@@ -1,7 +1,7 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
 A1|Separar Controller en módulos especializados|Crear InputHandler, GameStateManager, y UIManager.|🟢|SI
 A2|Sistema de Configuración Robustecido|Clase GameConfig que valide el JSON y maneje defaults.|🟢|SI
-A3|Asset Manager Centralizado|Clase para cargar/descargar sprites, sonidos, etc.|🟡|NO
+A3|Asset Manager Centralizado|Clase para cargar/descargar sprites, sonidos, etc.|🟡|SI
 B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|NO
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
 C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|NO

@@ -33,6 +33,9 @@ class TkinterRenderer(IUIRenderer):
     def render_rectangle(self, x1, y1, x2, y2, fill="", tag=None):
         return self.canvas.create_rectangle(x1, y1, x2, y2, fill=fill, tag=tag)
     
+    def render_circle(self, x, y, r, color, tag):
+        self.canvas.create_oval(x - r, y - r, x + r, y + r, fill=color, tag=tag)
+
     def render_text(self, x, y, text, tag=None):
         return self.canvas.create_text(x, y, text=text, tag=tag)
     
@@ -52,6 +55,7 @@ class TkinterRenderer(IUIRenderer):
             self.IdTempPlayerToPaint = IdTempPlayerToPaint
             self.clear_by_tag("player")
         self.render_image(sprite_img, self.player.posX, self.player.posY, anchor="nw", tag="player")
+        self.render_circle(self.player.posX, self.player.posY, 5, "green", "player")
         
         # Render
         if hasattr(self, '_last_sprite_img'):

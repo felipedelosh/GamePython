@@ -7,14 +7,14 @@ class Player:
     def __init__(self, config) -> None:
         self.config = config # config\config.json
         self.assetManager = AssetManager.get_instance()
+        self.name = "Player"
         self.sprite = {}
         self.player_look_to = "up"
-        self.posX = 500
-        self.posY = 200
+        self.posX = int(self.config.get("displayW")) / 4
+        self.posY = int(self.config.get("displayH")) / 4
         self.max_pos_x = int(self.config.get("displayW"))
         self.max_pos_y = int(self.config.get("displayH"))
         self.age = 0
-        self.name = "Player"
         self.health = 100
         self.attack = 1
         self.defend = 1

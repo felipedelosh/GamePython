@@ -15,6 +15,9 @@ class IUIRenderer(ABC):
     def render_rectangle(self, x1, y1, x2, y2, fill, tag): pass
 
     @abstractmethod
+    def render_circle(self, x, y, r, color, tag): pass
+
+    @abstractmethod
     def render_text(self, x, y, text, tag): pass
 
     @abstractmethod

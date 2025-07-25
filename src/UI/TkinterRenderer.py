@@ -61,17 +61,20 @@ class TkinterRenderer(IUIRenderer):
         self.animatingCounter = self.animatingCounter + self.FPS
 
     def render_floor(self):
+        # WIP: currently only render collider
         if self.world.id != self.IdTempWorldToPaint:
             self.clear_by_tag("world")
             _x = float(self.configuration.get("displayW"))/self.world.w
             _y = float(self.configuration.get("displayH"))/self.world.h
+
             for i in range(0, self.world.h):
                 for j in range(0, self.world.w):
-                    if i%2==0 and j%2==0:
+                    _data = self.world.collider[i][j]
+                    if _data:
                         self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="black", tags="world")
                     else:
                         self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="red", tags="world")
-            
+
             self.IdTempWorldToPaint = self.world.id
     
     def delete_no_game_items(self):

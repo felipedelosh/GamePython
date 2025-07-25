@@ -41,20 +41,7 @@ class Controller:
         # Player
         self.player = Player(self.config)
         self._load_assets()
-        self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
-        self.SMgame = self.gameStateManager.getStateMachine("game")
-        self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
-        self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
-        self.world = World(self.config)
-        # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.FPS, self.config, self.player, self.world)
-        self.UImanager = UIManager(self.renderer)
-        self.UImanager.set_intro_image(self.imgIntro)
-        self.UImanager.set_game_state_manager(self.gameStateManager)
-        # VARS
-        self.intro_shown_time = 0
-
-        # MAIN STATES OF GAME
+        # Game fun Machines
         self.current_state = None
         self.states = {
             "intro": IntroState(self),
@@ -63,6 +50,21 @@ class Controller:
             "gameOptions": GameOptionsState(self)
         }
         self.change_state("intro")
+        self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
+        self.SMgame = self.gameStateManager.getStateMachine("game")
+        self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
+        self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
+        # World
+        self.world = World(self.config)
+        self.world.load_map("assets/world/test.json")
+        # GRAPHICS
+        self.renderer = TkinterRenderer(self.canvas, self.FPS, self.config, self.player, self.world)
+        self.UImanager = UIManager(self.renderer)
+        self.UImanager.set_intro_image(self.imgIntro)
+        self.UImanager.set_game_state_manager(self.gameStateManager)
+        # VARS
+        self.intro_shown_time = 0
+
 
     def change_state(self, new_state_name):
         if self.current_state:

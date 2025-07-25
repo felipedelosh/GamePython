@@ -45,7 +45,7 @@ class Controller:
         self.SMgame = self.gameStateManager.getStateMachine("game")
         self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
         self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
-        self.world = World()
+        self.world = World(self.config)
         # GRAPHICS
         self.renderer = TkinterRenderer(self.canvas, self.FPS, self.config, self.player, self.world)
         self.UImanager = UIManager(self.renderer)

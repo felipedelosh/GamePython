@@ -1,0 +1,1 @@
+PUT Here all MAPs in format .gif

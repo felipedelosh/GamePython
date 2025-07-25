@@ -63,10 +63,10 @@ class TkinterRenderer(IUIRenderer):
     def render_floor(self):
         if self.world.idWorld != self.IdTempWorldToPaint:
             self.clear_by_tag("world")
-            _x = float(self.configuration.get("displayW"))/84
-            _y = float(self.configuration.get("displayH"))/48
-            for i in range(0, self.world.maxY):
-                for j in range(0, self.world.maxX):
+            _x = float(self.configuration.get("displayW"))/self.world.w
+            _y = float(self.configuration.get("displayH"))/self.world.h
+            for i in range(0, self.world.h):
+                for j in range(0, self.world.w):
                     if i%2==0 and j%2==0:
                         self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="black", tags="world")
                     else:

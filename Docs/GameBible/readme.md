@@ -1,4 +1,4 @@
-# 🎮 Game Bible - [El alto de las viudas]
+# 🎮 Game Bible - [El Alto de las Viudas]
 
 *Última actualización: [2025-07-25]*
 
@@ -17,21 +17,22 @@
 ---
 
 ## 🌟 Visión General
-**Título completo**: El alto de las viudas.  
-**Género**:  RPG.
-**Plataformas**: Cenital. 
-**Público objetivo**: 21+
+**Título completo**: El Alto de las Viudas.  
+**Género**:  RPG Existencial.
+**Plataformas**: PC Cenital. 
+**Público objetivo**: 21+ (Adultos que buscan reflexión sobre ciclos vitales).
 **Duración estimada**:  75 días.
-**Tono y Estilo**: Es el juego de la vida duro, crudo y a veces aburrida.
+**Tono y Estilo**: Crudo, realista y filosófico.
+**Elevator Pitch**: "Un RPG que simula el ciclo completo de la vida humana, donde cada decisión altera irreversiblemente tu destino y legado."
 
 ---
 
 ## 🗺️ Mundo del Juego
-### 🌍 Lore Básico
-- **Época/Contexto histórico**:  PRESENTE
-- **Ubicaciones principales**:  N/A
-- **Eventos clave históricos**:  N/A
-- **Culturas/razas/facciones**:  N/A
+### 🌍 Concepto Central
+- **Tema**: La crudeza cíclica de la existencia humana  
+- **Mecánica única**: Tiempo real irreversible (75 días = 1 vida completa)  
+- **Filosofía**: Determinismo vs libre albedrío  
+
 
 ### 📜 Reglas del Universo
 - **Magia/tecnología**: 
@@ -60,12 +61,15 @@
 ## 📜 Historia Principal
 ### 🎞️ Estructura Narrativa
 ```mermaid
-graph LR
-A[Incidente detonante] --> B[Primer acto]
-B --> C[Punto de no retorno]
-C --> D[Segundo acto]
-D --> E[Clímax]
-E --> F[Resolución]
+graph TD
+    A[Pre-vida: Lago de Almas] --> B[Infancia Dependiente]
+    B --> C[Adolescencia Tutorial]
+    C --> D[Adultez Temprana]
+    D --> E[Decisiones Clave]
+    E --> F[Construcción de Legado]
+    F --> G[Declive Fisiológico]
+    G --> H[Muerte]
+    H -->|Nueva Partida| A
 ```
 
 ## 🏷️ Key Moments

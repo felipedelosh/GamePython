@@ -25,22 +25,26 @@ class Player:
         self.velocity = int(self.config.get("playerVelocity"))
 
     def player_mouve_up(self):
-        if self.posY-self.velocity > 0:
+        _, _y = self.getSpriteRenderCoords()
+        if _y - self.velocity > 0:
             self.posY = self.posY - self.velocity
             self.player_look_to = "up"
 
     def player_mouve_down(self):
-        if self.posY+150 < self.max_pos_y:
+        _, _y = self.getSpriteRenderCoords()
+        if _y + self.h + self.velocity < self.max_pos_y:
             self.posY = self.posY + self.velocity
             self.player_look_to = "down"
 
     def player_mouve_rigth(self):
-        if self.posX+self.velocity < self.max_pos_x-50:#50 is w of sprite.png
+        _x, _ = self.getSpriteRenderCoords()
+        if _x + self.w + self.velocity < self.max_pos_x:
             self.posX = self.posX + self.velocity
             self.player_look_to = "right"
 
     def player_mouve_left(self):
-        if self.posX > 0:
+        _x, _ = self.getSpriteRenderCoords()
+        if _x - self.velocity > 0:
             self.posX = self.posX - self.velocity
             self.player_look_to = "left"
 

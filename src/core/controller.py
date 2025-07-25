@@ -6,15 +6,13 @@ from src.core.GameConfig import GameConfig
 from src.core.assetManager import AssetManager
 from src.UI.TkinterRenderer import TkinterRenderer
 from src.UI.UIManager import UIManager
-from tkinter import NW
-from tkinter import LAST
 from tkinter import PhotoImage
 from src.core.inputHandler import InputHandler
+from src.core.gameState import IntroState, MainMenuState, GameState, GameOptionsState
 from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
 from src.entities.player import Player
 from src.entities.world import World
-from time import sleep
 
 
 class Controller:
@@ -56,17 +54,35 @@ class Controller:
         # VARS
         self.intro_shown_time = 0
 
+        # MAIN STATES OF GAME
+        self.current_state = None
+        self.states = {
+            "intro": IntroState(self),
+            "mainMenu": MainMenuState(self),
+            "gameStart": GameState(self),
+            "gameOptions": GameOptionsState(self)
+        }
+        self.change_state("intro")
+
+    def change_state(self, new_state_name):
+        if self.current_state:
+            self.current_state.exit()
+        
+        self.current_state = self.states[new_state_name]
+        self.current_state.enter()
+
+    def update(self):
+        current_state_name = self.SMgame.pointer
+        if self.current_state != self.states[current_state_name]:
+            self.change_state(current_state_name)
+            
+        self.current_state.update()
+        
+    def render(self):
+        self.current_state.render()
+
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
-
-    def showIntro(self):
-        self.UImanager.showIntro()
-        
-    def showMainMenu(self):
-        self.UImanager.showMainMenu()
-
-    def showGame(self):
-        self.UImanager.showGame()
 
     def _load_assets(self):
         player_sprites = {

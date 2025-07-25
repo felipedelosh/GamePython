@@ -1,0 +1,14 @@
+FelipedelosH
+
+Problema: El main.py en el refreshGame() depende de condicionales if... if... 
+
+__________________________________________________________________________________________
+Para ello se creo: "src\core\gameState.py" la cual resuelve:
+
+"Será un contrato de los posibles estados del juego."
+
+Dependencias:
+State Pattern
+* ABC
+* Controller
+* UImanger

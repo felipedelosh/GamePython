@@ -124,3 +124,14 @@ src/
       │    └── systemManager.py
       └── utils.py             # Utilidades opcionales (ej. factories)
 ```
+
+
+
+## MovementSystem
+
+El **MovementSystem** centraliza la lógica de movimiento de todas las entidades que poseen los componentes necesarios.  
+De esta forma, el desplazamiento ya no depende de métodos internos de `Player`, sino de un sistema independiente que procesa las entradas del jugador (y futuras IA).
+
+```
+src/systems/movementSystem.py
+```

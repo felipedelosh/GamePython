@@ -76,7 +76,7 @@ class Controller:
         
         self.current_state = self.states[new_state_name]
         self.current_state.enter()
-        self.logger.info(f"Cambio de estado: {new_state_name}")
+        self.logger.info(f"CONTROLLER::GAME::CHANGE::{new_state_name}")
 
     def update(self):
         current_state_name = self.SMgame.pointer

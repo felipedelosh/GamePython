@@ -22,10 +22,8 @@ class GameLogger:
         if GameLogger._instance is not None:
             raise Exception("GameLogger >> get_instance().")
         
-        if config:
-            self.enabled = config.get("logging")["enabled"]
-        else:
-            self.enabled = False
+        self.env = config.get("env", "dev") if config else "dev"
+        self.enabled = config.get("logging", False) if config else False
 
         if not os.path.exists("logs"):
             os.makedirs("logs")

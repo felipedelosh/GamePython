@@ -40,49 +40,51 @@ my_game_project/
 └── requirements.txt      
 ```
 
-## 📌 Configuración del Juego (`config.json`)
+# 📌 Configuración del Juego (`config.json`)
 
-| **Clave**            | **Valor por defecto**         | **Descripción**                                                                 |
-|-----------------------|------------------------------|---------------------------------------------------------------------------------|
-| `displayW`            | 640                          | Ancho de la ventana del juego en píxeles.                                       |
-| `displayH`            | 480                          | Alto de la ventana del juego en píxeles.                                        |
-| `floorW`              | 84                           | Ancho del mapa del mundo (tiles o celdas).                                      |
-| `floorH`              | 48                           | Alto del mapa del mundo (tiles o celdas).                                       |
-| `LAN`                 | "ESP"                        | Idioma de la interfaz (`ESP`, `ENG`, etc.).                                     |
-| `FPS`                 | 32                           | Frames por segundo que intentará renderizar el juego.                           |
-| `intro_duration`      | 1500                         | Duración de la pantalla de introducción (ms).                                   |
-| `env`                 | "dev"                        | Entorno de ejecución: `"dev"` (desarrollo) o `"prod"` (producción).             |
-| `logging.enabled`     | true                         | Activa o desactiva el sistema de logs centralizado.                             |
-| `logging.level`       | "DEBUG"                      | Nivel de logging (`DEBUG`, `INFO`, `WARNING`, `ERROR`).                         |
-| `logging.file`        | "logs/game.log"              | Ruta del archivo donde se guardarán los logs.                                   |
-| `playerName`          | "Human"                      | Nombre por defecto del jugador.                                                 |
-| `playerAge`           | 0                            | Edad inicial del jugador.                                                       |
-| `playerVelocity`      | 5                            | Velocidad de movimiento del jugador (píxeles por frame).                        |
-| `player_look_up`      | "player_look_up.png"         | Sprite del jugador mirando hacia arriba.                                        |
-| `player_look_left`    | "player_look_left.png"       | Sprite del jugador mirando hacia la izquierda.                                  |
-| `player_look_right`   | "player_look_right.png"      | Sprite del jugador mirando hacia la derecha.                                    |
-| `player_look_down`    | "player_look_down.png"       | Sprite del jugador mirando hacia abajo.                                         |
-| `player_w`            | 50                           | Ancho del sprite del jugador.                                                   |
-| `player_h`            | 100                          | Alto del sprite del jugador.                                                    |
-| `key_UP`              | 38                           | Tecla para moverse hacia arriba (código de tecla).                              |
-| `key_RIGTH`           | 39                           | Tecla para moverse hacia la derecha (código de tecla).                          |
-| `key_DOWN`            | 40                           | Tecla para moverse hacia abajo (código de tecla).                               |
-| `key_LEFT`            | 37                           | Tecla para moverse hacia la izquierda (código de tecla).                        |
-| `key_SELECT`          | 32                           | Tecla de selección (por defecto: barra espaciadora).                            |
-| `key_START`           | 13                           | Tecla de inicio/pausa (por defecto: Enter).                                     |
-| `key_B`               | 90                           | Tecla de acción B (por defecto: Z).                                             |
-| `key_A`               | 88                           | Tecla de acción A (por defecto: X).                                             |
-| `key_Y`               | 67                           | Tecla de acción Y (por defecto: C).                                             |
-| `key_X`              | 86                           | Tecla de acción X (por defecto: V).                                             |
-| `key_L`               | 65                           | Tecla de acción L (por defecto: A).                                             |
-| `key_R`               | 83                           | Tecla de acción R (por defecto: S).                                             |
-| `statesMachines.game.initial` | "intro"             | Estado inicial de la máquina de estados del juego.                              |
-| `statesMachines.game.states`  | ["intro","mainMenu","gameStart","gamePause","gameOptions"] | Lista de estados disponibles en el juego.        |
-| `statesMachines.game.conections` | [ ... ]          | Conexiones entre estados del juego según eventos o controles.                   |
+Este archivo define los parámetros principales de **LokoMotorGame2**.  
+Asegúrate de revisarlo antes de ejecutar el juego para personalizar la experiencia.
+
+| **Clave**              | **Valor por defecto**       | **Descripción**                                                                 |
+|-------------------------|-----------------------------|---------------------------------------------------------------------------------|
+| `displayW`             | 640                         | Ancho de la ventana del juego en píxeles.                                       |
+| `displayH`             | 480                         | Alto de la ventana del juego en píxeles.                                        |
+| `floorW`               | 84                          | Ancho del mapa del mundo (en tiles).                                            |
+| `floorH`               | 48                          | Alto del mapa del mundo (en tiles).                                             |
+| `LAN`                  | "ESP"                       | Idioma del juego (`ESP`, `ENG`, etc.).                                          |
+| `FPS`                  | 32                          | Frames por segundo que intenta renderizar el juego.                             |
+| `intro_duration`       | 1500                        | Duración de la pantalla de introducción (milisegundos).                         |
+| `env`                  | "dev"                       | Entorno de ejecución: `"dev"` (desarrollo) o `"prod"` (producción).             |
+| `logging`              | true                        | Activa (`true`) o desactiva (`false`) el sistema de logs centralizado.          |
+| `playerName`           | "Human"                     | Nombre por defecto del jugador.                                                 |
+| `playerAge`            | 0                           | Edad inicial del jugador.                                                       |
+| `playerVelocity`       | 5                           | Velocidad de movimiento del jugador (píxeles por frame).                        |
+| `player_look_up`       | "player_look_up.png"        | Sprite del jugador mirando hacia arriba.                                        |
+| `player_look_left`     | "player_look_left.png"      | Sprite del jugador mirando hacia la izquierda.                                  |
+| `player_look_right`    | "player_look_right.png"     | Sprite del jugador mirando hacia la derecha.                                    |
+| `player_look_down`     | "player_look_down.png"      | Sprite del jugador mirando hacia abajo.                                         |
+| `player_w`             | 50                          | Ancho del sprite del jugador en píxeles.                                        |
+| `player_h`             | 100                         | Alto del sprite del jugador en píxeles.                                         |
+| `key_UP`               | 38                          | Tecla para moverse hacia arriba (código de tecla).                              |
+| `key_RIGTH`            | 39                          | Tecla para moverse hacia la derecha (código de tecla).                          |
+| `key_DOWN`             | 40                          | Tecla para moverse hacia abajo (código de tecla).                               |
+| `key_LEFT`             | 37                          | Tecla para moverse hacia la izquierda (código de tecla).                        |
+| `key_SELECT`           | 32                          | Tecla de selección (por defecto: barra espaciadora).                            |
+| `key_START`            | 13                          | Tecla de inicio/pausa (por defecto: Enter).                                     |
+| `key_B`                | 90                          | Tecla de acción B (por defecto: Z).                                             |
+| `key_A`                | 88                          | Tecla de acción A (por defecto: X).                                             |
+| `key_Y`                | 67                          | Tecla de acción Y (por defecto: C).                                             |
+| `key_X`                | 86                          | Tecla de acción X (por defecto: V).                                             |
+| `key_L`                | 65                          | Tecla de acción L (por defecto: A).                                             |
+| `key_R`                | 83                          | Tecla de acción R (por defecto: S).                                             |
+| `statesMachines.game.initial`     | "intro"         | Estado inicial de la máquina de estados del juego.                              |
+| `statesMachines.game.states`      | ["intro","mainMenu","gameStart","gamePause","gameOptions"] | Lista de estados del juego.                  |
+| `statesMachines.game.conections`  | [ ... ]         | Reglas de transición entre estados del juego.                                   |
 | `statesMachines.mainMenu.initial` | "newGame"       | Estado inicial del menú principal.                                              |
-| `statesMachines.mainMenu.states` | ["newGame","continueGame","optionsGame","exitGame"] | Lista de opciones del menú principal.        |
-| `statesMachines.mainMenu.conections` | [ ... ]      | Conexiones entre opciones del menú principal según entradas de usuario.         |
+| `statesMachines.mainMenu.states`  | ["newGame","continueGame","optionsGame","exitGame"] | Lista de opciones del menú principal.        |
+| `statesMachines.mainMenu.conections` | [ ... ]      | Reglas de transición entre opciones del menú principal.                         |
 
+---
 
 # 📌 SYSTEMS
 

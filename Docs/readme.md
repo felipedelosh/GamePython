@@ -135,3 +135,55 @@ De esta forma, el desplazamiento ya no depende de métodos internos de `Player`,
 ```
 src/systems/movementSystem.py
 ```
+
+## 🧱 CollisionSystem
+
+El CollisionSystem es el responsable de evitar que las entidades atraviesen los límites del mundo o entren en zonas no caminables definidas en el mapa JSON.
+Funciona en conjunto con el MovementSystem, que calcula el desplazamiento según la entrada del jugador.
+
+## Como agregar un nuevo sistema
+
+El motor implementa la arquitectura ECS (Entity–Component–System).
+Para añadir un nuevo sistema (por ejemplo: CollisionSystem, HealthSystem, RenderSystem), se deben seguir los siguientes pasos:
+
+1. Crear el Archivo del Sistema
+Dentro de la carpeta src/systems/, crea un archivo con el nombre del sistema.
+
+2. Crear el componente
+Si tu sistema requiere nuevos datos, crea un componente en src/ecs/components.py.
+
+3. Definir la Clase del Sistema
+Todos los sistemas heredan de System (definida en src/ecs/system.py).
+```
+from src.ecs.system import System
+from src.ecs.components import XComponent
+
+class XSystem(System):
+    def update(self, entities, dt):
+        for entity in entities:
+            if entity.has_components(XComponent):
+                x = entity.get_component(XComponent)
+                  ...
+```
+
+4. Registrar el Sistema en el Controlador
+```
+from src.systems.XSystem import XSystem
+
+self.systems = [
+    MovementSystem(...),
+    CollisionSystem(...),
+    XSystem()  # <-- nuevo sistema
+]
+```
+
+5. Integrar con Entidades
+```
+from src.ecs.components import XComponent
+
+self.add_component(XComponent(100))
+```
+
+6. Validar la Ejecución
+Al ejecutar el juego, el sistema se actualizará automáticamente en cada frame, siempre que esté registrado en self.systems.
+

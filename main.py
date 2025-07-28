@@ -9,7 +9,8 @@ class Software:
     def __init__(self) -> None:
         self.display = Tk()
         self.canvas = Canvas(self.display)
-        self.canvas.bind_all("<Key>", self.keyPressed)
+        self.canvas.bind_all("<KeyPress>", self.keyPressed)
+        self.canvas.bind_all("<KeyRelease>", self.keyReleased)
         self.controller = Controller(self.canvas)
 
         self.showDisplay()
@@ -36,6 +37,11 @@ class Software:
     def keyPressed(self, Event):
         if Event.keycode in self.controller.control.keyResult:
             self.controller.keyPressed(Event.keycode)
+
+
+    def keyReleased(self, Event):
+        if Event.keycode in self.controller.control.keyResult:
+            self.controller.keyReleased(Event.keycode)
 
 
 s = Software()

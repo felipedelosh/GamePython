@@ -13,6 +13,7 @@ from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
 from src.entities.player import Player
 from src.entities.world import World
+from src.systems.movementSystem import MovementSystem
 from src.core.gameLoger import GameLogger
 
 
@@ -64,9 +65,12 @@ class Controller:
         self.UImanager = UIManager(self.renderer)
         self.UImanager.set_intro_image(self.imgIntro)
         self.UImanager.set_game_state_manager(self.gameStateManager)
+        # Systems
+        self.systems = [
+            MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
+        ]
         # VARS
         self.intro_shown_time = 0
-
         self.logger.info("CONTROLLER::GAME::INIT")
 
 
@@ -82,6 +86,9 @@ class Controller:
         current_state_name = self.SMgame.pointer
         if self.current_state != self.states[current_state_name]:
             self.change_state(current_state_name)
+
+        for system in self.systems:
+            system.update([self.player], self.FPS)
             
         self.current_state.update()
         
@@ -90,6 +97,9 @@ class Controller:
 
     def keyPressed(self, keycode):
         self.inputHandler.handleKeypress(keycode)
+
+    def keyReleased(self, keycode):
+        self.inputHandler.handleKeyRelease(keycode)
 
     def _load_assets(self):
         player_sprites = {

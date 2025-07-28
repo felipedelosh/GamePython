@@ -5,6 +5,7 @@ FelipedelosH
 Input Key EXCUTOR Controller
 """
 from src.core.gameLoger import GameLogger
+from src.ecs.components import DirectionComponent
 
 class InputHandler:
     def __init__(self, palyer, config, stateMachineMainMenu, stateMachineGame):
@@ -16,16 +17,17 @@ class InputHandler:
 
 
     def handleKeypress(self, keycode):
-        self.logger.info(f"KEY PRESSED: {keycode}")
+        self.logger.info(f"INPUTHANDLER::KEYPRESS::{keycode}")
         if self.stateMachineGame.pointer == "gameStart":
+            direction = self.player.get_component(DirectionComponent)
             if keycode == self.control.key_UP:
-                self.player.player_mouve_up()
-            if keycode == self.control.key_RIGTH:
-                self.player.player_mouve_rigth()
-            if keycode == self.control.key_DOWN:
-                self.player.player_mouve_down()
-            if keycode == self.control.key_LEFT:
-                self.player.player_mouve_left()    
+                direction.current_directions.add("up")
+            elif keycode == self.control.key_RIGTH:
+                direction.current_directions.add("right")
+            elif keycode == self.control.key_DOWN:
+                direction.current_directions.add("down")
+            elif keycode == self.control.key_LEFT:
+                direction.current_directions.add("left")  
             if keycode == self.control.key_B:
                 print("B")
             if keycode == self.control.key_A:
@@ -51,3 +53,20 @@ class InputHandler:
                 self.stateMachineMainMenu.mouvePointer(self.control.key_DOWN)
             if keycode == self.control.key_START:
                 self.stateMachineGame.mouvePointer("gameStart")
+
+
+    def handleKeyRelease(self, keycode):
+        self.logger.info(f"INPUTHANDLER::KEYRELEASE::{keycode}")
+        if self.stateMachineGame.pointer == "gameStart":
+            direction = self.player.get_component(DirectionComponent)
+            if keycode == self.control.key_UP:
+                direction.current_directions.discard("up")
+            elif keycode == self.control.key_RIGTH:
+                direction.current_directions.discard("right")
+            elif keycode == self.control.key_DOWN:
+                direction.current_directions.discard("down")
+            elif keycode == self.control.key_LEFT:
+                direction.current_directions.discard("left")
+
+            if not direction.current_directions:
+                direction.last_direction = direction.last_direction

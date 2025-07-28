@@ -15,5 +15,11 @@ class VelocityComponent(Component):
         self.velocity = velocity
 
 class DirectionComponent(Component):
-    def __init__(self, direction="down"):
-        self.direction = direction
+    def __init__(self):
+        self.current_directions = set()
+        self.last_direction = "down"
+
+class SpriteCoordsComponent(Component):
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y

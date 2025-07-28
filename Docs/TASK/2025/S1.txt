@@ -5,7 +5,7 @@ Problema: Se necesita un sistema centralizado para movilizar objetos
 __________________________________________________________________________________________
 Para ello se creo: "src\systems\movementSystem.py" la cual resuelve:
 
-"Es capaz de mover una entidad"
+"Es capaz de mover una entidad basados en una cache de movimientos."
 
 Dependencias:
 

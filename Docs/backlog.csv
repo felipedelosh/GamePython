@@ -7,7 +7,7 @@ B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStar
 C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|NO
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
 D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI
-D2|Sistema de Colisiones Optimizado|Usar pygame.Rect y spatial hashing.|🟢|NO
+D2|Sistema de Colisiones Optimizado|Crear un sistema optimizado para detectar coliciones.|🟢|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO
 E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO
 E2|Sistema de Partículas Básico|Efectos visuales para acciones.|🔴|NO

@@ -1,0 +1,14 @@
+FelipedelosH
+
+Problema: "No hay un sistema de LOGs que nos sirva para monitorear el estado del juego o errores."
+
+__________________________________________________________________________________________
+Para ello se creo: "src\core\gameLoger.py" la cual resuelve:
+
+Registra LOGs del juego y los guarda en la carpeta: logs\*.log.
+
+Dependencias:
+
+* logging.
+* os.
+* datetime.

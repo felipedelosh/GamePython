@@ -55,6 +55,9 @@ Thumbs.db
 .DS_Store
 ._*
 
+logs/
+*.logs
+
 Thumbs.db
 ehthumbs.db
 Desktop.ini

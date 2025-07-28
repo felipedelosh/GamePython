@@ -13,11 +13,16 @@ from src.core.gameStateManager import GameStateManager
 from src.core.control import Control
 from src.entities.player import Player
 from src.entities.world import World
+from src.core.gameLoger import GameLogger
 
 
 class Controller:
     def __init__(self, canvas) -> None:
         self.canvas = canvas
+        # LOGS SYSTEM
+        self.logger = GameLogger.get_instance()
+        self.logger.info("Inicializando Controller")
+        # CONFIG GAME
         self.config = GameConfig()
         self.config.load('config/config.json')
         self.FPS = int(1000/int(self.config.get("FPS")))
@@ -72,6 +77,7 @@ class Controller:
         
         self.current_state = self.states[new_state_name]
         self.current_state.enter()
+        self.logger.info(f"Cambio de estado: {new_state_name}")
 
     def update(self):
         current_state_name = self.SMgame.pointer

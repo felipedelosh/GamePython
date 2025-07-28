@@ -4,8 +4,11 @@ FelipedelosH
 
 Input Key EXCUTOR Controller
 """
+from src.core.gameLoger import GameLogger
+
 class InputHandler:
     def __init__(self, palyer, config, stateMachineMainMenu, stateMachineGame):
+        self.logger = GameLogger.get_instance()
         self.player = palyer
         self.control = config
         self.stateMachineMainMenu = stateMachineMainMenu
@@ -13,6 +16,7 @@ class InputHandler:
 
 
     def handleKeypress(self, keycode):
+        self.logger.info(f"KEY PRESSED: {keycode}")
         if self.stateMachineGame.pointer == "gameStart":
             if keycode == self.control.key_UP:
                 self.player.player_mouve_up()

@@ -14,6 +14,7 @@ from src.core.control import Control
 from src.entities.player import Player
 from src.entities.world import World
 from src.systems.movementSystem import MovementSystem
+from src.systems.collisionSystem import CollisionSystem
 from src.core.gameLoger import GameLogger
 
 
@@ -67,7 +68,8 @@ class Controller:
         self.UImanager.set_game_state_manager(self.gameStateManager)
         # Systems
         self.systems = [
-            MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
+            MovementSystem(self.config.get("displayW"), self.config.get("displayH")),
+            CollisionSystem(self.player, self.world)
         ]
         # VARS
         self.intro_shown_time = 0

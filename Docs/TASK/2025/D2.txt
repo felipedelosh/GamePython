@@ -24,6 +24,5 @@ src/core/controller.py
 
 Dependencias:
 
-* Modelos.
-* Servicios.
-* Librerias.
+* System.
+* components.

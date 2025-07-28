@@ -141,6 +141,11 @@ src/systems/movementSystem.py
 El CollisionSystem es el responsable de evitar que las entidades atraviesen los límites del mundo o entren en zonas no caminables definidas en el mapa JSON.
 Funciona en conjunto con el MovementSystem, que calcula el desplazamiento según la entrada del jugador.
 
+El `CollisionSystem` se apoya en un mapa de colisiones (`self.world.collider`) donde:
+
+- `0` representa una celda caminable.
+- `1` representa una celda bloqueada.
+
 ## Como agregar un nuevo sistema
 
 El motor implementa la arquitectura ECS (Entity–Component–System).

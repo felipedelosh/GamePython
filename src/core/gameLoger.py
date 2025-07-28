@@ -19,13 +19,11 @@ class GameLogger:
 
     def __init__(self):
         if GameLogger._instance is not None:
-            raise Exception("GameLogger ya está inicializado. Usa get_instance().")
+            raise Exception("GameLogger >> get_instance().")
 
-        # Crear carpeta de logs si no existe
         if not os.path.exists("logs"):
             os.makedirs("logs")
 
-        # Configuración de logging
         log_filename = f"logs/game_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
         logging.basicConfig(
             filename=log_filename,

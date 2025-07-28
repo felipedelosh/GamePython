@@ -11,5 +11,5 @@ D2|Sistema de Colisiones Optimizado|Usar pygame.Rect y spatial hashing.|🟢|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO
 E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO
 E2|Sistema de Partículas Básico|Efectos visuales para acciones.|🔴|NO
-F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|NO
+F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
 F2|Suite de Pruebas Unitarias|Tests para InputHandler, GameConfig.|🔴|NO

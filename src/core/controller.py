@@ -19,13 +19,10 @@ from src.core.gameLoger import GameLogger
 class Controller:
     def __init__(self, canvas) -> None:
         self.canvas = canvas
-        # LOGS SYSTEM
-        self.logger = GameLogger.get_instance()
-        self.logger.info("Inicializando Controller")
-        # CONFIG GAME
         self.config = GameConfig()
         self.config.load('config/config.json')
         self.FPS = int(1000/int(self.config.get("FPS")))
+        self.logger = GameLogger.get_instance(self.config)
         self.control = Control(
             self.config.get('key_UP'),
             self.config.get('key_RIGTH'),
@@ -69,6 +66,8 @@ class Controller:
         self.UImanager.set_game_state_manager(self.gameStateManager)
         # VARS
         self.intro_shown_time = 0
+
+        self.logger.info("CONTROLLER::GAME::INIT")
 
 
     def change_state(self, new_state_name):

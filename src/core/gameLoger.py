@@ -12,14 +12,20 @@ class GameLogger:
     _instance = None
 
     @staticmethod
-    def get_instance():
+    def get_instance(config=None):
         if GameLogger._instance is None:
-            GameLogger()
+            GameLogger(config)
         return GameLogger._instance
 
-    def __init__(self):
+    def __init__(self, config):
+        self.enabled = None
         if GameLogger._instance is not None:
             raise Exception("GameLogger >> get_instance().")
+        
+        if config:
+            self.enabled = config.get("logging")["enabled"]
+        else:
+            self.enabled = False
 
         if not os.path.exists("logs"):
             os.makedirs("logs")
@@ -36,13 +42,16 @@ class GameLogger:
         GameLogger._instance = self
 
     def info(self, message):
-        self.logger.info(message)
-        print(f"[INFO] {message}")
+        if self.enabled:
+            self.logger.info(message)
+            print(f"[INFO] {message}")
 
     def warning(self, message):
-        self.logger.warning(message)
-        print(f"[WARNING] {message}")
+        if self.enabled:
+            self.logger.warning(message)
+            print(f"[WARNING] {message}")
 
     def error(self, message):
-        self.logger.error(message)
-        print(f"[ERROR] {message}")
+        if self.enabled:
+            self.logger.error(message)
+            print(f"[ERROR] {message}")

@@ -33,6 +33,8 @@ my_game_project/
 │
 ├── Docs/
 │
+├── logs/
+│
 ├── src/                   
 │   ├── core/
 │   ├── ecs/              

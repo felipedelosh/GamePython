@@ -6,7 +6,7 @@ B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
 C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|NO
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
-D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|NO
+D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI
 D2|Sistema de Colisiones Optimizado|Usar pygame.Rect y spatial hashing.|🟢|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO
 E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO

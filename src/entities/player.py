@@ -1,6 +1,13 @@
 from src.ecs.entity import Entity
-from src.ecs.components import PositionComponent, SizeComponent, VelocityComponent, DirectionComponent, SpriteCoordsComponent
 from src.core.assetManager import AssetManager
+from src.ecs.components import (
+    PositionComponent,
+    SizeComponent,
+    VelocityComponent,
+    DirectionComponent,
+    SpriteCoordsComponent
+)
+
 
 class Player(Entity):
     def __init__(self, config):

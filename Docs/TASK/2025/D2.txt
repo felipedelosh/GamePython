@@ -1,0 +1,29 @@
+FelipedelosH
+
+Problema: Implementar un sistema de colisiones: contra el mundo y objetos.
+
+__________________________________________________________________________________________
+Para ello se creo: "src\systems\collisionSystem.py" la cual resuelve:
+
+"Determina si es posible moverse en esa dirección"
+
+src/ecs/components.py
+➝ Añadir NextPositionComponent.
+
+src/entities/player.py
+➝ Asegurarse de añadir NextPositionComponent al Player.
+
+src/systems/movementSystem.py
+➝ Cambiar para calcular solo NextPositionComponent (no mover directamente).
+
+src/systems/collisionSystem.py
+➝ Implementar validación con el mundo (collider).
+
+src/core/controller.py
+➝ Registrar CollisionSystem después de MovementSystem.
+
+Dependencias:
+
+* Modelos.
+* Servicios.
+* Librerias.

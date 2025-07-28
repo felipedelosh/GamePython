@@ -46,7 +46,7 @@ class InputHandler:
                 print("R")
 
 
-        if self.stateMachineGame.pointer == "mainMenu":
+        elif self.stateMachineGame.pointer == "mainMenu":
             if keycode == self.control.key_UP:
                 self.stateMachineMainMenu.mouvePointer(self.control.key_UP)
             if keycode == self.control.key_DOWN:

@@ -7,7 +7,7 @@
   "FPS": 32,
   "intro_duration": 1500,
   "env": "dev",
-  "logging": true,
+  "logging": false,
   "playerName": "Human",
   "playerAge": 0,
   "playerVelocity": 5,

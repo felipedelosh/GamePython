@@ -34,13 +34,7 @@ class CollisionSystem(System):
                     next_pos.x, next_pos.y = pos.x, pos.y  
 
     def _is_walkable(self, x, y, size):
-        tile_size_w = self.world.w
-        tile_size_h = self.world.h
-
-        tile_x = int(x // tile_size_w)
-        tile_y = int(y // tile_size_h)
-
-
+        # Screen limits
         if (x - size.w/2) < 0:
             return False
         if (y - size.h/2) < 0:
@@ -49,6 +43,13 @@ class CollisionSystem(System):
             return False
         if (y + size.h/2) > self.player.max_pos_y:
             return False
+        # Screen limits
+
+        tile_width = self.player.max_pos_x / self.world.w
+        tile_height = self.player.max_pos_y / self.world.h
+
+        tile_x = int(x // tile_width)
+        tile_y = int(y // tile_height)
 
         try:
             return self.world.collider[tile_y][tile_x] == 0

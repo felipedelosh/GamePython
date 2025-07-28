@@ -7,19 +7,74 @@
 Motor de videojuego 2D en Python con arquitectura modular, máquinas de estado y sistema de componentes.
 
 ## 🏗️ Estructura del Proyecto
-```bash
+```
+my_game_project/
+├── assets/          
+│   ├── images/
+│   ├── sounds/
+│   ├── music/
+│   └── fonts/
+│
+├── config/ 
+│
+├── Docs/
+│
+├── src/                   
+│   ├── core/              
+│   ├── entities/          
+│   ├── levels/            
+│   ├── UI/                
+│   |── systems/           
+│
+│
+├── UTILS/
+│   ├── MapGenerator/
+│
+├── data/                 
+│
+├── tests/                 
+│                
+├── .gitignore 
+├── main.py 
+├── readme.md             
+└── requirements.txt      
+```
+
+# 📌 SYSTEMS
+
+## ECS
+
+El sistema ECS (Entity–Component–System) se implementa en el motor de juego para mejorar la escalabilidad, la organización del código y la reutilización de lógicas.
+Permite separar claramente:
+
+Entidades (Entity) → Son identificadores o contenedores.
+Componentes (Component) → Contienen datos (sin lógica).
+Sistemas (System) → Ejecutan la lógica sobre entidades con ciertos componentes.
+
+Esto garantiza un motor de juego más modular y mantenible.
+
+## 🏗️ Estructura del ECS
+
+src/ecs/component.py
+Define los componentes principales usados por el Player
+
+
+```
 src/
-├── core/               # Sistemas principales
-│   ├── controller.py   # Coordinador global
-│   ├── gameStateManager.py  # Máquinas de estado
-│   ├── inputHandler.py # Gestión de inputs
-│   └── UIManager.py    # Renderizado abstracto
-├── entities/           # Entidades del juego
-│   ├── player.py       # Lógica del jugador
-│   └── world.py        # Gestión del mundo
-├── UI/ 
-config/ 
-├── config.json         # Configuración de controles y estados
-assets/
-├── images/             # Sprites y fondos
-└── LAN/                # Archivos de localización
+ └── ecs/
+      ├── __init__.py
+      ├── component.py         # Clase base Component
+      ├── components.py        # Definiciones de componentes concretos
+      ├── entity.py            # Clase base Entity
+      ├── system.py            # Clase base System
+      ├── systems/             # (Carpeta) Sistemas concretos
+      │    ├── __init__.py
+      │    ├── movementSystem.py
+      │    ├── renderSystem.py
+      │    └── collisionSystem.py
+      ├── manager/             # (Carpeta) Gestores ECS
+      │    ├── __init__.py
+      │    ├── entityManager.py
+      │    └── systemManager.py
+      └── utils.py             # Utilidades opcionales (ej. factories)
+```

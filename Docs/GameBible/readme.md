@@ -21,7 +21,7 @@
 **Género**:  RPG Existencial.
 **Plataformas**: PC Cenital. 
 **Público objetivo**: 21+ (Adultos que buscan reflexión sobre ciclos vitales).
-**Duración estimada**:  75 días.
+**Duración estimada**: 75 días.
 **Tono y Estilo**: Crudo, realista y filosófico.
 **Elevator Pitch**: "Un RPG que simula el ciclo completo de la vida humana, donde cada decisión altera irreversiblemente tu destino y legado."
 

@@ -34,7 +34,8 @@ my_game_project/
 ├── Docs/
 │
 ├── src/                   
-│   ├── core/              
+│   ├── core/
+│   ├── ecs/              
 │   ├── entities/          
 │   ├── levels/            
 │   ├── UI/                

@@ -12,10 +12,10 @@ class Software:
         self.canvas.bind_all("<Key>", self.keyPressed)
         self.controller = Controller(self.canvas)
 
-        self.VizualizedAndRun()
+        self.showDisplay()
 
 
-    def VizualizedAndRun(self):
+    def showDisplay(self):
         self.display.title(self.controller.config.get("gameTitle"))
         self.display.geometry(f"{self.controller.config.get("displayW")}x{self.controller.config.get("displayH")}")
         self.canvas['height']=int(self.controller.config.get("displayH"))

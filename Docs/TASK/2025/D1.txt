@@ -1,0 +1,18 @@
+FelipedelosH
+
+Problemas: No se puede crear objetos lógicos/clases independientes para Jugador, Enemigo, ... por que 
+la lógica común no es reutilizable.
+
+* Cada nuevo tipo de entidad requiere crear una clase completa.
+* Modificar comportamientos existentes afecta múltiples clases.
+
+__________________________________________________________________________________________
+Para ello se creo: "src\ecs" la cual resuelve:
+
+separar datos (Components) de la lógica (Systems) y permitir que las Entities sean solo "contenedores" que combinan componentes.
+
+
+Dependencias:
+* Entity: es la entidad base.
+* System & Component : son los contratos.
+* Components: lógica de los contratos y atributos.

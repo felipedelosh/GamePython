@@ -58,7 +58,7 @@ class TkinterRenderer(IUIRenderer):
             self.clear_by_tag("player")
 
         self.render_image(sprite_img, _x, _y, anchor="nw", tag="player")
-        self.render_circle(self.player.posX, self.player.posY, 5, "green", "player")
+        self.render_circle(self.player.x, self.player.y, 5, "green", "player")
         
         # Render
         if hasattr(self, '_last_sprite_img'):

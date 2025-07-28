@@ -1,0 +1,13 @@
+FelipedelosH
+
+Problema: Se necesita un sistema centralizado para movilizar objetos
+
+__________________________________________________________________________________________
+Para ello se creo: "src\systems\movementSystem.py" la cual resuelve:
+
+"Es capaz de mover una entidad"
+
+Dependencias:
+
+* src\ecs\system.py
+* src\ecs\components.py

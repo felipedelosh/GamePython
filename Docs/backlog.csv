@@ -13,3 +13,4 @@ E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO
 E2|Sistema de Partículas Básico|Efectos visuales para acciones.|🔴|NO
 F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
 F2|Suite de Pruebas Unitarias|Tests para InputHandler, GameConfig.|🔴|NO
+S1|Sistema de movimiento movementSystem.py|Centralización de la lógica de movimiento|🟢|NO

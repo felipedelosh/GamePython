@@ -35,7 +35,8 @@ my_game_project/
 │
 ├── logs/
 │
-├── src/                   
+├── src/
+│   ├── commands/                   
 │   ├── core/
 │   ├── ecs/              
 │   ├── entities/          

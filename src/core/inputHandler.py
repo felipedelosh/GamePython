@@ -5,29 +5,43 @@ FelipedelosH
 Input Key EXCUTOR Controller
 """
 from src.core.gameLoger import GameLogger
-from src.ecs.components import DirectionComponent
+from src.commands.movementCommands import (
+    MoveUpCommand, MoveDownCommand, MoveLeftCommand, MoveRightCommand,
+    StopMoveUpCommand, StopMoveDownCommand, StopMoveLeftCommand, StopMoveRightCommand
+)
+# from src.commands.actionCommands import JumpCommand, AttackCommand
 
 class InputHandler:
-    def __init__(self, palyer, config, stateMachineMainMenu, stateMachineGame):
+    def __init__(self, palyer, controlFromConfig, stateMachineMainMenu, stateMachineGame):
         self.logger = GameLogger.get_instance()
         self.player = palyer
-        self.control = config
+        self.control = controlFromConfig
         self.stateMachineMainMenu = stateMachineMainMenu
         self.stateMachineGame = stateMachineGame
+
+        self.press_commands = {
+            self.control.key_UP: MoveUpCommand(),
+            self.control.key_DOWN: MoveDownCommand(),
+            self.control.key_LEFT: MoveLeftCommand(),
+            self.control.key_RIGTH: MoveRightCommand(),
+            # self.control.key_A: JumpCommand(),
+            # self.control.key_B: AttackCommand(),
+        }
+
+        self.release_commands = {
+            self.control.key_UP: StopMoveUpCommand(),
+            self.control.key_DOWN: StopMoveDownCommand(),
+            self.control.key_LEFT: StopMoveLeftCommand(),
+            self.control.key_RIGTH: StopMoveRightCommand(),
+        }
 
 
     def handleKeypress(self, keycode):
         self.logger.info(f"INPUTHANDLER::KEYPRESS::{keycode}")
         if self.stateMachineGame.pointer == "gameStart":
-            direction = self.player.get_component(DirectionComponent)
-            if keycode == self.control.key_UP:
-                direction.current_directions.add("up")
-            elif keycode == self.control.key_RIGTH:
-                direction.current_directions.add("right")
-            elif keycode == self.control.key_DOWN:
-                direction.current_directions.add("down")
-            elif keycode == self.control.key_LEFT:
-                direction.current_directions.add("left")  
+            command = self.press_commands.get(keycode)
+            if command:
+                command.execute(self.player)
             if keycode == self.control.key_B:
                 print("B")
             if keycode == self.control.key_A:
@@ -58,15 +72,6 @@ class InputHandler:
     def handleKeyRelease(self, keycode):
         self.logger.info(f"INPUTHANDLER::KEYRELEASE::{keycode}")
         if self.stateMachineGame.pointer == "gameStart":
-            direction = self.player.get_component(DirectionComponent)
-            if keycode == self.control.key_UP:
-                direction.current_directions.discard("up")
-            elif keycode == self.control.key_RIGTH:
-                direction.current_directions.discard("right")
-            elif keycode == self.control.key_DOWN:
-                direction.current_directions.discard("down")
-            elif keycode == self.control.key_LEFT:
-                direction.current_directions.discard("left")
-
-            if not direction.current_directions:
-                direction.last_direction = direction.last_direction
+            command = self.release_commands.get(keycode)
+            if command:
+                command.execute(self.player)

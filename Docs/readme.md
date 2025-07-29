@@ -125,6 +125,46 @@ src/
       └── utils.py             # Utilidades opcionales (ej. factories)
 ```
 
+## ⚔️ Sistema de Comandos (src/commands)
+
+El motor ahora implementa el Patrón Command para manejar entradas de usuario de manera modular, extensible y desacoplada.
+Esto permite que cada acción del jugador (moverse, saltar, atacar, etc.) se represente como un comando independiente, lo que simplifica la lógica en el InputHandler y hace más fácil añadir nuevas acciones.
+
+
+```
+src/
+ └── commands/
+      ├── base.py          # Clase base Command
+      ├── movementCommands.py     # Comandos de movimiento
+      ├── actionCommands.py       # Comandos de acciones
+
+```
+
+## Como agregar nuevos comandos:
+
+1. Crear el comando
+```
+from src.commands.base import Command
+
+class XCommand(Command):
+    def execute(self, entity):
+        # Aquí se modifica el componente del jugador
+        print("El jugador ha saltado")
+```
+
+2. Registrar el comando en el InputHandler
+
+En src/core/inputHandler.py, agrega tu nuevo comando al diccionario de press_commands o release_commands según corresponda:
+
+```
+from src.commands.actionCommands import JumpCommand
+
+self.press_commands = {
+    self.control.key_UP: MoveUpCommand(),
+    ...
+    self.control.key_?: XCommand(),
+}
+```
 
 
 ## MovementSystem

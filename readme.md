@@ -3,6 +3,7 @@
 <h4>El Alto De Las Viudas</h4>
 
 ![Banner](Docs/banner.png)
+<br>
 :construction: IN CONSTRUCTION :construction:
 <br><br>
 "El Alto De Las Viudas" is a game developed in Python with a modular architecture based on interfaces and decoupled rendering, allowing for easy extension and maintenance. The project incorporates clean design principles and a clear folder structure.

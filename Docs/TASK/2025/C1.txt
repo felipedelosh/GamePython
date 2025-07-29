@@ -11,6 +11,5 @@ Patrón Comando.
 
 Dependencias:
 
-* Modelos.
-* Servicios.
-* Librerias.
+* DirectionComponent
+* other Components ...

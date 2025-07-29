@@ -4,7 +4,7 @@ A2|Sistema de Configuración Robustecido|Clase GameConfig que valide el JSON y m
 A3|Asset Manager Centralizado|Clase para cargar/descargar sprites, sonidos, etc.|🟡|SI
 B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|SI
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
-C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|NO
+C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|SI
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
 D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI
 D2|Sistema de Colisiones Optimizado|Crear un sistema optimizado para detectar coliciones.|🟢|SI

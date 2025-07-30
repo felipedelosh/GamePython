@@ -14,3 +14,18 @@ E2|Sistema de Partículas Básico|Efectos visuales para acciones.|🔴|NO
 F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
 F2|Suite de Pruebas Unitarias|Tests para InputHandler, GameConfig.|🔴|NO
 S1|Sistema de movimiento movementSystem.py|Centralización de la lógica de movimiento|🟢|SI
+G1|Generador de Jugador Aleatorio|Generar jugadores con padres, sexo, contexto, estadísticas iniciales.|🟢|NO
+G2|Calculadora de Edad|Sistema que convierta minutos del juego a años reales.|🟢|NO
+G3|Sistema de Etapas de Vida|Infancia, adolescencia, adultez, etc. con límites y condiciones.|🟡|NO
+G4|Sistema de Actividades Humanas|Comer, dormir, trabajar, estudiar, etc. con tiempo y energía.|🟢|NO
+G5|Estadísticas del Personaje|Salud, energía, autoestima, dinero, fuerza, etc.|🟡|NO
+G6|Sistema de Enfermedades|Cargar JSON con enfermedades y condiciones de aparición.|🔴|NO
+G7|Sistema de Muerte|Diversas causas, con narrativa de muerte y posible reencarnación.|🔴|NO
+G8|Árbol de Decisiones|Lógica para eventos tipo "elige tu camino", con consecuencias.|🟡|NO
+G9|Sistema de Relaciones Sociales|Amistades, amor, conflictos con NPCs autónomos.|🟡|NO
+G10|Visualizador de Estadísticas|Mostrar gráficamente barra de energía, salud, etc. en UI.|🟢|NO
+G11|Gestor de Tiempo Interno|Simular horas, días, años dentro del juego.|🟡|NO
+G12|Sistema de Guardado y Carga|Guardar el estado del jugador y continuar partidas.|🟢|NO
+G13|Renderizador de Libro Interactivo|Sistema gráfico tipo “libro” que muestra texto e imágenes con scroll.|🟡|NO
+G14|Manejador de Pérdida de Sentidos|Sistema para ceguera, sordera, etc., y cómo afecta las decisiones.|🔴|NO
+G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en sueños.|🔴|NO

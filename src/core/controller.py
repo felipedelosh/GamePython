@@ -25,6 +25,7 @@ class Controller:
         self.config.load('config/config.json')
         self.FPS = int(1000/int(self.config.get("FPS")))
         self.logger = GameLogger.get_instance(self.config)
+        self.logger.info(f"GAME::MEMORY::DATA::SIZE:{self.config.get_config_memory_kb():.2f}KB")
         self.control = Control(
             self.config.get('key_UP'),
             self.config.get('key_RIGTH'),

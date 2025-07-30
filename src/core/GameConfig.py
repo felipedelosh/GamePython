@@ -3,6 +3,7 @@ FelipedelosH
 This is the main controller to load setting of config\config.json
 """
 import json
+import sys
 
 class GameConfig:
     def __init__(self):
@@ -34,6 +35,23 @@ class GameConfig:
     def get(self, key: str, default=None):
         return self._config.get(key, default)
     
+    def get_config_memory_kb(self) -> float:
+        def deep_size(obj, seen=None):
+            if seen is None:
+                seen = set()
+            obj_id = id(obj)
+            if obj_id in seen:
+                return 0
+            seen.add(obj_id)
+            size = sys.getsizeof(obj)
+            if isinstance(obj, dict):
+                size += sum((deep_size(k, seen) + deep_size(v, seen)) for k, v in obj.items())
+            elif isinstance(obj, (list, tuple, set, frozenset)):
+                size += sum(deep_size(i, seen) for i in obj)
+            return size
+
+        return round(deep_size(self._config) / 1024, 2)
+
     @property
     def controls(self) -> dict:
         return {

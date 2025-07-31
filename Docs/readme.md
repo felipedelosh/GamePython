@@ -140,7 +140,7 @@ src/
 
 ```
 
-## Como agregar nuevos comandos:
+## ➕ Como agregar nuevos comandos:
 
 1. Crear el comando
 ```
@@ -186,7 +186,7 @@ El `CollisionSystem` se apoya en un mapa de colisiones (`self.world.collider`) d
 - `0` representa una celda caminable.
 - `1` representa una celda bloqueada.
 
-## Como agregar un nuevo sistema
+## ➕ Como agregar un nuevo sistema
 
 El motor implementa la arquitectura ECS (Entity–Component–System).
 Para añadir un nuevo sistema (por ejemplo: CollisionSystem, HealthSystem, RenderSystem), se deben seguir los siguientes pasos:
@@ -232,3 +232,38 @@ self.add_component(XComponent(100))
 6. Validar la Ejecución
 Al ejecutar el juego, el sistema se actualizará automáticamente en cada frame, siempre que esté registrado en self.systems.
 
+
+## 📊 StatisticsSystem
+
+El StatisticsSystem permite que las entidades del juego (como el jugador o NPCs) posean y gestionen estadísticas internas tales como energía, hambre, salud mental, fuerza, inteligencia, entre otras. Estas estadísticas pueden ser usadas para afectar el comportamiento o estado de la entidad, y eventualmente para mecánicas de juego más complejas como fatiga, evolución, diálogos, rendimiento, etc.
+
+```
+src/
+ └── systems/
+      └── statisticsSystem.py
+
+src/
+ └── entities/
+      └── statistics.py
+```
+
+## ➕ Cómo agregar una nueva estadística
+
+1. Declarar la nueva estadística en los límites
+Edita src/entities/statistics.py y agrega la estadística en el diccionario STAT_LIMITS.
+
+2. Configurar el valor inicial en config.json
+En la sección "statistics" del archivo config/config.json, agrega la nueva clave.
+
+3. Acceder y modificar la estadística en el sistema
+```
+def update(self, entities, dt):
+    for entity in entities:
+        if entity.has_components(StatisticsComponent):
+            stats = entity.get_component(StatisticsComponent).statistics
+
+            stats.update_stat("stamina", -1, mode="add")
+
+            if stats.stamina < 20:
+                stats.update_stat("energy", -2, mode="add")
+```

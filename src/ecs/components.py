@@ -1,4 +1,14 @@
 from src.ecs.component import Component
+from src.entities.statistics import Statistics
+
+class StatisticsComponent(Component):
+    def __init__(self, stats=None):
+        if isinstance(stats, dict):
+            self.statistics = Statistics(initial_stats=stats, use_random=False)
+        elif isinstance(stats, Statistics):
+            self.statistics = stats
+        else:
+            self.statistics = Statistics()
 
 class PositionComponent(Component):
     def __init__(self, x=0, y=0):

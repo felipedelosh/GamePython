@@ -2,20 +2,25 @@
 FelipedelosH
 This is the main controller to my videogame
 """
+# LOGs
+from src.core.gameLoger import GameLogger
+# CONFIG
 from src.core.GameConfig import GameConfig
+from src.core.control import Control
+from src.core.inputHandler import InputHandler
+from src.core.gameState import IntroState, MainMenuState, GameState, GameOptionsState
+from src.core.gameStateManager import GameStateManager
 from src.core.assetManager import AssetManager
 from src.UI.TkinterRenderer import TkinterRenderer
 from src.UI.UIManager import UIManager
 from tkinter import PhotoImage
-from src.core.inputHandler import InputHandler
-from src.core.gameState import IntroState, MainMenuState, GameState, GameOptionsState
-from src.core.gameStateManager import GameStateManager
-from src.core.control import Control
+# Entities
 from src.entities.player import Player
 from src.entities.world import World
+# SYSTEMS
 from src.systems.movementSystem import MovementSystem
 from src.systems.collisionSystem import CollisionSystem
-from src.core.gameLoger import GameLogger
+from src.systems.statisticsSystem import StatisticsSystem
 
 
 class Controller:
@@ -68,13 +73,18 @@ class Controller:
         self.UImanager.set_intro_image(self.imgIntro)
         self.UImanager.set_game_state_manager(self.gameStateManager)
         # Systems
+        self.movementSystem = MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
+        self.collisionSystem = CollisionSystem(self.player, self.world)
+        self.statisticsSystem = StatisticsSystem(self.config)
         self.systems = [
-            MovementSystem(self.config.get("displayW"), self.config.get("displayH")),
-            CollisionSystem(self.player, self.world)
+            self.movementSystem,
+            self.collisionSystem,
+            self.statisticsSystem
         ]
         # VARS
         self.intro_shown_time = 0
         self.logger.info("CONTROLLER::GAME::INIT")
+        self.logger.info(f"PLAYER::DATA::STARISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
 
 
     def change_state(self, new_state_name):

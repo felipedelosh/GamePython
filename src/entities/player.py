@@ -6,7 +6,8 @@ from src.ecs.components import (
     VelocityComponent,
     DirectionComponent,
     SpriteCoordsComponent,
-    NextPositionComponent
+    NextPositionComponent,
+    StatisticsComponent
 )
 
 
@@ -20,6 +21,7 @@ class Player(Entity):
         self.add_component(DirectionComponent())
         self.add_component(SpriteCoordsComponent())
         self.add_component(NextPositionComponent())
+        self.add_component(StatisticsComponent(config.get("statistics")))
         self.max_pos_x = config.get("displayW")
         self.max_pos_y = config.get("displayH")
         self.assetManager = assetManager

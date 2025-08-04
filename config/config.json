@@ -36,14 +36,14 @@
       "conections": [
         "intro:mainMenu:symbol:t",
         "mainMenu:gameStart:symbol:gameStart",
-        "gameStart:gameStart:controls:direction_buttons",
+        "mainMenu:gameOptions:symbol:gameOptions",
+        "gameStart:gameStart:controls:direction_buttons", 
         "gameStart:gameStart:controls:action_buttons",
+        "gameOptions:gameStart:symbol:gameStart",
+        "gameOptions:gamePause:controls:key_START",
+        "gamePause:gameOptions:symbol:gameOptions",
         "gameStart:gamePause:controls:key_START",
-        "gamePause:gameStart:controls:key_START",
-        "gameStart:gameOptions:controls:key_SELECT",
-        "gameOptions:gameStart:controls:key_SELECT",
-        "gamePause:gameOptions:controls:key_SELECT",
-        "gameOptions:gamePause:controls:key_START"
+        "gamePause:gameStart:controls:key_START"
       ]
     },
     "mainMenu": {

@@ -1,0 +1,10 @@
+ID|Tarea|Descripción|Prioridad|COMPETADA
+A1|Separar Controller en módulos especializados|Crear InputHandler, GameStateManager, y UIManager.|🟢|SI
+A2|Sistema de Configuración Robustecido|Clase GameConfig que valide el JSON y maneje defaults.|🟢|SI
+A3|Asset Manager Centralizado|Clase para cargar/descargar sprites, sonidos, etc.|🟡|SI
+B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|SI
+C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|SI
+D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI
+D2|Sistema de Colisiones Optimizado|Crear un sistema optimizado para detectar coliciones.|🟢|SI
+F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
+S1|Sistema de movimiento movementSystem.py|Centralización de la lógica de movimiento|🟢|SI

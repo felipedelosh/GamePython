@@ -1,19 +1,10 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
-A1|Separar Controller en módulos especializados|Crear InputHandler, GameStateManager, y UIManager.|🟢|SI
-A2|Sistema de Configuración Robustecido|Clase GameConfig que valide el JSON y maneje defaults.|🟢|SI
-A3|Asset Manager Centralizado|Clase para cargar/descargar sprites, sonidos, etc.|🟡|SI
-B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|SI
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
-C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|SI
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
-D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI
-D2|Sistema de Colisiones Optimizado|Crear un sistema optimizado para detectar coliciones.|🟢|SI
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO
 E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO
 E2|Sistema de Partículas Básico|Efectos visuales para acciones.|🔴|NO
-F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
 F2|Suite de Pruebas Unitarias|Tests para InputHandler, GameConfig.|🔴|NO
-S1|Sistema de movimiento movementSystem.py|Centralización de la lógica de movimiento|🟢|SI
 G1|Generador de Jugador Aleatorio|Generar jugadores con padres, sexo, contexto, estadísticas iniciales.|🟢|NO
 G2|Calculadora de Edad|Sistema que convierta minutos del juego a años reales.|🟢|NO
 G3|Sistema de Etapas de Vida|Infancia, adolescencia, adultez, etc. con límites y condiciones.|🟡|NO

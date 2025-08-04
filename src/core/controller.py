@@ -96,11 +96,14 @@ class Controller:
 
     def change_state(self, new_state_name):
         if self.current_state:
-            print(self.current_state)
             self.current_state.exit()
         
         self.current_state = self.states[new_state_name]
         self.current_state.enter()
+
+        if new_state_name == "gamePause": # Force to Stop Player
+            self.player.clearCurrentDirections()
+
         self.logger.info(f"CONTROLLER::GAME::CHANGE::{new_state_name}")
 
     def update(self):

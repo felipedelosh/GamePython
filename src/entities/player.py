@@ -37,3 +37,6 @@ class Player(Entity):
     def getSpriteRenderCoords(self):
         sprite_coords = self.get_component(SpriteCoordsComponent)
         return sprite_coords.x, sprite_coords.y
+    
+    def clearCurrentDirections(self):
+        self.get_component(DirectionComponent).current_directions.clear()

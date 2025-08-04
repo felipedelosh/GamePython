@@ -30,11 +30,11 @@ Para agregar el nuevo estado "PAUSE" y ejecutarlo se necesita:
             ...
         }
 * llamar la transición de estado src\core\inputHandler.py enviando la tecla correspondiente: key_START
-
         Para entrar en game pause: if stateMachineGame es "gameStart": mouvePointer(self.control.key_START)
         Pasa salir del game pause: if stateMachineGame es "gamePause": mouvePointer(self.control.key_START)
-
 * Graficar aquello que va apasar en el contrato: src\UI\UIManager.py
+
+Nota: para bloquear al jugador y que no se mueva cuando el juego está en pausa 
 
 
 Dependencias:

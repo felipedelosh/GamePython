@@ -62,7 +62,7 @@ class InputHandler:
 
         elif self.stateMachineGame.pointer == "gamePause":
             if keycode == self.control.key_START:
-                self.stateMachineMainMenu.mouvePointer(self.control.key_START)
+                self.stateMachineGame.mouvePointer(self.control.key_START)
             
         elif self.stateMachineGame.pointer == "mainMenu":
             if keycode == self.control.key_UP:

@@ -96,6 +96,7 @@ class Controller:
 
     def change_state(self, new_state_name):
         if self.current_state:
+            print(self.current_state)
             self.current_state.exit()
         
         self.current_state = self.states[new_state_name]

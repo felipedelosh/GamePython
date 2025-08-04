@@ -81,6 +81,9 @@ class GamePauseState:
 
     def render(self):
         self.controller.UImanager.showPauseGame()
+
+    def exit(self):
+        pass
         
 
 class GameOptionsState(GameState):

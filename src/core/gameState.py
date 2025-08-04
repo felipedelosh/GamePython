@@ -69,6 +69,19 @@ class GameState(GameState):
     def exit(self):
         pass
 
+class GamePauseState:
+    def __init__(self, controller):
+        self.controller = controller
+
+    def enter(self):
+        pass
+
+    def update(self):
+        pass
+
+    def render(self):
+        self.controller.UImanager.showPauseGame()
+        
 
 class GameOptionsState(GameState):
     def enter(self):

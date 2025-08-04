@@ -8,7 +8,13 @@ from src.core.gameLoger import GameLogger
 from src.core.GameConfig import GameConfig
 from src.core.control import Control
 from src.core.inputHandler import InputHandler
-from src.core.gameState import IntroState, MainMenuState, GameState, GameOptionsState
+from src.core.gameState import (
+    IntroState,
+    MainMenuState,
+    GameState,
+    GamePauseState,
+    GameOptionsState
+)
 from src.core.gameStateManager import GameStateManager
 from src.core.assetManager import AssetManager
 from src.UI.TkinterRenderer import TkinterRenderer
@@ -57,6 +63,7 @@ class Controller:
             "intro": IntroState(self),
             "mainMenu": MainMenuState(self),
             "gameStart": GameState(self),
+            "gamePause": GamePauseState(self),
             "gameOptions": GameOptionsState(self)
         }
         self.change_state("intro")

@@ -87,6 +87,7 @@ class TkinterRenderer(IUIRenderer):
     def delete_no_game_items(self):
         self.clear_by_tag("intro")
         self.clear_by_tag("mainMenu")
+        self.clear_by_tag("gamePause")
 
     def clear_by_tag(self, tag):
         self.canvas.delete(tag)

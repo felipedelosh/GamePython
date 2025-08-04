@@ -38,6 +38,7 @@ class InputHandler:
 
     def handleKeypress(self, keycode):
         self.logger.info(f"INPUTHANDLER::KEYPRESS::{keycode}")
+        self.logger.info(f"INPUTHANDLER::CURRENT_STATE_MACHINE::{self.stateMachineGame.pointer}")
         if self.stateMachineGame.pointer == "gameStart":
             command = self.press_commands.get(keycode)
             if command:
@@ -53,13 +54,16 @@ class InputHandler:
             if keycode == self.control.key_SELECT:
                 print("Select")
             if keycode == self.control.key_START:
-                print("Start")
+                self.stateMachineGame.mouvePointer(self.control.key_START)
             if keycode == self.control.key_L:
                 print("L")
             if keycode == self.control.key_R:
                 print("R")
 
-
+        elif self.stateMachineGame.pointer == "gamePause":
+            if keycode == self.control.key_START:
+                self.stateMachineMainMenu.mouvePointer(self.control.key_START)
+            
         elif self.stateMachineGame.pointer == "mainMenu":
             if keycode == self.control.key_UP:
                 self.stateMachineMainMenu.mouvePointer(self.control.key_UP)

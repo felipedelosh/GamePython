@@ -1,0 +1,40 @@
+FelipedelosH
+
+Problema: El juego necesita una forma de pausarse para realizar ciertas acciones como:
+
+Ver estadisticas de personaje.
+Ver las pertenencias del juegador (ITEMS).
+    - Celular.
+    - Smart Wacth.
+    - Mochila.
+    - 
+Guardar Juego.
+Opciones.
+    - Cargar Juego.
+Debug.
+Salir.
+
+__________________________________________________________________________________________
+Para ello existia el archivo: "src\core\gameState.py" la cual resuelve:
+
+"Contener todos los estados posibles del juego"
+
+Para agregar el nuevo estado "PAUSE" y ejecutarlo se necesita:
+ 
+* Verificar/Agregar la tansición en el archivo: config\config.json >> "gameStart:gamePause:controls:key_START" & "gamePause:gameStart:controls:key_START"
+* Crear el estado en: src\core\gameState.py "GamePauseState"
+* Registrar ese nuevo estado en el controller: src\core\controller.py
+        self.states = {
+            ...
+            "gamePause": GamePauseState(self),
+            ...
+        }
+* llamar la transición de estado src\core\inputHandler.py enviando la tecla correspondiente: key_START
+* Graficar aquello que va apasar en el contrato: src\UI\UIManager.py
+
+Dependencias:
+
+* config.json
+* src\core\gameState.py
+* src\core\inputHandler.py
+* src\UI\UIManager.py

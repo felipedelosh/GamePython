@@ -100,6 +100,7 @@ class TkinterRenderer(IUIRenderer):
 
     def render_game_pause(self):
         if self.gamePauseOptionsAndCoors["currentOption"] != self.gameStateManager.getStateMachine("pause").pointer:
+            self.gamePauseOptionsAndCoors["currentOption"] = self.gameStateManager.getStateMachine("pause").pointer
             self._delete_no_game_items()
             self.render_rectangle(self.gamePauseOptionsAndCoors["menuCoords"][0],
                                 self.gamePauseOptionsAndCoors["menuCoords"][1],
@@ -116,9 +117,11 @@ class TkinterRenderer(IUIRenderer):
                 _x = self.gamePauseOptionsAndCoors["itemsCoords"][i][0]
                 _y = self.gamePauseOptionsAndCoors["itemsCoords"][i][1]
                 self.render_text(_x,_y,i,tag="gamePause:option")
-            
-            self.gamePauseOptionsAndCoors["currentOption"] = self.gameStateManager.getStateMachine("pause").pointer
 
+            _x = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][0] * 0.9
+            _y = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][1]
+            self.render_circle(_x, _y, 10, "red", "gamePause:currentOption")
+            
     def render_floor(self):
         # WIP: currently only render collider
         if self.world.id != self.IdTempWorldToPaint:
@@ -167,6 +170,7 @@ class TkinterRenderer(IUIRenderer):
         self._clear_by_tag("gamePause")
         self._clear_by_tag("gamePause:title")
         self._clear_by_tag("gamePause:option")
+        self._clear_by_tag("gamePause:currentOption")
 
     def _clear_by_tag(self, tag):
         self.canvas.delete(tag)

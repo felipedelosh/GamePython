@@ -69,9 +69,7 @@ class Controller:
         }
         self.change_state("intro")
         self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
-        self.SMgame = self.gameStateManager.getStateMachine("game")
-        self.mainMenuSM = self.gameStateManager.getStateMachine("mainMenu")
-        self.inputHandler = InputHandler(self.player, self.control, self.mainMenuSM, self.SMgame)
+        self.inputHandler = InputHandler(self.player, self.control, self.gameStateManager)
         # World
         self.world = World(self.config)
         self.world.load_map("assets/world/test.json")
@@ -107,7 +105,7 @@ class Controller:
         self.logger.info(f"CONTROLLER::GAME::CHANGE::{new_state_name}")
 
     def update(self):
-        current_state_name = self.SMgame.pointer
+        current_state_name = self.gameStateManager.getStateMachine("game").pointer
         if self.current_state != self.states[current_state_name]:
             self.change_state(current_state_name)
 

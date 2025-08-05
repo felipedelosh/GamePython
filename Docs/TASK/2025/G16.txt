@@ -51,9 +51,14 @@ Para la optimización de recursos del renderer:
         self.gamePauseOptionsAndCoors = {}
         self._defineGamePauseMenuElements()
 
+Para mover el menú:
+
+Agregar el movimiento en: src\core\inputHandler.py
+
 Dependencias:
 
 * config.json
 * src\core\gameState.py
 * src\core\inputHandler.py
 * src\UI\UIManager.py
+* src\UI\TkinterRenderer.py

@@ -33,7 +33,7 @@ class IntroState(GameState):
     def update(self):
         self.controller.intro_shown_time = self.controller.intro_shown_time + self.controller.FPS
         if self.controller.intro_shown_time >= self.controller.config.get("intro_duration"):
-            self.controller.SMgame.mouvePointer("t")
+            self.controller.gameStateManager.getStateMachine("game").mouvePointer("t")
             
     def render(self):
         self.controller.UImanager.showIntro()

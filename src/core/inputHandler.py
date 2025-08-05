@@ -12,12 +12,11 @@ from src.commands.movementCommands import (
 # from src.commands.actionCommands import JumpCommand, AttackCommand
 
 class InputHandler:
-    def __init__(self, palyer, controlFromConfig, stateMachineMainMenu, stateMachineGame):
+    def __init__(self, palyer, controlFromConfig, gameStateManager):
         self.logger = GameLogger.get_instance()
         self.player = palyer
         self.control = controlFromConfig
-        self.stateMachineMainMenu = stateMachineMainMenu
-        self.stateMachineGame = stateMachineGame
+        self.gameStateManager = gameStateManager
 
         self.press_commands = {
             self.control.key_UP: MoveUpCommand(),
@@ -37,9 +36,10 @@ class InputHandler:
 
 
     def handleKeypress(self, keycode):
+        _pivot = self.gameStateManager.getStateMachine("game").pointer
         self.logger.info(f"INPUTHANDLER::KEYPRESS::{keycode}")
-        self.logger.info(f"INPUTHANDLER::CURRENT_STATE_MACHINE::{self.stateMachineGame.pointer}")
-        if self.stateMachineGame.pointer == "gameStart":
+        self.logger.info(f"INPUTHANDLER::CURRENT_STATE_MACHINE_PIVOT::{_pivot}")
+        if _pivot == "gameStart":
             command = self.press_commands.get(keycode)
             if command:
                 command.execute(self.player)
@@ -54,28 +54,33 @@ class InputHandler:
             if keycode == self.control.key_SELECT:
                 print("Select")
             if keycode == self.control.key_START:
-                self.stateMachineGame.mouvePointer(self.control.key_START)
+                self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_START)
             if keycode == self.control.key_L:
                 print("L")
             if keycode == self.control.key_R:
                 print("R")
 
-        elif self.stateMachineGame.pointer == "gamePause":
-            if keycode == self.control.key_START:
-                self.stateMachineGame.mouvePointer(self.control.key_START)
-            
-        elif self.stateMachineGame.pointer == "mainMenu":
+        elif _pivot == "gamePause":
             if keycode == self.control.key_UP:
-                self.stateMachineMainMenu.mouvePointer(self.control.key_UP)
+                self.gameStateManager.getStateMachine("pause").mouvePointer(self.control.key_UP)
             if keycode == self.control.key_DOWN:
-                self.stateMachineMainMenu.mouvePointer(self.control.key_DOWN)
+                self.gameStateManager.getStateMachine("pause").mouvePointer(self.control.key_DOWN)
             if keycode == self.control.key_START:
-                self.stateMachineGame.mouvePointer("gameStart")
+                self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_START)
+            
+        elif _pivot == "mainMenu":
+            if keycode == self.control.key_UP:
+                self.gameStateManager.getStateMachine("mainMenu").mouvePointer(self.control.key_UP)
+            if keycode == self.control.key_DOWN:
+                self.gameStateManager.getStateMachine("mainMenu").mouvePointer(self.control.key_DOWN)
+            if keycode == self.control.key_START:
+                self.gameStateManager.getStateMachine("game").mouvePointer("gameStart")
 
 
     def handleKeyRelease(self, keycode):
         self.logger.info(f"INPUTHANDLER::KEYRELEASE::{keycode}")
-        if self.stateMachineGame.pointer == "gameStart":
+        _pivot = self.gameStateManager.getStateMachine("game").pointer
+        if _pivot == "gameStart":
             command = self.release_commands.get(keycode)
             if command:
                 command.execute(self.player)

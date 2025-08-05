@@ -2,6 +2,7 @@ FelipedelosH
 
 Problema: El juego necesita una forma de pausarse para realizar ciertas acciones como:
 
+Continuar partida.
 Ver estadisticas de personaje.
 Ver las pertenencias del juegador (ITEMS).
     - Celular.

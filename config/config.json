@@ -57,6 +57,24 @@
         "optionsGame:exitGame:controls:key_DOWN",
         "exitGame:optionsGame:controls:key_UP"
       ]
+    },
+    "pause": {
+      "initial": "continue",
+      "states": ["continue", "player", "items", "save", "options", "debug", "exit"],
+      "conections": [
+        "continue:player:controls:key_DOWN",
+        "player:continue:controls:key_UP",
+        "player:items:controls:key_DOWN",
+        "items:player:controls:key_UP",
+        "items:save:controls:key_DOWN",
+        "save:items:controls:key_UP",
+        "save:options:controls:key_DOWN",
+        "options:save:controls:key_UP",
+        "options:debug:controls:key_DOWN",
+        "debug:options:controls:key_UP",
+        "debug:exit:controls:key_DOWN",
+        "exit:debug:controls:key_UP"
+      ]
     }
   },
   "statistics":{

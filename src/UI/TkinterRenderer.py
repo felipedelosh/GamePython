@@ -100,14 +100,19 @@ class TkinterRenderer(IUIRenderer):
 
     def render_game_pause(self):
         if self.gamePauseOptionsAndCoors["currentOption"] != self.gameStateManager.getStateMachine("pause").pointer:
+            self._delete_no_game_items()
             self.render_rectangle(self.gamePauseOptionsAndCoors["menuCoords"][0],
                                 self.gamePauseOptionsAndCoors["menuCoords"][1],
                                 self.gamePauseOptionsAndCoors["menuCoords"][2],
                                 self.gamePauseOptionsAndCoors["menuCoords"][3],
                                 fill="snow",tag="gamePause")
             
+            self.render_text(self.gamePauseOptionsAndCoors["menuCoords"][0]*1.25,
+                             self.gamePauseOptionsAndCoors["menuCoords"][3]*0.05,
+                             self.gamePauseOptionsAndCoors["title"],
+                             tag="gamePause:title")
+            
             self.gamePauseOptionsAndCoors["currentOption"] = self.gameStateManager.getStateMachine("pause").pointer
-        #self.render_text(self.gamePauseOptionsAndCoors["menuCoords"]*1.25, self.gamePauseOptionsAndCoors["menuCoords"][3]*0.05, self.gamePauseOptionsAndCoors["title"], tag="gamePause:title")
 
     def render_floor(self):
         # WIP: currently only render collider

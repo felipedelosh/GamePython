@@ -112,6 +112,11 @@ class TkinterRenderer(IUIRenderer):
                              self.gamePauseOptionsAndCoors["title"],
                              tag="gamePause:title")
             
+            for i in self.gamePauseOptionsAndCoors["itemsCoords"]:
+                _x = self.gamePauseOptionsAndCoors["itemsCoords"][i][0]
+                _y = self.gamePauseOptionsAndCoors["itemsCoords"][i][1]
+                self.render_text(_x,_y,i,tag="gamePause:option")
+            
             self.gamePauseOptionsAndCoors["currentOption"] = self.gameStateManager.getStateMachine("pause").pointer
 
     def render_floor(self):
@@ -138,6 +143,15 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["title"] = "Game Pause"
             self.gamePauseOptionsAndCoors["menuCoords"] = [_x * 0.65, 0, _x, _y]
             self.gamePauseOptionsAndCoors["items"] = [i for i in self.configuration.get("statesMachines")["pause"]["states"]]
+
+            self.gamePauseOptionsAndCoors["itemsCoords"] = {}
+
+            counter = 1
+            _dy = (_y * 0.6) / len(self.gamePauseOptionsAndCoors["items"])
+            for i in self.gamePauseOptionsAndCoors["items"]:
+                self.gamePauseOptionsAndCoors["itemsCoords"][i] = [(_x * 0.82), ((_dy * counter) + (_y * 0.09))]
+                counter = counter + 1
+
             self._reset_game_pause_menu()
         except:
             self.gamePauseOptionsAndCoors["title"] = "ERROR"
@@ -152,6 +166,7 @@ class TkinterRenderer(IUIRenderer):
         self._clear_by_tag("mainMenu")
         self._clear_by_tag("gamePause")
         self._clear_by_tag("gamePause:title")
+        self._clear_by_tag("gamePause:option")
 
     def _clear_by_tag(self, tag):
         self.canvas.delete(tag)

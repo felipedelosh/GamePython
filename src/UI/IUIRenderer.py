@@ -33,6 +33,9 @@ class IUIRenderer(ABC):
     def render_game_pause(self): pass
 
     @abstractmethod
+    def _reset_game_pause_menu(self): pass
+
+    @abstractmethod
     def render_floor(self): pass
 
     @abstractmethod

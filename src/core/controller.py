@@ -100,8 +100,9 @@ class Controller:
         self.current_state = self.states[new_state_name]
         self.current_state.enter()
 
-        if new_state_name == "gamePause": # Force to Stop Player
-            self.player.clearCurrentDirections()
+        if new_state_name == "gamePause":
+            self.player.clearCurrentDirections() # Force to Stop Player
+            self.renderer._reset_game_pause_menu()
 
         self.logger.info(f"CONTROLLER::GAME::CHANGE::{new_state_name}")
 

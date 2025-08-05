@@ -133,11 +133,14 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["title"] = "Game Pause"
             self.gamePauseOptionsAndCoors["menuCoords"] = [_x * 0.65, 0, _x, _y]
             self.gamePauseOptionsAndCoors["items"] = [i for i in self.configuration.get("statesMachines")["pause"]["states"]]
-            self.gamePauseOptionsAndCoors["currentOption"] = ""
+            self._reset_game_pause_menu()
         except:
             self.gamePauseOptionsAndCoors["title"] = "ERROR"
             self.gamePauseOptionsAndCoors["menuCoords"] = [320, 0, 480, 640]
             self.gamePauseOptionsAndCoors["items"] = ["ERROR"]
+
+    def _reset_game_pause_menu(self):
+        self.gamePauseOptionsAndCoors["currentOption"] = ""
     
     def _delete_no_game_items(self):
         self._clear_by_tag("intro")

@@ -67,6 +67,28 @@ class TkinterRenderer(IUIRenderer):
 
         self.animatingCounter = self.animatingCounter + self.FPS
 
+
+    def render_game_pause(self):
+        _menuCoords = [
+            320,
+            0,
+            640,
+            480
+        ]
+
+        try:
+            _x = int(self.canvas['width'])
+            _y = int(self.canvas['height'])
+
+            _menuCoords[0] = _x * 0.65
+            _menuCoords[1] = 0
+            _menuCoords[2] = _x
+            _menuCoords[3] = _y
+        except:
+            pass
+
+        self.render_rectangle(_menuCoords[0], _menuCoords[1], _menuCoords[2], _menuCoords[3], fill="snow",tag="gamePause")
+
     def render_floor(self):
         # WIP: currently only render collider
         if self.world.id != self.IdTempWorldToPaint:

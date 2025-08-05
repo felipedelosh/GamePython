@@ -45,7 +45,11 @@ Para el menú de pausa:
 
 Para la optimización de recursos del renderer:
 
+* precomputar todos los elementos al momento del inicio del programa.
+        src\UI\TkinterRenderer.py
 
+        self.gamePauseOptionsAndCoors = {}
+        self._defineGamePauseMenuElements()
 
 Dependencias:
 

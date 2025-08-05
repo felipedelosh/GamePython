@@ -6,10 +6,11 @@ from src.UI.IUIRenderer import IUIRenderer
 import tkinter as tk
 
 class TkinterRenderer(IUIRenderer):
-    def __init__(self, canvas: tk.Canvas, FPS, configuration, player, world):
+    def __init__(self, canvas: tk.Canvas, FPS, configuration, gameStateManager, player, world):
         self.canvas = canvas
         self.FPS = FPS
         self.configuration = configuration
+        self.gameStateManager = gameStateManager
         self.player = player
         self.world = world
         self.IdTempWorldToPaint = ""
@@ -68,11 +69,11 @@ class TkinterRenderer(IUIRenderer):
         self.animatingCounter = self.animatingCounter + self.FPS
 
 
-    def render_game_main_menu(self, gameStateManager):
+    def render_game_main_menu(self):
         try:
             _x = int(self.canvas['width']) * 0.5
             _y = int(self.canvas['height']) * 0.5
-            _text = gameStateManager.getStateMachine("mainMenu").pointer
+            _text = self.gameStateManager.getStateMachine("mainMenu").pointer
         except:
             _x = 200
             _y = 200

@@ -5,7 +5,7 @@
   "floorH":48,
   "LAN": "ESP",
   "FPS": 32,
-  "intro_duration": 1500,
+  "intro_duration": 200,
   "env": "dev",
   "logging": true,
   "playerName": "Human",

@@ -68,6 +68,24 @@ class TkinterRenderer(IUIRenderer):
         self.animatingCounter = self.animatingCounter + self.FPS
 
 
+    def render_game_main_menu(self, gameStateManager):
+        try:
+            _x = int(self.canvas['width']) * 0.5
+            _y = int(self.canvas['height']) * 0.5
+            _text = gameStateManager.getStateMachine("mainMenu").pointer
+        except:
+            _x = 200
+            _y = 200
+            _text = "ERROR"
+
+        
+        self.delete_no_game_items()
+        self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
+        self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
+        self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
+        self.render_text(_x, _y, text=_text, tag="mainMenu")
+
+
     def render_game_intro(self, imgIntro):
         try:
             _x = int(self.canvas['width']) * 0.2

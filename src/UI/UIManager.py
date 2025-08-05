@@ -18,28 +18,11 @@ class UIManager:
     def set_game_state_manager(self, gameStateManager):
         self.gameStateManager = gameStateManager
 
-
     def showIntro(self):
         self.renderer.render_game_intro(self.imgIntro)
 
-
     def showMainMenu(self):
-        try:
-            _x = int(self.renderer.canvas['width']) * 0.5
-            _y = int(self.renderer.canvas['height']) * 0.5
-            _text = self.gameStateManager.getStateMachine("mainMenu").pointer
-        except:
-            _x = 200
-            _y = 200
-            _text = "ERROR"
-
-        
-        self.renderer.delete_no_game_items()
-        self.renderer.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
-        self.renderer.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
-        self.renderer.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
-        self.renderer.render_text(_x, _y, text=_text, tag="mainMenu")
-
+        self.renderer.render_game_main_menu(self.gameStateManager)
 
     def showGame(self):
         self.renderer.delete_no_game_items()

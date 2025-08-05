@@ -128,9 +128,9 @@ class Controller:
 
     def _load_assets(self):
         player_sprites = {
-            "up": f"assets/images/player/{self.config.get("player_look_up")}",
-            "left": f"assets/images/player/{self.config.get("player_look_left")}",
-            "right": f"assets/images/player/{self.config.get("player_look_right")}",
-            "down": f"assets/images/player/{self.config.get("player_look_down")}"
+            "up": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_up")}",
+            "left": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_left")}",
+            "right": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_right")}",
+            "down": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_down")}"
         }
         self.assetManager.load_sprite_group("player", player_sprites)

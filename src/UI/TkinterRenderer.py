@@ -68,6 +68,15 @@ class TkinterRenderer(IUIRenderer):
         self.animatingCounter = self.animatingCounter + self.FPS
 
 
+    def render_game_intro(self, imgIntro):
+        try:
+            _x = int(self.canvas['width']) * 0.2
+        except:
+            _x = 200
+            
+        self.render_image(imgIntro, _x, 20, anchor="nw", tag="intro")
+
+
     def render_game_pause(self):
         _menuCoords = [
             320,

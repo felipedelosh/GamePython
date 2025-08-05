@@ -20,12 +20,7 @@ class UIManager:
 
 
     def showIntro(self):
-        try:
-            _x = int(self.renderer.canvas['width'])*0.2
-        except:
-            _x = 200
-            
-        self.renderer.render_image(self.imgIntro, _x, 20, anchor="nw", tag="intro")
+        self.renderer.render_game_intro(self.imgIntro)
 
 
     def showMainMenu(self):

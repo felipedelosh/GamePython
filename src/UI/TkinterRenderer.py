@@ -25,6 +25,9 @@ class TkinterRenderer(IUIRenderer):
             (100, 0, 50, 100),
             (150, 0, 50, 100)
         ]
+        # VARS
+        self.gamePauseOptionsAndCoors = {}
+        self._defineGamePauseMenuElements()
 
     def render_image(self, image, x, y, anchor="nw", tag=None):
         return self.canvas.create_image(x, y, image=image, anchor=anchor, tag=tag)
@@ -57,7 +60,7 @@ class TkinterRenderer(IUIRenderer):
         sprite_img.tk.call(sprite_img, 'copy', _player_img, '-from', sprite_x, sprite_y, sprite_x+w, sprite_y+h, '-to', 0, 0)
         if IdTempPlayerToPaint != self.IdTempWorldToPaint:
             self.IdTempPlayerToPaint = IdTempPlayerToPaint
-            self.clear_by_tag("player")
+            self._clear_by_tag("player")
 
         self.render_image(sprite_img, _x, _y, anchor="nw", tag="player")
         self.render_circle(self.player.x, self.player.y, 5, "green", "player")
@@ -68,7 +71,6 @@ class TkinterRenderer(IUIRenderer):
         self._last_sprite_img = sprite_img # Dont KIll by Garbage Collector
 
         self.animatingCounter = self.animatingCounter + self.FPS
-
 
     def render_game_main_menu(self):
         try:
@@ -81,7 +83,7 @@ class TkinterRenderer(IUIRenderer):
             _text = "ERROR"
 
         
-        self.delete_no_game_items()
+        self._delete_no_game_items()
         self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
         self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
         self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
@@ -96,35 +98,21 @@ class TkinterRenderer(IUIRenderer):
             
         self.render_image(self.imgIntro, _x, 20, anchor="nw", tag="intro")
 
-
     def render_game_pause(self):
-        _menuCoords = [
-            320,
-            0,
-            640,
-            480
-        ]
-        _title = "Game Pause"
-
-        try:
-            _x = int(self.canvas['width'])
-            _y = int(self.canvas['height'])
-            _text = "ERROR"
-
-            _menuCoords[0] = _x * 0.65
-            _menuCoords[1] = 0
-            _menuCoords[2] = _x
-            _menuCoords[3] = _y
-        except:
-            _text = "ERROR"
-
-        self.render_rectangle(_menuCoords[0], _menuCoords[1], _menuCoords[2], _menuCoords[3], fill="snow",tag="gamePause")
-        self.render_text(_menuCoords[0]*1.25, _menuCoords[3]*0.05, _title, tag="gamePause:title")
+        if self.gamePauseOptionsAndCoors["currentOption"] != self.gameStateManager.getStateMachine("pause").pointer:
+            self.render_rectangle(self.gamePauseOptionsAndCoors["menuCoords"][0],
+                                self.gamePauseOptionsAndCoors["menuCoords"][1],
+                                self.gamePauseOptionsAndCoors["menuCoords"][2],
+                                self.gamePauseOptionsAndCoors["menuCoords"][3],
+                                fill="snow",tag="gamePause")
+            
+            self.gamePauseOptionsAndCoors["currentOption"] = self.gameStateManager.getStateMachine("pause").pointer
+        #self.render_text(self.gamePauseOptionsAndCoors["menuCoords"]*1.25, self.gamePauseOptionsAndCoors["menuCoords"][3]*0.05, self.gamePauseOptionsAndCoors["title"], tag="gamePause:title")
 
     def render_floor(self):
         # WIP: currently only render collider
         if self.world.id != self.IdTempWorldToPaint:
-            self.clear_by_tag("world")
+            self._clear_by_tag("world")
             _x = float(self.configuration.get("displayW"))/self.world.w
             _y = float(self.configuration.get("displayH"))/self.world.h
 
@@ -137,12 +125,25 @@ class TkinterRenderer(IUIRenderer):
                         self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="red", tags="world")
 
             self.IdTempWorldToPaint = self.world.id
-    
-    def delete_no_game_items(self):
-        self.clear_by_tag("intro")
-        self.clear_by_tag("mainMenu")
-        self.clear_by_tag("gamePause")
-        self.clear_by_tag("gamePause:title")
 
-    def clear_by_tag(self, tag):
+    def _defineGamePauseMenuElements(self):
+        try:
+            _x = int(self.configuration.get("displayW"))
+            _y = int(self.configuration.get("displayH"))
+            self.gamePauseOptionsAndCoors["title"] = "Game Pause"
+            self.gamePauseOptionsAndCoors["menuCoords"] = [_x * 0.65, 0, _x, _y]
+            self.gamePauseOptionsAndCoors["items"] = [i for i in self.configuration.get("statesMachines")["pause"]["states"]]
+            self.gamePauseOptionsAndCoors["currentOption"] = ""
+        except:
+            self.gamePauseOptionsAndCoors["title"] = "ERROR"
+            self.gamePauseOptionsAndCoors["menuCoords"] = [320, 0, 480, 640]
+            self.gamePauseOptionsAndCoors["items"] = ["ERROR"]
+    
+    def _delete_no_game_items(self):
+        self._clear_by_tag("intro")
+        self._clear_by_tag("mainMenu")
+        self._clear_by_tag("gamePause")
+        self._clear_by_tag("gamePause:title")
+
+    def _clear_by_tag(self, tag):
         self.canvas.delete(tag)

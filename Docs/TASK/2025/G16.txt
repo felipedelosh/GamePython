@@ -38,6 +38,15 @@ Para agregar el nuevo estado "PAUSE" y ejecutarlo se necesita:
 Nota: para bloquear al jugador y que no se mueva cuando el juego está en pausa 
 
 
+Para el menú de pausa:
+
+* Crear la maquina de estado en: config\config.json
+* Renderizar en: src\UI\TkinterRenderer.py
+
+Para la optimización de recursos del renderer:
+
+
+
 Dependencias:
 
 * config.json

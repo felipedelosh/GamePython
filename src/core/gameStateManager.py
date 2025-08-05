@@ -1,9 +1,9 @@
 from src.core.stateMachine import StateMachine
 
 class GameStateManager:
-    def __init__(self, jsonStateMachines, contol):
+    def __init__(self, jsonStateMachines, control):
         self.machines = {}
-        self.control = contol
+        self.control = control
         self._init_states(jsonStateMachines)
 
 

@@ -17,7 +17,7 @@ class UIManager:
         self.renderer.render_game_main_menu()
 
     def showGame(self):
-        self.renderer.delete_no_game_items()
+        self.renderer._delete_no_game_items()
         self.renderer.render_floor()
         self.renderer.render_player()
 

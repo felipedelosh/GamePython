@@ -36,7 +36,7 @@ class IUIRenderer(ABC):
     def render_floor(self): pass
 
     @abstractmethod
-    def delete_no_game_items(self): pass
+    def _delete_no_game_items(self): pass
 
     @abstractmethod
-    def clear_by_tag(self, tag): pass
+    def _clear_by_tag(self, tag): pass

@@ -27,7 +27,7 @@ class IUIRenderer(ABC):
     def render_game_main_menu(self): pass
 
     @abstractmethod
-    def render_game_intro(self, imgIntro): pass
+    def render_game_intro(self): pass
 
     @abstractmethod
     def render_game_pause(self): pass

@@ -6,8 +6,9 @@ from src.UI.IUIRenderer import IUIRenderer
 import tkinter as tk
 
 class TkinterRenderer(IUIRenderer):
-    def __init__(self, canvas: tk.Canvas, FPS, configuration, gameStateManager, player, world):
+    def __init__(self, canvas: tk.Canvas, imgIntro, FPS, configuration, gameStateManager, player, world):
         self.canvas = canvas
+        self.imgIntro = imgIntro
         self.FPS = FPS
         self.configuration = configuration
         self.gameStateManager = gameStateManager
@@ -87,13 +88,13 @@ class TkinterRenderer(IUIRenderer):
         self.render_text(_x, _y, text=_text, tag="mainMenu")
 
 
-    def render_game_intro(self, imgIntro):
+    def render_game_intro(self):
         try:
             _x = int(self.canvas['width']) * 0.2
         except:
             _x = 200
             
-        self.render_image(imgIntro, _x, 20, anchor="nw", tag="intro")
+        self.render_image(self.imgIntro, _x, 20, anchor="nw", tag="intro")
 
 
     def render_game_pause(self):

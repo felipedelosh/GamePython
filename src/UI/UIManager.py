@@ -9,13 +9,9 @@ from src.UI.IUIRenderer import IUIRenderer
 class UIManager:
     def __init__(self, renderer: IUIRenderer):
         self.renderer = renderer
-        self.imgIntro = None
-
-    def set_intro_image(self, image):
-        self.imgIntro = image
 
     def showIntro(self):
-        self.renderer.render_game_intro(self.imgIntro)
+        self.renderer.render_game_intro()
 
     def showMainMenu(self):
         self.renderer.render_game_main_menu()

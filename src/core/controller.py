@@ -76,9 +76,8 @@ class Controller:
         self.world = World(self.config)
         self.world.load_map("assets/world/test.json")
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.FPS, self.config, self.gameStateManager, self.player, self.world)
+        self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.FPS, self.config, self.gameStateManager, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
-        self.UImanager.set_intro_image(self.imgIntro)
         # Systems
         self.movementSystem = MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
         self.collisionSystem = CollisionSystem(self.player, self.world)

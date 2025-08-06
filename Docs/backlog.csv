@@ -20,4 +20,3 @@ G12|Sistema de Guardado y Carga|Guardar el estado del jugador y continuar partid
 G13|Renderizador de Libro Interactivo|Sistema gráfico tipo “libro” que muestra texto e imágenes con scroll.|🟡|NO
 G14|Manejador de Pérdida de Sentidos|Sistema para ceguera, sordera, etc., y cómo afecta las decisiones.|🔴|NO
 G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en sueños.|🔴|NO
-G16|Pausar el sueño|Que el juego se detenga y se muestre el menú de opciones.|🟢|NO

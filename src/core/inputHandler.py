@@ -70,9 +70,6 @@ class InputHandler:
                     #     self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_START)
                         
                     self.controller.current_state.current_pause_menu_option_selected = current_option
-                if keycode == self.control.key_A:
-                    current_option = self.gameStateManager.getStateMachine("pause").pointer
-                    self.controller.current_state.current_pause_menu_option_selected = current_option
                 if keycode == self.control.key_UP:
                     self.gameStateManager.getStateMachine("pause").mouvePointer(self.control.key_UP)
                 if keycode == self.control.key_DOWN:

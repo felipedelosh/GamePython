@@ -72,6 +72,7 @@ class GameState(GameState):
 class GamePauseState:
     def __init__(self, controller):
         self.controller = controller
+        self.current_pause_menu_option_selected = "main"
 
     def enter(self):
         pass
@@ -80,7 +81,10 @@ class GamePauseState:
         pass
 
     def render(self):
-        self.controller.UImanager.showPauseGame()
+        if self.current_pause_menu_option_selected == "main":
+            self.controller.UImanager.showPauseGame()
+        elif self.current_pause_menu_option_selected == "player":
+            self.controller.UImanager.render_game_pause_player_menu()
 
     def exit(self):
         pass

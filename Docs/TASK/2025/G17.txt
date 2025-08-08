@@ -1,0 +1,35 @@
+FelipedelosH
+
+Problema: Se necesita que cuando el jugador entre a el menú de pausa este dispoble player que es donde se muestran los aspectos relevantes del jugador:
+
+Nombre del jugador.
+Nivel.
+Avatar/icono.
+Puntos de vida  (HP).
+Edad.
+Dinero.
+Ataque/Defensa.
+Otras estadísticas.
+...
+
+__________________________________________________________________________________________
+Para ello se creo: "src\core\gameState.py" la cual resuelve:
+
+"Manejar las diferentes pantallas que se muestran en el juego"
+
+0. Inyectar el controlador en src\core\inputHandler.py
+1. Añadir lógica al src\core\gameState.py
+2. Añadir lógica al src\core\inputHandler.py
+3. Añadir un contrato en src\UI\IUIRenderer.py
+4. Añadir la llamada a la lógica del contrato src\UI\UIManager.py
+5. Definir la lógica del nuevo contrato en el src\UI\TkinterRenderer.py
+-- en la opción es donde se pintará la ventana de estadisticas.
+
+Dependencias:
+
+* src\core\controller.py
+* src\core\inputHandler.py
+* src\core\gameState.py
+* src\UI\IUIRenderer.py
+* src\UI\UIManager.py
+* src\UI\TkinterRenderer.py

@@ -12,11 +12,12 @@ from src.commands.movementCommands import (
 # from src.commands.actionCommands import JumpCommand, AttackCommand
 
 class InputHandler:
-    def __init__(self, palyer, controlFromConfig, gameStateManager):
+    def __init__(self, palyer, controlFromConfig, gameStateManager, controller):
         self.logger = GameLogger.get_instance()
         self.player = palyer
         self.control = controlFromConfig
         self.gameStateManager = gameStateManager
+        self.controller = controller
 
         self.press_commands = {
             self.control.key_UP: MoveUpCommand(),
@@ -62,7 +63,17 @@ class InputHandler:
 
         elif _pivot == "gamePause":
             if keycode == self.control.key_A:
-                print("PAUSE:OPTION:SELECTED")
+                current_option = self.gameStateManager.getStateMachine("pause").pointer
+
+                # if current_option == "continue": # WIP: ADD logic
+                #     self.controller.current_state.current_pause_menu_option_selected = "main"
+                #     self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_START)
+                    
+
+                self.controller.current_state.current_pause_menu_option_selected = current_option
+            if keycode == self.control.key_A:
+                current_option = self.gameStateManager.getStateMachine("pause").pointer
+                self.controller.current_state.current_pause_menu_option_selected = current_option
             if keycode == self.control.key_UP:
                 self.gameStateManager.getStateMachine("pause").mouvePointer(self.control.key_UP)
             if keycode == self.control.key_DOWN:

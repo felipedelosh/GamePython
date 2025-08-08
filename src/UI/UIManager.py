@@ -23,3 +23,6 @@ class UIManager:
 
     def showPauseGame(self):
         self.renderer.render_game_pause()
+
+    def render_game_pause_player_menu(self):
+        self.renderer.render_game_pause_player_menu()

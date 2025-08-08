@@ -70,7 +70,7 @@ class Controller:
         }
         self.change_state("intro")
         self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
-        self.inputHandler = InputHandler(self.player, self.control, self.gameStateManager)
+        self.inputHandler = InputHandler(self.player, self.control, self.gameStateManager, self)
         # World
         self.world = World(self.config)
         self.world.load_map("assets/world/test.json")

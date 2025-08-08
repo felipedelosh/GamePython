@@ -122,7 +122,7 @@ class TkinterRenderer(IUIRenderer):
             _y = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][1]
             self.render_circle(_x, _y, 10, "red", "gamePause:currentOption")
             
-    def render_game_pause_player_menu(self):
+    def render_game_pause_player_menu(self): # WIP
         # ADD Resorces optimitation <if self.gamePauseOptionsAndCoors["bla bla bla..."]>
         self._delete_no_game_items()
 

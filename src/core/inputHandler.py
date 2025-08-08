@@ -61,6 +61,8 @@ class InputHandler:
                 print("R")
 
         elif _pivot == "gamePause":
+            if keycode == self.control.key_A:
+                print("PAUSE:OPTION:SELECTED")
             if keycode == self.control.key_UP:
                 self.gameStateManager.getStateMachine("pause").mouvePointer(self.control.key_UP)
             if keycode == self.control.key_DOWN:

@@ -24,6 +24,7 @@ from tkinter import PhotoImage
 from src.entities.player import Player
 from src.entities.world import World
 # SYSTEMS
+from src.systems.timeSystem import TimeSystem
 from src.systems.movementSystem import MovementSystem
 from src.systems.collisionSystem import CollisionSystem
 from src.systems.statisticsSystem import StatisticsSystem
@@ -77,10 +78,12 @@ class Controller:
         self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.FPS, self.config, self.gameStateManager, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         # Systems
+        self.timeSystem = TimeSystem(time_scale=60)
         self.movementSystem = MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
         self.collisionSystem = CollisionSystem(self.player, self.world)
         self.statisticsSystem = StatisticsSystem(self.config)
         self.systems = [
+            self.timeSystem,
             self.movementSystem,
             self.collisionSystem,
             self.statisticsSystem

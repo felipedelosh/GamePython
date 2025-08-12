@@ -97,6 +97,20 @@ Combate: (Estilo, profundidad, recursos)
 Progresión: (Niveles, habilidades, árboles de skill)
 Economía: (Monedas, crafting, tiendas)
 
+## 💰 Moned Labros Chronos Servitia (LCS)
+
+El valor no se mide únicamente en metales preciosos o bienes materiales, sino en la más escasa de todas las riquezas: el tiempo de servicio prestado.
+
+Labros → El trabajo y esfuerzo manual o intelectual invertido.
+Chronos → El tiempo vital que cada individuo dedica.
+Servitia → Los servicios y obligaciones cumplidos en favor de otros.
+
+Cada LCS representa una unidad estandarizada de tiempo de servicio registrado en los archivos del Gremio Central, garantizando que su valor no fluctúe por caprichos de nobles o mercaderes, sino por la constancia y dedicación de los ciudadanos.
+
+En las antiguas ciudades estado, el pago en LCS era tanto un reconocimiento de mérito como una promesa de intercambio justo. Incluso hoy, las transacciones con LCS llevan implícito un sentido de honor: quien recibe estas monedas acepta el legado de horas, sudor y compromiso que representan.
+
+El emblema oficial de la moneda muestra un reloj de arena custodiado por dos manos entrelazadas, símbolo de que el tiempo y el servicio son indivisibles. Su lema, grabado en cada pieza, reza: "Tempus Laborem Servitium" — “Tiempo Trabajo de Servicio”.
+
 ## 🎨 Estilo Visual
 
 🖌️ Fotografias.

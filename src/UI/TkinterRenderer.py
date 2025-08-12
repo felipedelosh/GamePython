@@ -5,6 +5,11 @@ FelipedelosH
 from src.UI.IUIRenderer import IUIRenderer
 import tkinter as tk
 
+from src.ecs.components import (
+    IdentityComponent,
+    HealthComponent
+)
+
 class TkinterRenderer(IUIRenderer):
     def __init__(self, canvas: tk.Canvas, imgIntro, FPS, configuration, gameStateManager, player, world):
         self.canvas = canvas
@@ -13,6 +18,8 @@ class TkinterRenderer(IUIRenderer):
         self.configuration = configuration
         self.gameStateManager = gameStateManager
         self.player = player
+        self.identity = self.player.get_component(IdentityComponent)
+        self.health = self.player.get_component(HealthComponent)
         self.world = world
         self.IdTempWorldToPaint = ""
         self.IdTempPlayerToPaint = ""
@@ -134,9 +141,9 @@ class TkinterRenderer(IUIRenderer):
 
         self.render_rectangle(panel_x1, panel_y1, panel_x2, panel_y2, fill="snow", tag="gamePause:player")
 
-        player_name = "Crazy"
-        level = 1
-        hp = "320/320"
+        player_name = self.identity.name
+        level = self.identity.level
+        hp = f"{self.health.hp}/{self.health.hp_max}"
         mp = "80/80"
         stats = {
             "STR": 10, "CON": 12, "INT": 11, "LCK": 9,

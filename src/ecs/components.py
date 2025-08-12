@@ -1,6 +1,20 @@
 from src.ecs.component import Component
 from src.entities.statistics import Statistics
 
+
+class IdentityComponent(Component):
+    def __init__(self, name, gender, age, species, level):
+        self.name = name
+        self.gender = gender
+        self.age = age
+        self.species = species
+        self.level = level
+
+class HealthComponent(Component):
+    def __init__(self, hp, hp_max):
+        self.hp = hp
+        self.hp_max = hp_max
+
 class StatisticsComponent(Component):
     def __init__(self, stats=None):
         if isinstance(stats, dict):

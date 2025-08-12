@@ -15,6 +15,7 @@ STAT_LIMITS = {
     "physical_health": (0, 100),
     "social_skills": (0, 100),
     "job_performance": (0, 100),
+    "velocity": (1, 100)
 }
 
 class Statistics:

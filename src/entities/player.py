@@ -1,6 +1,8 @@
 from src.ecs.entity import Entity
 from src.core.assetManager import AssetManager
 from src.ecs.components import (
+    IdentityComponent,
+    HealthComponent,
     PositionComponent,
     SizeComponent,
     VelocityComponent,
@@ -15,6 +17,13 @@ class Player(Entity):
     def __init__(self, config):
         super().__init__()
         assetManager = AssetManager.get_instance()
+        self.add_component(IdentityComponent(
+            config.get("playerName"),
+            config.get("playerGender"),
+            config.get("playerAge"),
+            config.get("playerSpecies"),
+            config.get("playerLevel")
+        ))
         self.add_component(PositionComponent(config.get("displayW")/4,config.get("displayH")/4))
         self.add_component(SizeComponent(config.get("player_w"),config.get("player_h")))
         self.add_component(VelocityComponent(int(config.get("playerVelocity"))))

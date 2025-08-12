@@ -7,7 +7,8 @@ import tkinter as tk
 
 from src.ecs.components import (
     IdentityComponent,
-    HealthComponent
+    HealthComponent,
+    CurrencyComponent
 )
 
 class TkinterRenderer(IUIRenderer):
@@ -20,6 +21,7 @@ class TkinterRenderer(IUIRenderer):
         self.player = player
         self.identity = self.player.get_component(IdentityComponent)
         self.health = self.player.get_component(HealthComponent)
+        self.currency = self.player.get_component(CurrencyComponent)
         self.world = world
         self.IdTempWorldToPaint = ""
         self.IdTempPlayerToPaint = ""
@@ -149,7 +151,7 @@ class TkinterRenderer(IUIRenderer):
             "STR": 10, "CON": 12, "INT": 11, "LCK": 9,
             "ATT": 29, "DEF": 6
         }
-        gold = 10
+        LCS = self.currency
         playtime = "00:01:03"
         exp = 21
         next_exp = 63
@@ -165,7 +167,7 @@ class TkinterRenderer(IUIRenderer):
             self.render_text(panel_x1 + 50, panel_y1 + offset_y, f"{stat}: {value}", tag="gamePause:player")
             offset_y += 20
 
-        self.render_text(panel_x1 + 200, panel_y1 + 20, f"GOLD: {gold}", tag="gamePause:player")
+        self.render_text(panel_x1 + 200, panel_y1 + 20, f"{LCS}", tag="gamePause:player")
         self.render_text(panel_x1 + 200, panel_y1 + 40, f"TIME: {playtime}", tag="gamePause:player")
 
         self.render_text(panel_x1 + 50, panel_y2 - 40, f"EXP: {exp}", tag="gamePause:player")

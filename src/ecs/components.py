@@ -24,6 +24,21 @@ class StatisticsComponent(Component):
         else:
             self.statistics = Statistics()
 
+class CurrencyComponent(Component):
+    def __init__(self, amount=0):
+        self.amount = max(0, amount)
+
+    def add(self, value):
+        if value > 0:
+            self.amount += value
+
+    def subtract(self, value):
+        if value > 0:
+            self.amount = max(0, self.amount - value)
+
+    def __str__(self):
+        return f"${self.amount} LCS"
+
 class PositionComponent(Component):
     def __init__(self, x=0, y=0):
         self.x = x

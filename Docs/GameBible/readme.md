@@ -97,7 +97,7 @@ Combate: (Estilo, profundidad, recursos)
 Progresión: (Niveles, habilidades, árboles de skill)
 Economía: (Monedas, crafting, tiendas)
 
-## 💰 Moned Labros Chronos Servitia (LCS)
+## 💰 Moneda: Labros Chronos Servitia (LCS)
 
 El valor no se mide únicamente en metales preciosos o bienes materiales, sino en la más escasa de todas las riquezas: el tiempo de servicio prestado.
 

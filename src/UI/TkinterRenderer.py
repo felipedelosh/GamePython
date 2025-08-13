@@ -37,7 +37,7 @@ class TkinterRenderer(IUIRenderer):
         # VARS
         self.gamePauseOptionsAndCoors = {}
         self._defineGamePauseMenuElements()
-        self._defineGamePausePlayerElements()
+        self._defineGamePausePlayerMenuElements()
 
     def render_image(self, image, x, y, anchor="nw", tag=None):
         return self.canvas.create_image(x, y, image=image, anchor=anchor, tag=tag)
@@ -147,35 +147,37 @@ class TkinterRenderer(IUIRenderer):
             self.render_circle(_x, _y, 10, "red", "gamePause:currentOption")
             
     def render_game_pause_player_menu(self): # WIP
-        # ADD Resorces optimitation <if self.gamePauseOptionsAndCoors["bla bla bla..."]>
-        self._delete_no_game_items()
-        self.render_rectangle(
-            self.gamePauseOptionsAndCoors["playerPanelCoords"][0],
-            self.gamePauseOptionsAndCoors["playerPanelCoords"][1],
-            self.gamePauseOptionsAndCoors["playerPanelCoords"][2],
-            self.gamePauseOptionsAndCoors["playerPanelCoords"][3],
-            fill="snow",
-            tag="gamePause:player"
-        )
-        self.render_text(self.gamePauseOptionsAndCoors["playerNameCoords"][0], self.gamePauseOptionsAndCoors["playerNameCoords"][1], self.gamePauseOptionsAndCoors["playerName"], tag="gamePause:player")
-        self.render_rectangle(
-            self.gamePauseOptionsAndCoors["playerAvatarCoords"][0],
-            self.gamePauseOptionsAndCoors["playerAvatarCoords"][1],
-            self.gamePauseOptionsAndCoors["playerAvatarCoords"][2],
-            self.gamePauseOptionsAndCoors["playerAvatarCoords"][3],
-            "blue",
-            "gamePause:player"
-        )
-        self.render_text(self.gamePauseOptionsAndCoors["playerHPCoords"][0], self.gamePauseOptionsAndCoors["playerHPCoords"][1], f"HP: {self.health.hp}/{self.health.hp_max}", tag="gamePause:player")
-        self.render_progress_bar(
-            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][0],
-            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][1],
-            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][2],
-            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][3],
-            self.health.hp/self.health.hp_max,
-            "gamePause:player"
-        )
-        self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
+        if self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"]:
+            self._delete_no_game_items()
+            self.render_rectangle(
+                self.gamePauseOptionsAndCoors["playerPanelCoords"][0],
+                self.gamePauseOptionsAndCoors["playerPanelCoords"][1],
+                self.gamePauseOptionsAndCoors["playerPanelCoords"][2],
+                self.gamePauseOptionsAndCoors["playerPanelCoords"][3],
+                fill="snow",
+                tag="gamePause:player"
+            )
+            self.render_text(self.gamePauseOptionsAndCoors["playerNameCoords"][0], self.gamePauseOptionsAndCoors["playerNameCoords"][1], self.gamePauseOptionsAndCoors["playerName"], tag="gamePause:player")
+            self.render_rectangle(
+                self.gamePauseOptionsAndCoors["playerAvatarCoords"][0],
+                self.gamePauseOptionsAndCoors["playerAvatarCoords"][1],
+                self.gamePauseOptionsAndCoors["playerAvatarCoords"][2],
+                self.gamePauseOptionsAndCoors["playerAvatarCoords"][3],
+                "blue",
+                "gamePause:player"
+            )
+            self.render_text(self.gamePauseOptionsAndCoors["playerHPCoords"][0], self.gamePauseOptionsAndCoors["playerHPCoords"][1], f"HP: {self.health.hp}/{self.health.hp_max}", tag="gamePause:player")
+            self.render_progress_bar(
+                self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][0],
+                self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][1],
+                self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][2],
+                self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][3],
+                self.health.hp/self.health.hp_max,
+                "gamePause:player"
+            )
+            self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
+
+            self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = False
 
 
     def render_floor(self):
@@ -218,7 +220,7 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["items"] = ["ERROR"]
 
 
-    def _defineGamePausePlayerElements(self):
+    def _defineGamePausePlayerMenuElements(self):
         try:
             _x = int(self.configuration.get("displayW"))
             _y = int(self.configuration.get("displayH"))
@@ -229,12 +231,17 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["playerHPCoords"] = [_x * 0.42, _y * 0.2]
             self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"] = [_x * 0.49, _y * 0.19, _x * 0.76, _y * 0.21]
             self.gamePauseOptionsAndCoors["playerCurrencyCoords"] = [_x * 0.41, _y * 0.24]
+
+            self._updates_game_pause_player_menu_info()
         except:
             self.gamePauseOptionsAndCoors["playerName"] = "ERROR"
             self.gamePauseOptionsAndCoors["playerPanelCoords"] = [128, 48, 512, 432]
 
     def _reset_game_pause_menu(self):
         self.gamePauseOptionsAndCoors["currentOption"] = ""
+
+    def _updates_game_pause_player_menu_info(self):
+        self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = True
     
     def _delete_no_game_items(self):
         self._clear_by_tag("intro")

@@ -24,7 +24,6 @@ class TkinterRenderer(IUIRenderer):
         self.currency = self.player.get_component(CurrencyComponent)
         self.world = world
         self.IdTempWorldToPaint = ""
-        self.IdTempPlayerToPaint = ""
         self.currentSpriteDisplayed = 0
         self.animating = False
         self.animatingCounter = 0
@@ -80,13 +79,9 @@ class TkinterRenderer(IUIRenderer):
         sprite_x, sprite_y, w, h = self.sprites[self.currentSpriteDisplayed]
         _player_img = self.player.getPlayerSprite()
         _x, _y = self.player.getSpriteRenderCoords()
-        IdTempPlayerToPaint = f"{sprite_x}:{sprite_y}:{_player_img}"
         sprite_img = tk.PhotoImage()
         sprite_img.tk.call(sprite_img, 'copy', _player_img, '-from', sprite_x, sprite_y, sprite_x+w, sprite_y+h, '-to', 0, 0)
-        if IdTempPlayerToPaint != self.IdTempWorldToPaint:
-            self.IdTempPlayerToPaint = IdTempPlayerToPaint
-            self._clear_by_tag("player")
-
+        self._clear_by_tag("player")
         self.render_image(sprite_img, _x, _y, anchor="nw", tag="player")
         self.render_circle(self.player.x, self.player.y, 5, "green", "player")
         
@@ -177,6 +172,7 @@ class TkinterRenderer(IUIRenderer):
             )
             self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
 
+            # END TO RENDER PLAYER INFORMATION
             self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = False
 
 

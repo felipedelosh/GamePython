@@ -2,12 +2,12 @@ FelipedelosH
 
 Problema: Se necesita que cuando el jugador entre a el menú de pausa este dispoble player que es donde se muestran los aspectos relevantes del jugador:
 
-Nombre del jugador.
-Nivel.
 Avatar/icono.
+Nombre del jugador.
 Puntos de vida  (HP).
-Edad.
 Dinero.
+Nivel.
+Edad.
 Ataque/Defensa.
 Otras estadísticas.
 ...

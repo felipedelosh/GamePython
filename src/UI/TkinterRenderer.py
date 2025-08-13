@@ -61,10 +61,12 @@ class TkinterRenderer(IUIRenderer):
         elif percent >= 0.5:
              _color = "green"
 
-        if percent == 0 or percent >= 1: 
+        if percent == 0:
+            self.canvas.create_rectangle(x1, y1, x2, y2, fill="black", tag=tag)
+        elif percent >= 1:
             self.canvas.create_rectangle(x1, y1, x2, y2, fill=_color, tag=tag)
         else:
-            x2 = x2 * percent
+            x2 = x1 + (x2 - x1) * percent
             self.canvas.create_rectangle(x1, y1, x2, y2, fill=_color, tag=tag)
         
     
@@ -161,6 +163,7 @@ class TkinterRenderer(IUIRenderer):
                 "blue",
                 "gamePause:player"
             )
+            self.render_text(self.gamePauseOptionsAndCoors["playerLevelCoords"][0], self.gamePauseOptionsAndCoors["playerLevelCoords"][1], f"Level: {0}", tag="gamePause:player")
             self.render_text(self.gamePauseOptionsAndCoors["playerHPCoords"][0], self.gamePauseOptionsAndCoors["playerHPCoords"][1], f"HP: {self.health.hp}/{self.health.hp_max}", tag="gamePause:player")
             self.render_progress_bar(
                 self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][0],
@@ -224,6 +227,7 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["playerName"] = f"{self.identity.first_name} {self.identity.second_name} {self.identity.family_name} {self.identity.second_family_name}"
             self.gamePauseOptionsAndCoors["playerNameCoords"] = [_x * 0.48, _y * 0.14]
             self.gamePauseOptionsAndCoors["playerAvatarCoords"] = [_x * 0.23, _y * 0.13, _x * 0.35, _y * 0.35]
+            self.gamePauseOptionsAndCoors["playerLevelCoords"] = [_x * 0.29, _y * 0.38]
             self.gamePauseOptionsAndCoors["playerHPCoords"] = [_x * 0.42, _y * 0.2]
             self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"] = [_x * 0.49, _y * 0.19, _x * 0.76, _y * 0.21]
             self.gamePauseOptionsAndCoors["playerCurrencyCoords"] = [_x * 0.41, _y * 0.24]

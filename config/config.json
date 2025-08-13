@@ -18,7 +18,7 @@
   "playerVelocity": 5,
   "playerSpecies": "Human",
   "playerLevel": 1,
-  "playerHP": 100,
+  "playerHP": 80,
   "playerMaxHP": 100,
   "LCS": 0,
   "player_look_up": "player_look_up.png",

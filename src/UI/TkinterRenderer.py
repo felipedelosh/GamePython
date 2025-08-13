@@ -54,6 +54,21 @@ class TkinterRenderer(IUIRenderer):
     def render_text(self, x, y, text, tag=None):
         return self.canvas.create_text(x, y, text=text, tag=tag)
     
+    def render_progress_bar(self, x1, y1, x2, y2, percent, tag=""):
+        _baseColor = "blue"
+        self.canvas.create_rectangle(x1, y1, x2, y2, fill=_baseColor, tag=tag)
+        if percent < 0.5:
+            _color = "red"
+        elif percent >= 0.5:
+             _color = "green"
+
+        if percent == 0 or percent >= 1: 
+            self.canvas.create_rectangle(x1, y1, x2, y2, fill=_color, tag=tag)
+        else:
+            x2 = x2 * percent
+            self.canvas.create_rectangle(x1, y1, x2, y2, fill=_color, tag=tag)
+        
+    
     def render_player(self):
         # WIP: NEEDs Optimization
         if self.animatingCounter > 1000:
@@ -99,7 +114,6 @@ class TkinterRenderer(IUIRenderer):
         self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
         self.render_text(_x, _y, text=_text, tag="mainMenu")
 
-
     def render_game_intro(self):
         try:
             _x = int(self.canvas['width']) * 0.2
@@ -144,6 +158,24 @@ class TkinterRenderer(IUIRenderer):
             tag="gamePause:player"
         )
         self.render_text(self.gamePauseOptionsAndCoors["playerNameCoords"][0], self.gamePauseOptionsAndCoors["playerNameCoords"][1], self.gamePauseOptionsAndCoors["playerName"], tag="gamePause:player")
+        self.render_rectangle(
+            self.gamePauseOptionsAndCoors["playerAvatarCoords"][0],
+            self.gamePauseOptionsAndCoors["playerAvatarCoords"][1],
+            self.gamePauseOptionsAndCoors["playerAvatarCoords"][2],
+            self.gamePauseOptionsAndCoors["playerAvatarCoords"][3],
+            "blue",
+            "gamePause:player"
+        )
+        self.render_text(self.gamePauseOptionsAndCoors["playerHPCoords"][0], self.gamePauseOptionsAndCoors["playerHPCoords"][1], f"HP: {self.health.hp}/{self.health.hp_max}", tag="gamePause:player")
+        self.render_progress_bar(
+            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][0],
+            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][1],
+            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][2],
+            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][3],
+            self.health.hp/self.health.hp_max,
+            "gamePause:player"
+        )
+        self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
 
 
     def render_floor(self):
@@ -192,8 +224,11 @@ class TkinterRenderer(IUIRenderer):
             _y = int(self.configuration.get("displayH"))
             self.gamePauseOptionsAndCoors["playerPanelCoords"] = [_x * 0.2, _y * 0.1, _x * 0.8, _y * 0.9]
             self.gamePauseOptionsAndCoors["playerName"] = f"{self.identity.first_name} {self.identity.second_name} {self.identity.family_name} {self.identity.second_family_name}"
-            print(self.gamePauseOptionsAndCoors["playerName"])
-            self.gamePauseOptionsAndCoors["playerNameCoords"] = [_x * 0.48, _y * 0.18]
+            self.gamePauseOptionsAndCoors["playerNameCoords"] = [_x * 0.48, _y * 0.14]
+            self.gamePauseOptionsAndCoors["playerAvatarCoords"] = [_x * 0.23, _y * 0.13, _x * 0.35, _y * 0.35]
+            self.gamePauseOptionsAndCoors["playerHPCoords"] = [_x * 0.42, _y * 0.2]
+            self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"] = [_x * 0.49, _y * 0.19, _x * 0.76, _y * 0.21]
+            self.gamePauseOptionsAndCoors["playerCurrencyCoords"] = [_x * 0.41, _y * 0.24]
         except:
             self.gamePauseOptionsAndCoors["playerName"] = "ERROR"
             self.gamePauseOptionsAndCoors["playerPanelCoords"] = [128, 48, 512, 432]

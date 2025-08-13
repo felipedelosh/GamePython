@@ -25,6 +25,14 @@ Para ello se creo: "src\core\gameState.py" la cual resuelve:
 5. Definir la lógica del nuevo contrato en el src\UI\TkinterRenderer.py
 -- en la opción es donde se pintará la ventana de estadisticas.
 
+Para la optimización de recursos del renderer:
+
+* precomputar todos los elementos al momento del inicio del programa.
+        src\UI\TkinterRenderer.py
+
+        self.gamePauseOptionsAndCoors = {}
+        self._defineGamePausePlayerMenuElements()
+
 Dependencias:
 
 * src\core\controller.py

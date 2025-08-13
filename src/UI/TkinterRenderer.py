@@ -103,7 +103,6 @@ class TkinterRenderer(IUIRenderer):
             _x = 200
             _y = 200
             _text = "ERROR"
-
         
         self._delete_no_game_items()
         self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
@@ -174,6 +173,10 @@ class TkinterRenderer(IUIRenderer):
                 "gamePause:player"
             )
             self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
+            
+            _STATITICS = "Estadisticas:\n"
+            _STATITICS = _STATITICS + f"ATK: {0} DEF: {0}"
+            self.render_text(self.gamePauseOptionsAndCoors["playerStatiticsCoords"][0], self.gamePauseOptionsAndCoors["playerStatiticsCoords"][1], _STATITICS, tag="gamePause:player")
 
             # END TO RENDER PLAYER INFORMATION
             self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = False
@@ -231,6 +234,7 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["playerHPCoords"] = [_x * 0.42, _y * 0.2]
             self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"] = [_x * 0.49, _y * 0.19, _x * 0.76, _y * 0.21]
             self.gamePauseOptionsAndCoors["playerCurrencyCoords"] = [_x * 0.41, _y * 0.24]
+            self.gamePauseOptionsAndCoors["playerStatiticsCoords"] = [_x * 0.27, _y * 0.46]
 
             self._updates_game_pause_player_menu_info()
         except:

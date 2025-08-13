@@ -19,7 +19,11 @@ class Player(Entity):
         super().__init__()
         assetManager = AssetManager.get_instance()
         self.add_component(IdentityComponent(
-            config.get("playerName"),
+            config.get("playerNickname"),
+            config.get("playerFirstName"),
+            config.get("playerSecondName"),
+            config.get("playerFamilyName"),
+            config.get("playerSecondFamilyName"),
             config.get("playerGender"),
             config.get("playerAge"),
             config.get("playerSpecies"),

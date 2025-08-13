@@ -14,7 +14,7 @@ class GameConfig:
     def load(self, config_path: str) -> None:
         # LOAD CONFIG FILE
         try:
-            with open(config_path, 'r') as f:
+            with open(config_path, 'r', encoding='utf-8') as f:
                 self._config = json.load(f)
         except:
             self._config = self._default_config.copy()

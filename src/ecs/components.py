@@ -3,8 +3,12 @@ from src.entities.statistics import Statistics
 
 
 class IdentityComponent(Component):
-    def __init__(self, name, gender, age, species, level):
-        self.name = name
+    def __init__(self, nick_name, first_name, second_name, family_name, second_family_name, gender, age, species, level):
+        self.nick_name = nick_name
+        self.first_name = first_name
+        self.second_name = second_name
+        self.family_name = family_name
+        self.second_family_name = second_family_name
         self.gender = gender
         self.age = age
         self.species = species

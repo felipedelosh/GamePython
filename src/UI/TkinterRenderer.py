@@ -37,6 +37,7 @@ class TkinterRenderer(IUIRenderer):
         # VARS
         self.gamePauseOptionsAndCoors = {}
         self._defineGamePauseMenuElements()
+        self._defineGamePausePlayerElements()
 
     def render_image(self, image, x, y, anchor="nw", tag=None):
         return self.canvas.create_image(x, y, image=image, anchor=anchor, tag=tag)
@@ -134,44 +135,16 @@ class TkinterRenderer(IUIRenderer):
     def render_game_pause_player_menu(self): # WIP
         # ADD Resorces optimitation <if self.gamePauseOptionsAndCoors["bla bla bla..."]>
         self._delete_no_game_items()
+        self.render_rectangle(
+            self.gamePauseOptionsAndCoors["playerPanelCoords"][0],
+            self.gamePauseOptionsAndCoors["playerPanelCoords"][1],
+            self.gamePauseOptionsAndCoors["playerPanelCoords"][2],
+            self.gamePauseOptionsAndCoors["playerPanelCoords"][3],
+            fill="snow",
+            tag="gamePause:player"
+        )
+        self.render_text(self.gamePauseOptionsAndCoors["playerNameCoords"][0], self.gamePauseOptionsAndCoors["playerNameCoords"][1], self.gamePauseOptionsAndCoors["playerName"], tag="gamePause:player")
 
-        _x = int(self.configuration.get("displayW"))
-        _y = int(self.configuration.get("displayH"))
-
-        panel_x1, panel_y1 = _x * 0.2, _y * 0.1
-        panel_x2, panel_y2 = _x * 0.8, _y * 0.9
-
-        self.render_rectangle(panel_x1, panel_y1, panel_x2, panel_y2, fill="snow", tag="gamePause:player")
-
-        player_name = self.identity.name
-        level = self.identity.level
-        hp = f"{self.health.hp}/{self.health.hp_max}"
-        mp = "80/80"
-        stats = {
-            "STR": 10, "CON": 12, "INT": 11, "LCK": 9,
-            "ATT": 29, "DEF": 6
-        }
-        LCS = self.currency
-        playtime = "00:01:03"
-        exp = 21
-        next_exp = 63
-
-        self.render_text(panel_x1 + 50, panel_y1 + 20, f"{player_name}", tag="gamePause:player")
-        self.render_text(panel_x1 + 50, panel_y1 + 40, f"Lv. {level}", tag="gamePause:player")
-
-        self.render_text(panel_x1 + 50, panel_y1 + 70, f"HP: {hp}", tag="gamePause:player")
-        self.render_text(panel_x1 + 50, panel_y1 + 90, f"MP: {mp}", tag="gamePause:player")
-
-        offset_y = 120
-        for stat, value in stats.items():
-            self.render_text(panel_x1 + 50, panel_y1 + offset_y, f"{stat}: {value}", tag="gamePause:player")
-            offset_y += 20
-
-        self.render_text(panel_x1 + 200, panel_y1 + 20, f"{LCS}", tag="gamePause:player")
-        self.render_text(panel_x1 + 200, panel_y1 + 40, f"TIME: {playtime}", tag="gamePause:player")
-
-        self.render_text(panel_x1 + 50, panel_y2 - 40, f"EXP: {exp}", tag="gamePause:player")
-        self.render_text(panel_x1 + 150, panel_y2 - 40, f"NEXT: {next_exp}", tag="gamePause:player")
 
     def render_floor(self):
         # WIP: currently only render collider
@@ -211,6 +184,19 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["title"] = "ERROR"
             self.gamePauseOptionsAndCoors["menuCoords"] = [320, 0, 480, 640]
             self.gamePauseOptionsAndCoors["items"] = ["ERROR"]
+
+
+    def _defineGamePausePlayerElements(self):
+        try:
+            _x = int(self.configuration.get("displayW"))
+            _y = int(self.configuration.get("displayH"))
+            self.gamePauseOptionsAndCoors["playerPanelCoords"] = [_x * 0.2, _y * 0.1, _x * 0.8, _y * 0.9]
+            self.gamePauseOptionsAndCoors["playerName"] = f"{self.identity.first_name} {self.identity.second_name} {self.identity.family_name} {self.identity.second_family_name}"
+            print(self.gamePauseOptionsAndCoors["playerName"])
+            self.gamePauseOptionsAndCoors["playerNameCoords"] = [_x * 0.48, _y * 0.18]
+        except:
+            self.gamePauseOptionsAndCoors["playerName"] = "ERROR"
+            self.gamePauseOptionsAndCoors["playerPanelCoords"] = [128, 48, 512, 432]
 
     def _reset_game_pause_menu(self):
         self.gamePauseOptionsAndCoors["currentOption"] = ""

@@ -27,7 +27,7 @@ my_game_project/
 ├── assets/          
 │   ├── images/
 │   ├── sounds/
-│   ├── music/
+│   ├── audio/
 │   └── fonts/
 │
 ├── config/ 

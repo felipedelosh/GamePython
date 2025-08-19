@@ -10,6 +10,7 @@ from src.ecs.components import (
     SpriteCoordsComponent,
     NextPositionComponent,
     StatisticsComponent,
+    SensesComponent,
     CurrencyComponent
 )
 
@@ -35,6 +36,7 @@ class Player(Entity):
         ))
         self.add_component(PositionComponent(config.get("displayW")/4,config.get("displayH")/4))
         self.add_component(SizeComponent(config.get("player_w"),config.get("player_h")))
+        self.add_component(SensesComponent(config.get("playerSenses")))
         self.add_component(StatisticsComponent(config.get("statistics")))
         stats = self.get_component(StatisticsComponent).statistics
         self.add_component(VelocityComponent(int(stats.velocity)))

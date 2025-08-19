@@ -28,6 +28,35 @@ class StatisticsComponent(Component):
         else:
             self.statistics = Statistics()
 
+class SensesComponent(Component):
+    def __init__(self, senses=None):
+        defaults = {
+            "vision": 1.0,
+            "hearing": 1.0,
+            "touch": 1.0,
+            "smell": 1.0,
+            "taste": 1.0,
+        }
+
+        data = {**defaults, **(senses if isinstance(senses, dict) else {})}
+
+        for key, default_val in defaults.items():
+            raw = data.get(key, default_val)
+            try:
+                val = float(raw)
+            except (TypeError, ValueError):
+                val = default_val
+            setattr(self, key, max(0.0, min(1.0, val)))
+
+    def get_json(self):
+        return {
+            "vision": self.vision,
+            "hearing": self.hearing,
+            "touch": self.touch,
+            "smell": self.smell,
+            "taste": self.taste,
+        }
+
 class CurrencyComponent(Component):
     def __init__(self, amount=0):
         self.amount = max(0, amount)

@@ -99,5 +99,8 @@
     "social_skills": 50,
     "job_performance": 20,
     "velocity": 2
+  },
+  "playerSenses":{
+    "vision": 1.0, "hearing": 1.0, "touch": 1.0, "smell": 1.0, "taste": 1.0
   }
 }

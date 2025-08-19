@@ -28,6 +28,7 @@ from src.systems.timeSystem import TimeSystem
 from src.systems.movementSystem import MovementSystem
 from src.systems.collisionSystem import CollisionSystem
 from src.systems.statisticsSystem import StatisticsSystem
+from src.systems.sensesSystem import SensesSystem
 
 
 class Controller:
@@ -82,16 +83,19 @@ class Controller:
         self.movementSystem = MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
         self.collisionSystem = CollisionSystem(self.player, self.world)
         self.statisticsSystem = StatisticsSystem(self.config)
+        self.sensesSystem = SensesSystem(self.config.get("playerSenses"))
         self.systems = [
             self.timeSystem,
             self.movementSystem,
             self.collisionSystem,
-            self.statisticsSystem
+            self.statisticsSystem,
+            self.sensesSystem
         ]
         # VARS
         self.intro_shown_time = 0
         self.logger.info("CONTROLLER::GAME::INIT")
-        self.logger.info(f"PLAYER::DATA::STARISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
+        self.logger.info(f"PLAYER::DATA::STATISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
+        self.logger.info(f"PLAYER::DATA::SENSES::{self.sensesSystem.get_stats_as_json(self.player)}")
 
 
     def change_state(self, new_state_name):

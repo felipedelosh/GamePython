@@ -9,3 +9,4 @@ D2|Sistema de Colisiones Optimizado|Crear un sistema optimizado para detectar co
 F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
 S1|Sistema de movimiento movementSystem.py|Centralización de la lógica de movimiento|🟢|SI
 G16|Pausar el juego|Que el juego se detenga y se muestre el menú de opciones.|🟢|SI
+G17|Pause opción JUGADOR|Mostrar el menú player cuando se pausa la partida.|🟢|SI

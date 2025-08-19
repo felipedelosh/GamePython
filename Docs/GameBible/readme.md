@@ -1,6 +1,6 @@
 # 🎮 Game Bible - [El Alto de las Viudas]
 
-*Última actualización: [2025-07-25]*
+*Última actualización: [2025-08-19]*
 
 ---
 
@@ -218,4 +218,5 @@ Compositores de referencia:
 
 - TAMAGOCHI.
 - GAMEBOY ADVANCE.
+- Dark Echo
 - 

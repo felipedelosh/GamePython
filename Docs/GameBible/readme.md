@@ -88,8 +88,96 @@ Momento 9: El ciclo se repite.
 
 ## 🎮 Mecánicas de Juego
 
-🕹️ Core Gameplay Loop
-Acción principal → 2. Recompensa → 3. Mejora → 4. Nueva acción
+## 👁️ Visión (0 - 1)
+
+vision < 0.30 → “Modo eco-oscuro”
+<br>
+La pantalla se vuelve negra (sin escena base) ,El mundo solo se “revela” con ondas provocadas por eventos sonoros.Ondas visibles: anillos que se expanden desde la fuente y pintan temporalmente el contorno de paredes/suelos/entidades.
+
+En este modo el juego cambia:
+* El sonido puede venir desde las pisadas, palamdas, fuentes de sonido... y las ondas son visibles.
+
+0.30 ≤ vision < 0.50 → “Visión borrosa”
+<br>
+El juego se vuelbe borroso y los objetos lejanos son solo manchas. Se soluciona con tener unos anteojos.
+
+
+vision ≥ 0.50 → “Visión normal”
+<br>
+Renderizado estandar.
+
+## 👂 Oido (0 - 1)
+
+hearing = 0.0 → Sordera
+<br>
+Lo unico que se escucha son los latidos internos, y pulsos breves al caminar o tocar objetos... pero solo si está cerca del juagdor.
+
+0.30 ≤ hearing < 0.5 → Hipoacusia severa / casi sordo
+<br>
+Sonidos muy apagados o inexistentes, se corrige con audifino.
+
+
+hearing ≥ 0.50 → Audición plena
+<br>
+Sonido normal.
+
+## ✋ Tacto (0 - 1)
+
+touch < 0.30 → “Torpeza motora severa”
+<br>
+El jugador pierde precisión en los controles:
+
+Movimientos con retardo o desviaciones aleatorias.
+
+Difícil interactuar con objetos pequeños (ej: acertar una palanca).
+
+0.30 ≤ touch < 0.50 → “Falta de sensibilidad”
+<br>
+El jugador siente menos retroalimentación:
+
+Las animaciones de golpe no muestran recoil claro.
+
+Posibilidad de recibir daño por fuego, pinchos o paredes con retraso en la percepción.
+
+touch ≥ 0.50 → “Tacto normal”
+<br>
+Movimiento y manipulación precisos.
+
+
+## 👅 Gusto (0 - 1)
+
+taste < 0.30 → “Sin gusto”
+<br>
+El jugador no detecta venenos o comidas dañadas, puede consumir objetos peligrosos sin advertencia.
+
+0.30 ≤ taste < 0.50 → “Gusto debilitado”
+<br>
+El jugador distingue sabores básicos pero confunde comidas en mal estado. Puede comer alimentos que reduzcan estadísticas sin saberlo.
+
+taste ≥ 0.50 → “Gusto normal”
+<br>
+Puede detectar comidas podridas o envenenadas antes de consumirlas.
+
+
+## 👃 Olfato (0 - 1)
+
+smell < 0.30 → “Sin olfato”
+<br>
+No percibe olores de peligro ni ventajas:
+
+No detecta trampas químicas o humo tóxico.
+
+No encuentra comida escondida.
+
+0.30 ≤ smell < 0.50 → “Olfato débil”
+<br>
+Percibe olores fuertes, pero pierde los más sutiles. Puede detectar fuego cercano pero no comida podrida.
+
+smell ≥ 0.50 → “Olfato normal”
+<br>
+Detecta peligros, rastros de enemigos y calidad de los alimentos.
+
+Nota: los sentidos se van disminuyendo respectivamente al envejecimiento del jugador.
 
 ## ⚙️ Sistemas Clave
 

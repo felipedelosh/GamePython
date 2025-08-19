@@ -69,9 +69,7 @@ class TkinterRenderer(IUIRenderer):
             x2 = x1 + (x2 - x1) * percent
             self.canvas.create_rectangle(x1, y1, x2, y2, fill=_color, tag=tag)
         
-    
     def render_player(self):
-        # WIP: NEEDs Optimization
         if self.animatingCounter > 1000:
             self.animatingCounter = 0
             self.currentSpriteDisplayed = self.currentSpriteDisplayed + 1
@@ -174,7 +172,7 @@ class TkinterRenderer(IUIRenderer):
             )
             self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
             
-            _STATITICS = "Estadisticas:\n"
+            _STATITICS = "Estadisticas:\n\n"
             _STATITICS = _STATITICS + f"ATK: {0} DEF: {0}"
             self.render_text(self.gamePauseOptionsAndCoors["playerStatiticsCoords"][0], self.gamePauseOptionsAndCoors["playerStatiticsCoords"][1], _STATITICS, tag="gamePause:player")
 

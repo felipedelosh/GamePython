@@ -15,7 +15,6 @@
   "playerSecondFamilyName": "",
   "playerGender":  "Male",
   "playerAge": 0,
-  "playerVelocity": 5,
   "playerSpecies": "Human",
   "playerLevel": 1,
   "playerHP": 80,
@@ -96,6 +95,7 @@
     "mental_health": 100,
     "physical_health": 100,
     "social_skills": 50,
-    "job_performance": 20
+    "job_performance": 20,
+    "velocity": 2
   }
 }

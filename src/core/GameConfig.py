@@ -80,7 +80,6 @@ class GameConfig:
             "intro_duration": 1500,
             "playerName": "Human",
             "playerAge": 0,
-            "playerVelocity": 5,
             "player_look_up": "player_look_up.png",
             "player_look_left": "player_look_left.png",
             "player_look_rigth": "player_look_rigth.png",

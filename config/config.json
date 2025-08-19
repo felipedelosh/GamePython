@@ -4,7 +4,7 @@
   "floorW":84,
   "floorH":48,
   "LAN": "ESP",
-  "FPS": 32,
+  "FPS": 60,
   "intro_duration": 200,
   "env": "dev",
   "logging": true,

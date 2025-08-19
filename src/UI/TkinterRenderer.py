@@ -175,7 +175,8 @@ class TkinterRenderer(IUIRenderer):
             self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
             
             _STATITICS = "Estadisticas:\n\n"
-            _STATITICS = _STATITICS + f"ATK: {self.stats.statistics.get_attr('attack')} DEF: {self.stats.statistics.get_attr('defense')}"
+            _STATITICS = _STATITICS + f"ATTACK: {self.stats.statistics.get_attr('attack')} DEFENSE: {self.stats.statistics.get_attr('defense')} INTELLIGENCE: {self.stats.statistics.get_attr('intelligence')}\n"
+            #_STATITICS = _STATITICS + f"INTELLIGENCE: {self.stats.statistics.get_attr('intelligence')}\n"
             self.render_text(self.gamePauseOptionsAndCoors["playerStatiticsCoords"][0], self.gamePauseOptionsAndCoors["playerStatiticsCoords"][1], _STATITICS, tag="gamePause:player")
 
             # END TO RENDER PLAYER INFORMATION
@@ -234,7 +235,7 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["playerHPCoords"] = [_x * 0.42, _y * 0.2]
             self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"] = [_x * 0.49, _y * 0.19, _x * 0.76, _y * 0.21]
             self.gamePauseOptionsAndCoors["playerCurrencyCoords"] = [_x * 0.41, _y * 0.24]
-            self.gamePauseOptionsAndCoors["playerStatiticsCoords"] = [_x * 0.27, _y * 0.46]
+            self.gamePauseOptionsAndCoors["playerStatiticsCoords"] = [_x * 0.40, _y * 0.52]
 
             self._updates_game_pause_player_menu_info()
         except:

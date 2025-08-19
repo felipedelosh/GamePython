@@ -11,7 +11,7 @@ STAT_LIMITS = {
     "defense": (1, 100),
     "energy": (0, 100),
     "hunger": (0, 100),
-    "intelligence": (0, 200),
+    "intelligence": (70, 220),
     "strength": (0, 150),
     "mental_health": (0, 100),
     "physical_health": (0, 100),

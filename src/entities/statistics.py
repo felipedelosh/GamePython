@@ -6,7 +6,9 @@ Attribs
 import random
 
 STAT_LIMITS = {
-    "time": (0, None),  
+    "time": (0, None),
+    "attack": (1, 100),
+    "defense": (1, 100),
     "energy": (0, 100),
     "hunger": (0, 100),
     "intelligence": (0, 200),
@@ -29,6 +31,12 @@ class Statistics:
             else:
                 value = low
             setattr(self, stat, value)
+
+    def get_attr(self, stat_name):
+        if not hasattr(self, stat_name):
+            return None
+        
+        return getattr(self, stat_name)
 
     def update_stat(self, stat_name, value, mode="add"):
         if not hasattr(self, stat_name):

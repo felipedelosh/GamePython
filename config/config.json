@@ -87,7 +87,9 @@
     }
   },
   "statistics":{
-    "time": 0,  
+    "time": 0,
+    "attack": 1,
+    "defense": 1,
     "energy": 50,
     "hunger": 50,
     "intelligence": 90,

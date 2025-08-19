@@ -8,6 +8,7 @@ import tkinter as tk
 from src.ecs.components import (
     IdentityComponent,
     HealthComponent,
+    StatisticsComponent,
     CurrencyComponent
 )
 
@@ -22,6 +23,7 @@ class TkinterRenderer(IUIRenderer):
         self.identity = self.player.get_component(IdentityComponent)
         self.health = self.player.get_component(HealthComponent)
         self.currency = self.player.get_component(CurrencyComponent)
+        self.stats = self.player.get_component(StatisticsComponent)
         self.world = world
         self.IdTempWorldToPaint = ""
         self.currentSpriteDisplayed = 0
@@ -173,7 +175,7 @@ class TkinterRenderer(IUIRenderer):
             self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
             
             _STATITICS = "Estadisticas:\n\n"
-            _STATITICS = _STATITICS + f"ATK: {0} DEF: {0}"
+            _STATITICS = _STATITICS + f"ATK: {self.stats.statistics.get_attr('attack')} DEF: {self.stats.statistics.get_attr('defense')}"
             self.render_text(self.gamePauseOptionsAndCoors["playerStatiticsCoords"][0], self.gamePauseOptionsAndCoors["playerStatiticsCoords"][1], _STATITICS, tag="gamePause:player")
 
             # END TO RENDER PLAYER INFORMATION

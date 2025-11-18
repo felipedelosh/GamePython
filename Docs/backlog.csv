@@ -1,4 +1,5 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
+A4|Velocidad del juego no debe depender de FPS|Actualmente la relentización del tiempo depende de los FPS y no de un Dt|🔴|NO
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO

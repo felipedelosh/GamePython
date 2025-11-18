@@ -218,5 +218,9 @@ Compositores de referencia:
 
 - TAMAGOCHI.
 - GAMEBOY ADVANCE.
-- Dark Echo
+- Super Nintendo.
+- Metal Gear (NES).
+- Mario Bros (NES).
+- Zelda 2 (NES).
+- Dark Echo (PC).
 - 

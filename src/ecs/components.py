@@ -1,6 +1,12 @@
 from src.ecs.component import Component
 from src.entities.statistics import Statistics
 
+class BodyComponent(Component):
+    def __init__(self):
+        pass
+
+    def get_json(self):
+        return {}
 
 class IdentityComponent(Component):
     def __init__(self, nick_name, first_name, second_name, family_name, second_family_name, gender, age, species, level):

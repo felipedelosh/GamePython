@@ -1,0 +1,14 @@
+FelipedelosH
+
+Problema: El jugador necesita de un cuerpo... con un cerebro, corazón y pulmones.
+
+__________________________________________________________________________________________
+Para ello se creo: "RUTA/ARCHIVO" la cual resuelve:
+
+"Para que se creo"
+
+Dependencias:
+
+* src\ecs\components.py: Se necesita crear un componente que sirva de Contrato.
+* src\systems\bodySystem.py: Se nesecita crear una implementación del Contrato.
+* src\core\controller.py: Para asociar contrato/implementación con la ejecución.

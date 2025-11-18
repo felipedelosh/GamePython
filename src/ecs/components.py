@@ -1,13 +1,6 @@
 from src.ecs.component import Component
 from src.entities.statistics import Statistics
 
-class BodyComponent(Component):
-    def __init__(self):
-        pass
-
-    def get_json(self):
-        return {}
-
 class IdentityComponent(Component):
     def __init__(self, nick_name, first_name, second_name, family_name, second_family_name, gender, age, species, level):
         self.nick_name = nick_name
@@ -62,6 +55,22 @@ class SensesComponent(Component):
             "smell": self.smell,
             "taste": self.taste,
         }
+    
+class BrainComponent(Component):
+    def __init__(self, senses: SensesComponent | None = None):
+        self.senses = senses or SensesComponent()
+
+    def get_json(self):
+        return {
+            "senses": self.senses.get_json()
+        }
+
+class BodyComponent(Component):
+    def __init__(self, braintComponent: BrainComponent | None = None):
+        self.braintComponent = braintComponent
+
+    def get_json(self):
+        return {}
 
 class CurrencyComponent(Component):
     def __init__(self, amount=0):

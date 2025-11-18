@@ -15,7 +15,12 @@ class BodySystem(System):
         for entity in entities:
             if entity.has_components(BodyComponent):
                 body = entity.get_component(BodyComponent)
-                pass
+
+                if body.braintComponent is not None:
+                    senses = body.braintComponent.senses
+
+                # Register here new part of body
+                # ... if body.? is not None:
 
     def get_body(self, entity):
         if entity.has_components(BodyComponent):

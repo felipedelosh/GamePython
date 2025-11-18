@@ -12,3 +12,12 @@ Dependencias:
 * src\ecs\components.py: Se necesita crear un componente que sirva de Contrato.
 * src\systems\bodySystem.py: Se nesecita crear una implementación del Contrato.
 * src\core\controller.py: Para asociar contrato/implementación con la ejecución.
+
+De momento al cuerpo... solo le podemos añadir el cerebro con los correspondientes sentidos.
+src\entities\player.py
+        # PLAYER BODY
+        senses = SensesComponent(config.get("playerSenses"))
+        brain = BrainComponent(senses)
+        self.add_component(BodyComponent(brain))
+        # END-PLAYER BODY
+

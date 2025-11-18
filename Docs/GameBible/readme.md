@@ -127,7 +127,7 @@ touch < 0.30 → “Torpeza motora severa”
 <br>
 El jugador pierde precisión en los controles:
 
-Movimientos con retardo o desviaciones aleatorias.
+Movimientos con retardo o desviaciones aleatorias (Se invierten derecha izq... se invierte arriba abajo).
 
 Difícil interactuar con objetos pequeños (ej: acertar una palanca).
 

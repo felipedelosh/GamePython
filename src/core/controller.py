@@ -37,6 +37,7 @@ class Controller:
         self.config = GameConfig()
         self.config.load('config/config.json')
         self.FPS = int(1000/int(self.config.get("FPS")))
+        self.dt = 1.0 / float(self.config.get("FPS"))
         self.logger = GameLogger.get_instance(self.config)
         self.logger.info(f"GAME::MEMORY::DATA::SIZE:{self.config.get_config_memory_kb():.2f}KB")
         self.logger.info(f"GAME::STATE_MACHINES::{self.config.get("statesMachines")}")
@@ -118,7 +119,7 @@ class Controller:
             self.change_state(current_state_name)
 
         for system in self.systems:
-            system.update([self.player], self.FPS)
+            system.update([self.player], self.dt)
             
         self.current_state.update()
         

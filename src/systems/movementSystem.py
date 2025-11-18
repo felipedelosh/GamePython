@@ -25,18 +25,22 @@ class MovementSystem(System):
                 direction = entity.get_component(DirectionComponent)
                 next_pos = entity.get_component(NextPositionComponent)
 
+                speed = vel.velocity
+                dx = speed * dt
+                dy = speed * dt
+
                 next_pos.x, next_pos.y = pos.x, pos.y
 
                 for d in direction.current_directions:
                     if d == "up":
-                        next_pos.y -= vel.velocity
+                        next_pos.y = pos.y - dy
                         direction.last_direction = "up"
                     elif d == "down":
-                        next_pos.y += vel.velocity
+                        next_pos.y = pos.y + dy
                         direction.last_direction = "down"
                     elif d == "right":
-                        next_pos.x += vel.velocity
+                        next_pos.x = pos.x + dx
                         direction.last_direction = "right"
                     elif d == "left":
-                        next_pos.x -= vel.velocity
+                        next_pos.x = pos.x - dx
                         direction.last_direction = "left"

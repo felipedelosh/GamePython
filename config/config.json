@@ -4,7 +4,7 @@
   "floorW":84,
   "floorH":48,
   "LAN": "ESP",
-  "FPS": 60,
+  "FPS": 120,
   "intro_duration": 200,
   "env": "dev",
   "logging": true,
@@ -98,7 +98,7 @@
     "physical_health": 100,
     "social_skills": 50,
     "job_performance": 20,
-    "velocity": 2
+    "velocity": 120
   },
   "playerSenses":{
     "vision": 1.0, "hearing": 1.0, "touch": 1.0, "smell": 1.0, "taste": 1.0

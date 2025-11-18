@@ -1,0 +1,15 @@
+FelipedelosH
+
+Problema: Actualmente se usa FPS de config\config.json para controlar la espera entre frames... esto está mal xq a mayor FPS mayor velocidad del juego.
+y esto debe de ser constante por eso hay que depender de un Dt.
+
+__________________________________________________________________________________________
+Para ello se creo: "src\core\controller.py" la cual resuelve:
+
+"Contiene los FPS y el método de espera."
+
+Dependencias:
+
+* config\config.json: Se tiene que modificar 2 variables FPS para establecer el refresco (Recomendado: 120) y la velocidad del jugador ahora en en pixeles por segundo. 
+* src\core\controller.py: Se tiene que crear una nueva variable dt y llamar al system.update(*, dt)
+* src\systems\movementSystem.py: Se tiene que depender de dt para actualizar la posición del juegador.

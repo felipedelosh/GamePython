@@ -1,6 +1,6 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
-B3|Pantalla de wasrning|Se debe de mostrar una pantalla de wasrning en donde se indique NSFW.|🟡|NO
+B3|Pantalla de warning|Se debe de mostrar una pantalla de wasrning en donde se indique NSFW.|🟡|NO
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO
 E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO
@@ -22,3 +22,4 @@ G13|Renderizador de Libro Interactivo|Sistema gráfico tipo “libro” que mues
 G14|Manejador de Pérdida de Sentidos|Sistema para ceguera, sordera, etc., y cómo afecta las decisiones.|🔴|NO
 G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en sueños.|🔴|NO
 P1|Cuerpo del Jugador aplicable a otras futuras entidades|El jugador debe de poseer un cuerpo de momento con cerebro, corazón, pulmones.|🔴|NO
+P2|El jugador puede estar en 3 mododos VIVO, MUERTO, DORMIDO|El jugador debe tener varios estados de momento son: ALIVE, DEATH, SLEEP|🔴|NO

@@ -3,9 +3,13 @@ FelipedelosH
 Problema: El jugador necesita de un cuerpo... con un cerebro, corazón y pulmones.
 
 __________________________________________________________________________________________
-Para ello se creo: "RUTA/ARCHIVO" la cual resuelve:
+Para ello se creo: "src\ecs\components.py: BodyComponent()" la cual resuelve:
 
-"Para que se creo"
+Es un contenedor para las partes del cuerpo... y encadenar funcionamientos.
+
+src\systems\sensesSystem.py+: Contiene el nivel de los 5 sentidos.
+src\systems\bodySystem.py: Contiene todas las partes del cuerpo y niveles. [Contiene la logica para los organos internos.]
+src\ecs\components.py: Contrato de cerebro, corazón y pulmones...
 
 Dependencias:
 
@@ -20,4 +24,3 @@ src\entities\player.py
         brain = BrainComponent(senses)
         self.add_component(BodyComponent(brain))
         # END-PLAYER BODY
-

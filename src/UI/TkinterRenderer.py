@@ -6,6 +6,7 @@ from src.UI.IUIRenderer import IUIRenderer
 import tkinter as tk
 
 from src.ecs.components import (
+    BodyComponent,
     IdentityComponent,
     HealthComponent,
     StatisticsComponent,
@@ -20,6 +21,7 @@ class TkinterRenderer(IUIRenderer):
         self.configuration = configuration
         self.gameStateManager = gameStateManager
         self.player = player
+        self.bodyPlayer = self.player.get_component(BodyComponent)
         self.identity = self.player.get_component(IdentityComponent)
         self.health = self.player.get_component(HealthComponent)
         self.currency = self.player.get_component(CurrencyComponent)
@@ -176,8 +178,10 @@ class TkinterRenderer(IUIRenderer):
             
             _STATITICS = "Estadisticas:\n\n"
             _STATITICS = _STATITICS + f"ATTACK: {self.stats.statistics.get_attr('attack')} DEFENSE: {self.stats.statistics.get_attr('defense')} INTELLIGENCE: {self.stats.statistics.get_attr('intelligence')}\n"
-            #_STATITICS = _STATITICS + f"INTELLIGENCE: {self.stats.statistics.get_attr('intelligence')}\n"
             self.render_text(self.gamePauseOptionsAndCoors["playerStatiticsCoords"][0], self.gamePauseOptionsAndCoors["playerStatiticsCoords"][1], _STATITICS, tag="gamePause:player")
+
+            # BODY STATUS
+            self.render_text(self.gamePauseOptionsAndCoors["playerBodyStatusCoords"][0], self.gamePauseOptionsAndCoors["playerBodyStatusCoords"][1], f"{self.bodyPlayer}", tag="gamePause:player")
 
             # END TO RENDER PLAYER INFORMATION
             self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = False
@@ -236,6 +240,7 @@ class TkinterRenderer(IUIRenderer):
             self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"] = [_x * 0.49, _y * 0.19, _x * 0.76, _y * 0.21]
             self.gamePauseOptionsAndCoors["playerCurrencyCoords"] = [_x * 0.41, _y * 0.24]
             self.gamePauseOptionsAndCoors["playerStatiticsCoords"] = [_x * 0.40, _y * 0.52]
+            self.gamePauseOptionsAndCoors["playerBodyStatusCoords"] = [_x * 0.3, _y * 0.65]
 
             self._updates_game_pause_player_menu_info()
         except:

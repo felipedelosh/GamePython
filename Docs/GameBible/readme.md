@@ -41,6 +41,30 @@
 
 ---
 
+# Arquitectura
+```
+GENERAL:
+
+Patrón principal: ECS (Entity–Component–System).
+    src/ecs/entity.py → Entidad genérica.
+    src/ecs/component.py → Superclase de todos los componentes.
+    src/ecs/system.py → Superclase de los sistemas.
+
+Capa “core”:
+    src/core/controller.py → Game loop + orquestador de sistemas.
+    src/core/GameConfig.py → carga de config/config.json y valores por defecto.
+    src/core/gameState.py → estados del juego (Intro, MainMenu, GameStart, etc.).
+    src/core/inputHandler.py, src/core/control.py → entrada del usuario.
+    src/core/assetManager.py → carga y gestión de sprites.
+
+Capa “domain/gameplay”:
+    src/entities/player.py, src/entities/world.py → entidades principales.
+    src/systems/*System.py → lógica de tiempo, movimiento, colisiones, estadísticas, etc.
+
+Configuración del jugador:
+    config/config.json define cosas como estadísticos, apariencia, y ahora también:
+```
+
 ## 🧑‍🤝‍🧑 Personajes
 ### 👤 Protagonista(s)
 | Nombre | Edad | Rol | Motivación | Arco de desarrollo |

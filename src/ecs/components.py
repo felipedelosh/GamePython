@@ -65,12 +65,42 @@ class BrainComponent(Component):
             "senses": self.senses.get_json()
         }
 
-class BodyComponent(Component):
-    def __init__(self, braintComponent: BrainComponent | None = None):
-        self.braintComponent = braintComponent
+class BodyStatusComponent(Component):
+    VALID_STATES = [
+        "healthy",
+        "sick",
+        "tired",
+        "injured",
+        "sleep",
+        "dead"
+    ]
+
+    def __init__(self, state="healthy"):
+        state = state.lower()
+        if state not in self.VALID_STATES:
+            state = "healthy"
+        self.state = state
 
     def get_json(self):
-        return {}
+        return {"bodyState": self.state}
+    
+    def __str__(self):
+        return self.state
+
+class BodyComponent(Component):
+    def __init__(self, braintComponent: BrainComponent | None = None, statusComponent: BrainComponent | None = None):
+        self.braintComponent = braintComponent
+        self.statusComponent = statusComponent or BodyStatusComponent()
+
+    def get_json(self):
+
+        return {
+            "bain": self.braintComponent,
+            "status": self.statusComponent
+        }
+    
+    def __str__(self):
+        return f"Status:\n\nGeneral: {self.statusComponent}"
 
 class CurrencyComponent(Component):
     def __init__(self, amount=0):

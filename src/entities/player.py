@@ -1,6 +1,7 @@
 from src.ecs.entity import Entity
 from src.core.assetManager import AssetManager
 from src.ecs.components import (
+    BodyStatusComponent,
     BodyComponent,
     BrainComponent,
     IdentityComponent,
@@ -25,7 +26,8 @@ class Player(Entity):
         # PLAYER BODY
         senses = SensesComponent(config.get("playerSenses"))
         brain = BrainComponent(senses)
-        self.add_component(BodyComponent(brain))
+        bodyStatus = BodyStatusComponent()
+        self.add_component(BodyComponent(brain, bodyStatus))
         # END-PLAYER BODY
 
         self.add_component(IdentityComponent(

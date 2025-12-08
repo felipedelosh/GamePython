@@ -10,7 +10,7 @@ This is a standalone Python utility designed to convert black-and-white images i
 
 ## 📘 Description
 
-The tool reads an image B&W (`.gif`) where:
+The tool reads an image B&W (`.gif`) (84x48)p where:
 
 - **White pixels** (`#FFFFFF`) represent walkable tiles (1)
 - **Black pixels** (`#000000`) represent solid/blocked tiles (0)

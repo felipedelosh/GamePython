@@ -76,7 +76,7 @@ class Controller:
         self.inputHandler = InputHandler(self.player, self.control, self.gameStateManager, self)
         # World
         self.world = World(self.config)
-        self.world.load_map("assets/world/test.json")
+        self.world.load_map(f"assets/world/{self.config.get("playerLocation")}.json")
         # GRAPHICS
         self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.FPS, self.config, self.gameStateManager, self.player, self.world)
         self.UImanager = UIManager(self.renderer)

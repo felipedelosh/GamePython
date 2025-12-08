@@ -1,8 +1,8 @@
 {
   "displayW": 640,
   "displayH": 480,
-  "floorW":84,
-  "floorH":48,
+  "floorW": 84,
+  "floorH": 48,
   "LAN": "ESP",
   "FPS": 120,
   "intro_duration": 200,
@@ -14,6 +14,7 @@
   "playerFamilyName": "Hernández",
   "playerSecondFamilyName": "",
   "playerGender":  "Male",
+  "playerLocation": "white",
   "playerAge": 0,
   "playerSpecies": "Human",
   "playerLevel": 1,

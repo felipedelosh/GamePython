@@ -144,7 +144,7 @@ class TkinterRenderer(IUIRenderer):
             _y = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][1]
             self.render_circle(_x, _y, 10, "red", "gamePause:currentOption")
             
-    def render_game_pause_player_menu(self): # WIP
+    def render_game_pause_player_menu(self):
         if self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"]:
             self._delete_no_game_items()
             self.render_rectangle(
@@ -164,7 +164,7 @@ class TkinterRenderer(IUIRenderer):
                 "blue",
                 "gamePause:player"
             )
-            self.render_text(self.gamePauseOptionsAndCoors["playerLevelCoords"][0], self.gamePauseOptionsAndCoors["playerLevelCoords"][1], f"Level: {0}", tag="gamePause:player")
+            self.render_text(self.gamePauseOptionsAndCoors["playerLevelCoords"][0], self.gamePauseOptionsAndCoors["playerLevelCoords"][1], f"{self.configuration.get("text_level")}: {0}", tag="gamePause:player")
             self.render_text(self.gamePauseOptionsAndCoors["playerHPCoords"][0], self.gamePauseOptionsAndCoors["playerHPCoords"][1], f"HP: {self.health.hp}/{self.health.hp_max}", tag="gamePause:player")
             self.render_progress_bar(
                 self.gamePauseOptionsAndCoors["playerHPProgressBarCoords"][0],

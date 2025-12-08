@@ -24,3 +24,4 @@ G14|Manejador de Pérdida de Sentidos|Sistema para ceguera, sordera, etc., y có
 G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en sueños.|🔴|NO
 P1|Cuerpo del Jugador aplicable a otras futuras entidades|El jugador debe de poseer un cuerpo de momento con cerebro, corazón, pulmones.|🔴|NO
 P2|El jugador puede estar en 3 mododos VIVO, MUERTO, DORMIDO|El jugador debe tener varios estados de momento son: ALIVE, DEATH, SLEEP|🔴|NO
+S2|Todos los textos extraidos desde JSON LAN|Debe de existir un archivo el cual se encargue de contener todos los textos|🔴|NO

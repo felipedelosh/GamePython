@@ -1,6 +1,6 @@
 """
 FelipedelosH
-This is the main controller to load setting of config\config.json
+This is the main controller to load setting of config/config.json
 """
 import json
 import sys

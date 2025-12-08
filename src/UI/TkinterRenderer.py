@@ -176,12 +176,14 @@ class TkinterRenderer(IUIRenderer):
             )
             self.render_text(self.gamePauseOptionsAndCoors["playerCurrencyCoords"][0], self.gamePauseOptionsAndCoors["playerCurrencyCoords"][1], f"{self.currency}", tag="gamePause:player")
             
-            _STATITICS = "Estadisticas:\n\n"
-            _STATITICS = _STATITICS + f"ATTACK: {self.stats.statistics.get_attr('attack')} DEFENSE: {self.stats.statistics.get_attr('defense')} INTELLIGENCE: {self.stats.statistics.get_attr('intelligence')}\n"
+
+            _STATITICS = f"{self.configuration.get("text_statitics")}:\n\n"
+            _STATITICS = _STATITICS + f"{self.configuration.get("text_attack")}: {self.stats.statistics.get_attr('attack')} {self.configuration.get("text_defense")}: {self.stats.statistics.get_attr('defense')} {self.configuration.get("text_intelligence")}: {self.stats.statistics.get_attr('intelligence')}\n"
             self.render_text(self.gamePauseOptionsAndCoors["playerStatiticsCoords"][0], self.gamePauseOptionsAndCoors["playerStatiticsCoords"][1], _STATITICS, tag="gamePause:player")
 
             # BODY STATUS
-            self.render_text(self.gamePauseOptionsAndCoors["playerBodyStatusCoords"][0], self.gamePauseOptionsAndCoors["playerBodyStatusCoords"][1], f"{self.bodyPlayer}", tag="gamePause:player")
+            _STATUS = f"{self.configuration.get("text_status")}\n\n{self.configuration.get("text_general")}: {self.bodyPlayer.get_json()["status"]}"
+            self.render_text(self.gamePauseOptionsAndCoors["playerBodyStatusCoords"][0], self.gamePauseOptionsAndCoors["playerBodyStatusCoords"][1], _STATUS, tag="gamePause:player")
 
             # END TO RENDER PLAYER INFORMATION
             self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = False

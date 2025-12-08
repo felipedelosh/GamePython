@@ -1,3 +1,9 @@
 {
-  "gameTitle": "El Alto de las Viudas"
+  "gameTitle": "El Alto de las Viudas",
+  "text_attack": "Ataque",
+  "text_defense": "Defensa",
+  "text_intelligence": "Intelifencia",
+  "text_statitics": "Estadisticas",
+  "text_status": "Estado",
+  "text_general": "General"
 }

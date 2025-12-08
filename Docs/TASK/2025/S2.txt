@@ -1,0 +1,14 @@
+FelipedelosH
+
+Problema: Los textos no pueden estar hardcored.
+
+__________________________________________________________________________________________
+Para ello se creo: "assets\LAN\<LAN>\TEXT.json" la cual resuelve:
+
+"Ser el contenedor de todo el texto del juego."
+
+Dependencias:
+
+* Un archivo de lenguaje ejemplo: assets\LAN\ESP\TEXT.json
+* Un controlador: src\core\GameConfig.py
+* para acceder a cualquier indice del json: self.configuration.get("key")

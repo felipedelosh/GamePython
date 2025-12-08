@@ -11,3 +11,4 @@ F1|GameLogger Centralizado|Loggear inputs, estados, errores.|🟡|SI
 S1|Sistema de movimiento movementSystem.py|Centralización de la lógica de movimiento|🟢|SI
 G16|Pausar el juego|Que el juego se detenga y se muestre el menú de opciones.|🟢|SI
 G17|Pause opción JUGADOR|Mostrar el menú player cuando se pausa la partida.|🟢|SI
+S2|Todos los textos extraidos desde JSON LAN|Debe de existir un archivo el cual se encargue de contener todos los textos|🔴|SI

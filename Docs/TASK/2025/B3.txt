@@ -1,0 +1,38 @@
+FelipedelosH
+
+Problema: Agregar a el juego el termino PARENTAL ADVISORY.
+
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"assets/LAN/ESP/TEXT.json"
+"config/config.json"
+"src/core/gameState.py"
+"src/core/controller.py"
+"src\UI\UIManager.py"
+"src/UI/TkinterRenderer.py" 
+"src/UI/IUIRenderer.py"
+
+la cual resuelve:
+
+Lo primero es declarar un nuevo estado de juego en: "gameState":
+
+"AdvisoryState"
+
+y recuenden actualizar las maquinas de estados correspondientes "config.json"
+
+Pero antes necesitamos definir el contrato en: "IUIRenderer"...
+Luego vamos a el ejecutor de la implementación: "UIManager"...
+
+En el "TkinterRenderer" se declara la implementación del código.
+
+Ahora bien la invocación se hace desde el "gameState.AdvisoryState.render" y allí llamamos }
+el método de la UIManager.
+
+Dependencias:
+
+* Assets
+* PhotoImage
+* Controller
+* Rendeder (Contrato, implementación, SYSTEM)
+* States

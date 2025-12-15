@@ -30,6 +30,9 @@ class IUIRenderer(ABC):
     def render_game_intro(self): pass
 
     @abstractmethod
+    def render_game_advisory(self): pass
+
+    @abstractmethod
     def render_game_pause(self): pass
 
     @abstractmethod

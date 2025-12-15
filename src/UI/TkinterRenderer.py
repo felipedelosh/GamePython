@@ -14,9 +14,10 @@ from src.ecs.components import (
 )
 
 class TkinterRenderer(IUIRenderer):
-    def __init__(self, canvas: tk.Canvas, imgIntro, FPS, configuration, gameStateManager, player, world):
+    def __init__(self, canvas: tk.Canvas, imgIntro, imgAdvisory, FPS, configuration, gameStateManager, player, world):
         self.canvas = canvas
         self.imgIntro = imgIntro
+        self.imgAdvisory = imgAdvisory
         self.FPS = FPS
         self.configuration = configuration
         self.gameStateManager = gameStateManager
@@ -119,6 +120,9 @@ class TkinterRenderer(IUIRenderer):
             _x = 200
             
         self.render_image(self.imgIntro, _x, 20, anchor="nw", tag="intro")
+
+    def render_game_advisory(self):
+        self.render_image(self.imgAdvisory, 0, 0, anchor="nw", tag="intro")
 
     def render_game_pause(self):
         if self.gamePauseOptionsAndCoors["currentOption"] != self.gameStateManager.getStateMachine("pause").pointer:

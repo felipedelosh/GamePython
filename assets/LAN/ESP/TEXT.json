@@ -6,5 +6,9 @@
   "text_statitics": "Estadisticas",
   "text_status": "Estado",
   "text_general": "General",
-  "text_level":"Nivel"
+  "text_level":"Nivel",
+  "text_new_game": "Nuevo Juego",
+  "text_continue_game": "Continuar Partida",
+  "text_options": "Opciones",
+  "text_exit_game": "Salir del Juego"
 }

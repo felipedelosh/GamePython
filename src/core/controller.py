@@ -10,6 +10,7 @@ from src.core.control import Control
 from src.core.inputHandler import InputHandler
 from src.core.gameState import (
     IntroState,
+    AdvisoryState,
     MainMenuState,
     GameState,
     GamePauseState,
@@ -58,7 +59,8 @@ class Controller:
         )
         # Sprites & IMAGES
         self.assetManager = AssetManager.get_instance()
-        self.imgIntro =  PhotoImage(file="assets/images/intro.gif")
+        self.imgIntro =  PhotoImage(file=f"assets/images/{self.config.get("displayH")}/intro.gif")
+        self.imgAdvisory = PhotoImage(file=f"assets/images/{self.config.get("displayH")}/advisory.gif")
         # Player
         self.player = Player(self.config)
         self._load_assets()
@@ -66,6 +68,7 @@ class Controller:
         self.current_state = None
         self.states = {
             "intro": IntroState(self),
+            "advisory": AdvisoryState(self),
             "mainMenu": MainMenuState(self),
             "gameStart": GameState(self),
             "gamePause": GamePauseState(self),
@@ -78,7 +81,7 @@ class Controller:
         self.world = World(self.config)
         self.world.load_map(f"assets/world/{self.config.get("playerLocation")}.json")
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.FPS, self.config, self.gameStateManager, self.player, self.world)
+        self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.imgAdvisory, self.FPS, self.config, self.gameStateManager, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         # Systems
         self.timeSystem = TimeSystem(time_scale=60)

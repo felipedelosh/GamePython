@@ -13,6 +13,9 @@ class UIManager:
     def showIntro(self):
         self.renderer.render_game_intro()
 
+    def showAdvisory(self):
+        self.renderer.render_game_advisory()
+
     def showMainMenu(self):
         self.renderer.render_game_main_menu()
 

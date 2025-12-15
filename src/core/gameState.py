@@ -33,10 +33,26 @@ class IntroState(GameState):
     def update(self):
         self.controller.intro_shown_time = self.controller.intro_shown_time + self.controller.FPS
         if self.controller.intro_shown_time >= self.controller.config.get("intro_duration"):
-            self.controller.gameStateManager.getStateMachine("game").mouvePointer("t")
+            self.controller.gameStateManager.getStateMachine("game").mouvePointer("a")
             
     def render(self):
         self.controller.UImanager.showIntro()
+        
+    def exit(self):
+        pass
+
+
+class AdvisoryState(GameState):
+    def enter(self):
+        self.controller.intro_shown_time = 0
+        
+    def update(self):
+        self.controller.intro_shown_time = self.controller.intro_shown_time + self.controller.FPS
+        if self.controller.intro_shown_time >= self.controller.config.get("advisory_duration"):
+            self.controller.gameStateManager.getStateMachine("game").mouvePointer("t")
+            
+    def render(self):
+        self.controller.UImanager.showAdvisory()
         
     def exit(self):
         pass

@@ -14,11 +14,9 @@ from src.ecs.components import (
 )
 
 class TkinterRenderer(IUIRenderer):
-    def __init__(self, canvas: tk.Canvas, imgIntro, imgAdvisory, imgMainMenu, FPS, configuration, gameStateManager, player, world):
+    def __init__(self, canvas: tk.Canvas, assetManager, FPS, configuration, gameStateManager, player, world):
         self.canvas = canvas
-        self.imgIntro = imgIntro
-        self.imgAdvisory = imgAdvisory
-        self.imgMainMenu = imgMainMenu
+        self.assetManager = assetManager
         self.FPS = FPS
         self.configuration = configuration
         self.gameStateManager = gameStateManager
@@ -112,17 +110,17 @@ class TkinterRenderer(IUIRenderer):
         
         self._delete_no_game_items()
 
-        self.render_image(self.imgMainMenu, 0, 0, anchor="nw", tag="mainMenu")
+        self.render_image(self.assetManager.get_image("mainMenu"), 0, 0, anchor="nw", tag="mainMenu")
         self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
         self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
         self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
         self.render_text(_x, _y, text=_text, tag="mainMenu")
 
     def render_game_intro(self):
-        self.render_image(self.imgIntro, 0, 0, anchor="nw", tag="intro")
+        self.render_image(self.assetManager.get_image("intro"), 0, 0, anchor="nw", tag="intro")
 
     def render_game_advisory(self):
-        self.render_image(self.imgAdvisory, 0, 0, anchor="nw", tag="intro")
+        self.render_image(self.assetManager.get_image("advisory"), 0, 0, anchor="nw", tag="intro")
 
     def render_game_pause(self):
         if self.gamePauseOptionsAndCoors["currentOption"] != self.gameStateManager.getStateMachine("pause").pointer:

@@ -12,6 +12,8 @@ class AssetManager:
 
     def __init__(self):
         self._assets = {} # Control of duplicated: key = Entity_LOOK, VALUE = PhotoImage(Path)
+        self.sprites = {} # "KEY": "PhotoImage(PATH)"
+        self.images = {} # "KEY": "PhotoImage(PATH)"
         self._sprite_groups: Dict[str, Dict[str, str]] = {} # Relation Entity>>PhotoImage using self._assets
 
     @classmethod
@@ -20,7 +22,7 @@ class AssetManager:
             cls._instance = cls()
         return cls._instance
 
-    def load_sprite_group(self, entity_type: str, paths: Dict[str, str]):
+    def save_sprite_group(self, entity_type: str, paths: Dict[str, str]):
         if entity_type not in self._sprite_groups:
             self._sprite_groups[entity_type] = {}
 
@@ -29,6 +31,18 @@ class AssetManager:
             _sprite = PhotoImage(file=path)
             self._assets[asset_key] = _sprite
             self._sprite_groups[entity_type][key] = asset_key
+
+    def save_images_group(self, key, path):
+        if key in self.images.keys():
+            return None
+        
+        self.images[key] = PhotoImage(file=path)
+
+    def get_image(self, key):
+        if not key in self.images.keys():
+            return None
+        
+        return self.images[key]
 
     def get_sprite(self, entity_type: str, state: str) -> PhotoImage:
         asset_key = self._sprite_groups[entity_type][state]

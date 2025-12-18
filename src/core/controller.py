@@ -58,13 +58,10 @@ class Controller:
             self.config.get('key_L'),
             self.config.get('key_R')
         )
-        # Sprites & IMAGES
-        self.assetManager = AssetManager.get_instance()
-        self.imgIntro =  PhotoImage(file=f"assets/images/{self.config.get("displayH")}/intro.gif")
-        self.imgAdvisory = PhotoImage(file=f"assets/images/{self.config.get("displayH")}/advisory.gif")
-        self.imgMainMenu = PhotoImage(file=f"assets/images/{self.config.get("displayH")}/mainMenu.gif")
         # Player
         self.player = Player(self.config)
+        # Sprites & IMAGES
+        self.assetManager = AssetManager.get_instance()
         self._load_assets()
         # Game fun Machines
         self.current_state = None
@@ -83,7 +80,7 @@ class Controller:
         self.world = World(self.config)
         self.world.load_map(f"assets/world/{self.config.get("playerLocation")}.json")
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.imgAdvisory, self.imgMainMenu, self.FPS, self.config, self.gameStateManager, self.player, self.world)
+        self.renderer = TkinterRenderer(self.canvas, self.assetManager, self.FPS, self.config, self.gameStateManager, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         # Systems
         self.timeSystem = TimeSystem(time_scale=60)
@@ -141,13 +138,17 @@ class Controller:
         self.inputHandler.handleKeyRelease(keycode)
 
     def _load_assets(self):
+        self.assetManager.save_images_group("intro" , f"assets/images/{self.config.get("displayH")}/intro.gif")
+        self.assetManager.save_images_group("advisory" , f"assets/images/{self.config.get("displayH")}/advisory.gif")
+        self.assetManager.save_images_group("mainMenu" , f"assets/images/{self.config.get("displayH")}/mainMenu.gif")
+
         player_sprites = {
             "up": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_up")}",
             "left": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_left")}",
             "right": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_right")}",
             "down": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_down")}"
         }
-        self.assetManager.load_sprite_group("player", player_sprites)
+        self.assetManager.save_sprite_group("player", player_sprites)
 
     def _exitGame(self, data):
         self.logger.info(f"CONTROLLER::GAME::{data}::EXIT")

@@ -7,21 +7,43 @@ Problema: Actualmente para renderizar una imagen se tiene:
 * Enviar la PHOTOIMAGE por parametro a TkinterRenderer
 
 Renderizar en el contrato de estado correspondiente.
-
 __________________________________________________________________________________________
 Para ello se creo: 
 
 "assets/images"
 "src/core/controller.py"
-"src/UI/TkinterRenderer.py" 
-
+"src/UI/TkinterRenderer.py"
+"src/core/assetManager.py"
 
 la cual resuelve:
 
-"Para que se creo"
+Lo primero que se hace es analizar el sistema:
+Tener imagen, declarar e inyectar... pues el proceso... podría resolverse:
+
+* 1 Archivo o funcionalidad del "src\core\assetManager.py" en donde todas 
+las imagenes se registran en un diccionario y luego se optinen con un GET.
+
+Pero tiene que existir:
+
+GET_SPRITE
+SAVE_SPRITE
+GET_IMAGE
+SAVE_IMAGE
+
+SOLUCIÓN PROPUESTA:
+
+ASSET MANAGER se encargara de todo "assets/images" cachearlas a un Dict
+y devlver instancias de PhotoImage listas para usar.
+
+Todas esas imágenes deben de ser registradas en _load_assets() en controller.
+
+Luego "assetManager" el debe ser inyectado en "TkinterRenderer".
+
+Y luego solo hay que llamar:
+self.assetManager.get_image("imgXYZ")
 
 Dependencias:
 
-* Modelos.
-* Servicios.
-* Librerias.
+* .gif
+* Assets Controller
+* Renderer

@@ -1,0 +1,21 @@
+FelipedelosH
+
+Desde el menú principal no se habilitado la opción de salir.
+
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"src/core/controller.py"
+"src/core/inputHandler.py" 
+
+
+la cual resuelve:
+
+El hilo prinical lo maneja "controller.py" el cual se inyecta en "inputHandler.py"
+y se llama al metodo "_exitGame("<TAG>")"
+
+Dependencias:
+
+* sys.
+* controladora.
+* canvas.destroy().

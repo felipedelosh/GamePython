@@ -2,6 +2,7 @@
 FelipedelosH
 This is the main controller to my videogame
 """
+import sys
 # LOGs
 from src.core.gameLoger import GameLogger
 # CONFIG
@@ -146,3 +147,11 @@ class Controller:
             "down": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_down")}"
         }
         self.assetManager.load_sprite_group("player", player_sprites)
+
+    def _exitGame(self, data):
+        self.logger.info(f"CONTROLLER::GAME::{data}::EXIT")
+        try:
+            root = self.canvas.winfo_toplevel()
+            root.destroy()
+        except Exception:
+            sys.exit(0)

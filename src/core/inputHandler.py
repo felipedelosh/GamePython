@@ -88,9 +88,10 @@ class InputHandler:
                 self.gameStateManager.getStateMachine("mainMenu").mouvePointer(self.control.key_UP)
             if keycode == self.control.key_DOWN:
                 self.gameStateManager.getStateMachine("mainMenu").mouvePointer(self.control.key_DOWN)
-            if keycode == self.control.key_START:
+            if keycode == self.control.key_START and self.gameStateManager.getStateMachine("mainMenu").pointer != "exitGame":
                 self.gameStateManager.getStateMachine("game").mouvePointer("gameStart")
-
+            if keycode == self.control.key_START and self.gameStateManager.getStateMachine("mainMenu").pointer == "exitGame":
+                self.controller._exitGame("mainMenu")
 
     def handleKeyRelease(self, keycode):
         self.logger.info(f"INPUTHANDLER::KEYRELEASE::{keycode}")

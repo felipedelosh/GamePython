@@ -116,12 +116,7 @@ class TkinterRenderer(IUIRenderer):
         self.render_text(_x, _y, text=_text, tag="mainMenu")
 
     def render_game_intro(self):
-        try:
-            _x = int(self.canvas['width']) * 0.2
-        except:
-            _x = 200
-            
-        self.render_image(self.imgIntro, _x, 20, anchor="nw", tag="intro")
+        self.render_image(self.imgIntro, 0, 0, anchor="nw", tag="intro")
 
     def render_game_advisory(self):
         self.render_image(self.imgAdvisory, 0, 0, anchor="nw", tag="intro")

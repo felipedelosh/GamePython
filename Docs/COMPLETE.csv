@@ -3,6 +3,7 @@ A1|Separar Controller en módulos especializados|Crear InputHandler, GameStateMa
 A2|Sistema de Configuración Robustecido|Clase GameConfig que valide el JSON y maneje defaults.|🟢|SI
 A3|Asset Manager Centralizado|Clase para cargar/descargar sprites, sonidos, etc.|🟡|SI
 A4|Velocidad del juego no debe depender de FPS|Actualmente la relentización del tiempo depende de los FPS y no de un Dt|🔴|SI
+A5|Textos centralizados|Todos los textos deben ser obtenidos de assets\LAN\ESP\TEXT.json|🔴|SI
 A6|Textos del menú principal en LANG|No se debe de mostrar el texto de la máquina de estados correspondiente al manú principal|🟢|SI
 A7|Textos del menú pausa en LANG|No se debe de mostrar el texto de la máquina de estados correspondiente al menú pausa|🟢|SI
 B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|SI

@@ -1,5 +1,4 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
-A5|Textos centralizados|Todos los textos deben ser obtenidos de assets\LAN\ESP\TEXT.json|🔴|NO
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO

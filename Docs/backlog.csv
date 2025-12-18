@@ -1,5 +1,6 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
 A5|Textos centralizados|Todos los textos deben ser obtenidos de assets\LAN\ESP\TEXT.json|🔴|NO
+A7|Textos del menú pausa en LANG|No se debe de mostrar el texto de la máquina de estados correspondiente al menú pausa|🟢|NO
 B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|NO
 B3|Pantalla de warning|Se debe de mostrar una pantalla de wasrning en donde se indique NSFW.|🟡|NO
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO

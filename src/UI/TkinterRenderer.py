@@ -102,6 +102,8 @@ class TkinterRenderer(IUIRenderer):
             _x = int(self.canvas['width']) * 0.5
             _y = int(self.canvas['height']) * 0.5
             _text = self.gameStateManager.getStateMachine("mainMenu").pointer
+            _text = f"text_{_text}"
+            _text = self.configuration.get(_text)
         except:
             _x = 200
             _y = 200

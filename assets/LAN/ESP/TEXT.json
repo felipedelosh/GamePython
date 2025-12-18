@@ -7,8 +7,8 @@
   "text_status": "Estado",
   "text_general": "General",
   "text_level":"Nivel",
-  "text_new_game": "Nuevo Juego",
-  "text_continue_game": "Continuar Partida",
-  "text_options": "Opciones",
-  "text_exit_game": "Salir del Juego"
+  "text_newGame": "Nuevo Juego",
+  "text_continueGame": "Continuar Partida",
+  "text_optionsGame": "Opciones",
+  "text_exitGame": "Salir del Juego"
 }

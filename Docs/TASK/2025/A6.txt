@@ -1,0 +1,24 @@
+FelipedelosH
+
+Problema: El menú del juego aparece con las opciones de la maquina de estados en lugar de un texto.
+
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"config/config.json"
+"assets/LAN/ESP/TEXT.json"
+"src/UI/TkinterRenderer.py"
+
+la cual resuelve:
+
+"config.json" allí se configura un lenguaje... y se optienen los textos como "text_xyz"
+y esto se hace en la implementación del contrato de pintura "TkinterRenderer"
+
+Se hace a traves de la invocación del servicio de configuración:
+    * self.configuration.get("text_xyz")
+
+Dependencias:
+
+* Json.
+* Config.
+* States machines.

@@ -24,3 +24,7 @@ P1|Cuerpo del Jugador aplicable a otras futuras entidades|El jugador debe de pos
 P2|El jugador puede estar en 3 mododos VIVO, MUERTO, DORMIDO|El jugador debe tener varios estados de momento son: ALIVE, DEATH, SLEEP|🔴|NO
 M1|Mostrar teclas para ENTRAR/SALIR de los menús|Cuando se encuentre navegando por un menú se debe de mostrar icons y textos de botones para entrar y salir|🟡|NO
 T1|Nuevo estado de MOSTRAR TEXTO|Se requere un estado que pause el juego y permita la renderización de un texto|🔴|NO 
+O1|Nuevo estado de mostrar OPCIONES DE MENÚ PRINCIPAL|Se requiere un estado que sirva de interfaz de configuración.|🔴|NO 
+S2|Archivo de Guardado de Juego|Se debe de crear un sistema de SAVE/LOAD|🔴|NO
+S3|Continuar partida dependerá si hay archivo de guardado|Solo se debe de mostrar la opción de guardar partida si hay archivo de guardado valido|🔴|NO
+S4|Salir del juego habilitado desde el menú principal|Se necesita habilitar que la opción del menú principal EXIT cierre el programa|🔴|NO

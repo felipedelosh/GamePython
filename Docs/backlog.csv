@@ -23,3 +23,4 @@ G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en su
 P1|Cuerpo del Jugador aplicable a otras futuras entidades|El jugador debe de poseer un cuerpo de momento con cerebro, corazón, pulmones.|🔴|NO
 P2|El jugador puede estar en 3 mododos VIVO, MUERTO, DORMIDO|El jugador debe tener varios estados de momento son: ALIVE, DEATH, SLEEP|🔴|NO
 M1|Mostrar teclas para ENTRAR/SALIR de los menús|Cuando se encuentre navegando por un menú se debe de mostrar icons y textos de botones para entrar y salir|🟡|NO
+T1|Nuevo estado de MOSTRAR TEXTO|Se requere un estado que pause el juego y permita la renderización de un texto|🔴|NO 

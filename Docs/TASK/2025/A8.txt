@@ -1,0 +1,27 @@
+FelipedelosH
+
+Problema: Actualmente para renderizar una imagen se tiene:
+
+* Colocarla en ASSETS
+* Declarar una PHOTOIMAGE en el Controller.
+* Enviar la PHOTOIMAGE por parametro a TkinterRenderer
+
+Renderizar en el contrato de estado correspondiente.
+
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"assets/images"
+"src/core/controller.py"
+"src/UI/TkinterRenderer.py" 
+
+
+la cual resuelve:
+
+"Para que se creo"
+
+Dependencias:
+
+* Modelos.
+* Servicios.
+* Librerias.

@@ -62,6 +62,7 @@ class Controller:
         self.assetManager = AssetManager.get_instance()
         self.imgIntro =  PhotoImage(file=f"assets/images/{self.config.get("displayH")}/intro.gif")
         self.imgAdvisory = PhotoImage(file=f"assets/images/{self.config.get("displayH")}/advisory.gif")
+        self.imgMainMenu = PhotoImage(file=f"assets/images/{self.config.get("displayH")}/mainMenu.gif")
         # Player
         self.player = Player(self.config)
         self._load_assets()
@@ -82,7 +83,7 @@ class Controller:
         self.world = World(self.config)
         self.world.load_map(f"assets/world/{self.config.get("playerLocation")}.json")
         # GRAPHICS
-        self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.imgAdvisory, self.FPS, self.config, self.gameStateManager, self.player, self.world)
+        self.renderer = TkinterRenderer(self.canvas, self.imgIntro, self.imgAdvisory, self.imgMainMenu, self.FPS, self.config, self.gameStateManager, self.player, self.world)
         self.UImanager = UIManager(self.renderer)
         # Systems
         self.timeSystem = TimeSystem(time_scale=60)

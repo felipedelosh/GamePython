@@ -14,10 +14,11 @@ from src.ecs.components import (
 )
 
 class TkinterRenderer(IUIRenderer):
-    def __init__(self, canvas: tk.Canvas, imgIntro, imgAdvisory, FPS, configuration, gameStateManager, player, world):
+    def __init__(self, canvas: tk.Canvas, imgIntro, imgAdvisory, imgMainMenu, FPS, configuration, gameStateManager, player, world):
         self.canvas = canvas
         self.imgIntro = imgIntro
         self.imgAdvisory = imgAdvisory
+        self.imgMainMenu = imgMainMenu
         self.FPS = FPS
         self.configuration = configuration
         self.gameStateManager = gameStateManager
@@ -110,6 +111,8 @@ class TkinterRenderer(IUIRenderer):
             _text = "ERROR"
         
         self._delete_no_game_items()
+
+        self.render_image(self.imgMainMenu, 0, 0, anchor="nw", tag="mainMenu")
         self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
         self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
         self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")

@@ -6,6 +6,7 @@ A4|Velocidad del juego no debe depender de FPS|Actualmente la relentización del
 A6|Textos del menú principal en LANG|No se debe de mostrar el texto de la máquina de estados correspondiente al manú principal|🟢|SI
 A7|Textos del menú pausa en LANG|No se debe de mostrar el texto de la máquina de estados correspondiente al menú pausa|🟢|SI
 B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|SI
+B3|Pantalla de warning|Se debe de mostrar una pantalla de wasrning en donde se indique NSFW.|🟡|SI
 C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|SI
 D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI
 D2|Sistema de Colisiones Optimizado|Crear un sistema optimizado para detectar coliciones.|🟢|SI

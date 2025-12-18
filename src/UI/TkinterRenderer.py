@@ -144,7 +144,10 @@ class TkinterRenderer(IUIRenderer):
             for i in self.gamePauseOptionsAndCoors["itemsCoords"]:
                 _x = self.gamePauseOptionsAndCoors["itemsCoords"][i][0]
                 _y = self.gamePauseOptionsAndCoors["itemsCoords"][i][1]
-                self.render_text(_x,_y,i,tag="gamePause:option")
+                _text = f"text_{i}"
+                _text = self.configuration.get(_text)
+
+                self.render_text(_x, _y, _text, tag="gamePause:option")
 
             _x = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][0] * 0.9
             _y = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][1]

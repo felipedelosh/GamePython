@@ -119,7 +119,7 @@ class Controller:
             self.renderer._reset_game_pause_menu()
             self.renderer._updates_game_pause_player_menu_info()
 
-        self.logger.info(f"CONTROLLER::GAME::CHANGE::{new_state_name}")
+        self.logger.info(f"CONTROLLERGAME::GAME::CHANGE::{new_state_name}")
 
     def update(self):
         current_state_name = self.gameStateManager.getStateMachine("game").pointer
@@ -154,7 +154,7 @@ class Controller:
         self.assetManager.save_sprite_group("player", player_sprites)
 
     def _exitGame(self, data):
-        self.logger.info(f"CONTROLLER::GAME::{data}::EXIT")
+        self.logger.info(f"CONTROLLERGAME::GAME::{data}::EXIT")
         try:
             root = self.canvas.winfo_toplevel()
             root.destroy()

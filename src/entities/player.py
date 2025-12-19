@@ -23,14 +23,14 @@ class Player(Entity):
     def __init__(self, config):
         super().__init__()
         assetManager = AssetManager.get_instance()
+        self.senses = SensesComponent(config.get("playerSenses"))
 
         # PLAYER BODY
-        senses = SensesComponent(config.get("playerSenses"))
-        brain = BrainComponent(senses)
+        brain = BrainComponent(self.senses)
         bodyStatus = BodyStatusComponent()
         self.add_component(BodyComponent(brain, bodyStatus))
         self.death_cause = random.choice(config.get("morte_list"))
-        # END-PLAYER BODY
+        # END-PLAYER BODY   
         
 
 

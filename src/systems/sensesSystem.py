@@ -22,7 +22,7 @@ class SensesSystem(System):
             return entity.get_component(SensesComponent)
         return None
     
-
+    
     def get_stats_as_json(self, entity):
         if entity.has_components(SensesComponent):
             senses = self.get_senses(entity)

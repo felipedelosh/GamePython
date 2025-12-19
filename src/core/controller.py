@@ -21,7 +21,6 @@ from src.core.gameStateManager import GameStateManager
 from src.core.assetManager import AssetManager
 from src.UI.TkinterRenderer import TkinterRenderer
 from src.UI.UIManager import UIManager
-from tkinter import PhotoImage
 # Entities
 from src.entities.player import Player
 from src.entities.world import World
@@ -100,9 +99,10 @@ class Controller:
         # VARS
         self.intro_shown_time = 0
         self.logger.info("CONTROLLER::GAME::INIT")
+        self.logger.info(f"PLAYER::DATA::IDENTITY::{0}")
         self.logger.info(f"PLAYER::DATA::DEATH::>>{self.player.death_cause}<<")
         self.logger.info(f"PLAYER::DATA::STATISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
-        self.logger.info(f"PLAYER::DATA::SENSES::{self.sensesSystem.get_stats_as_json(self.player)}")
+        self.logger.info(f"PLAYER::DATA::SENSES::{self.player.senses.get_json()}")
 
 
     def change_state(self, new_state_name):

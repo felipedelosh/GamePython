@@ -100,6 +100,7 @@ class Controller:
         # VARS
         self.intro_shown_time = 0
         self.logger.info("CONTROLLER::GAME::INIT")
+        self.logger.info(f"PLAYER::DATA::DEATH::>>{self.player.death_cause}<<")
         self.logger.info(f"PLAYER::DATA::STATISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
         self.logger.info(f"PLAYER::DATA::SENSES::{self.sensesSystem.get_stats_as_json(self.player)}")
 

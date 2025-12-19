@@ -1,3 +1,4 @@
+import random
 from src.ecs.entity import Entity
 from src.core.assetManager import AssetManager
 from src.ecs.components import (
@@ -28,7 +29,10 @@ class Player(Entity):
         brain = BrainComponent(senses)
         bodyStatus = BodyStatusComponent()
         self.add_component(BodyComponent(brain, bodyStatus))
+        self.death_cause = random.choice(config.get("morte_list"))
         # END-PLAYER BODY
+        
+
 
         self.add_component(IdentityComponent(
             config.get("playerNickname"),

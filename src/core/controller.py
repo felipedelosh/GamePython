@@ -43,8 +43,8 @@ class Controller:
         self.FPS = int(1000/int(self.config.get("FPS")))
         self.dt = 1.0 / float(self.config.get("FPS"))
         self.logger = GameLogger.get_instance(self.config)
-        self.logger.info(f"GAME::MEMORY::DATA::SIZE:{self.config.get_config_memory_kb():.2f}KB")
-        self.logger.info(f"GAME::STATE_MACHINES::{self.config.get("statesMachines")}")
+        self.logger.info(f"CONTROLLERGAME::MEMORY::DATA::SIZE:{self.config.get_config_memory_kb():.2f}KB")
+        self.logger.info(f"CONTROLLERGAME::GAME::STATE_MACHINES::{self.config.get("statesMachines")}")
         self.control = Control(
             self.config.get('key_UP'),
             self.config.get('key_RIGTH'),
@@ -101,10 +101,10 @@ class Controller:
         # VARS
         self.intro_shown_time = 0
         self.logger.info("CONTROLLER::GAME::INIT")
-        self.logger.info(f"PLAYER::DATA::IDENTITY::{self.player.get_component(IdentityComponent).get_json()}")
-        self.logger.info(f"PLAYER::DATA::DEATH::>>{self.player.death_cause}<<")
-        self.logger.info(f"PLAYER::DATA::STATISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
-        self.logger.info(f"PLAYER::DATA::SENSES::{self.player.senses.get_json()}")
+        self.logger.info(f"CONTROLLERGAME::PLAYER::DATA::IDENTITY::{self.player.get_component(IdentityComponent).get_json()}")
+        self.logger.info(f"CONTROLLERGAME::PLAYER::DATA::DEATH::>>{self.player.death_cause}<<")
+        self.logger.info(f"CONTROLLERGAME::PLAYER::DATA::STATISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
+        self.logger.info(f"CONTROLLERGAME::PLAYER::DATA::SENSES::{self.player.senses.get_json()}")
 
 
     def change_state(self, new_state_name):

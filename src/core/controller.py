@@ -87,7 +87,7 @@ class Controller:
         self.movementSystem = MovementSystem(self.config.get("displayW"), self.config.get("displayH"))
         self.collisionSystem = CollisionSystem(self.player, self.world)
         self.statisticsSystem = StatisticsSystem(self.config)
-        self.sensesSystem = SensesSystem(self.config.get("playerSenses"))
+        self.sensesSystem = SensesSystem(self.player.senses)
         self.systems = [
             self.timeSystem,
             self.bodySystem,

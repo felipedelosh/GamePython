@@ -24,6 +24,8 @@ from src.UI.UIManager import UIManager
 # Entities
 from src.entities.player import Player
 from src.entities.world import World
+# Components
+from src.ecs.components import IdentityComponent
 # SYSTEMS
 from src.systems.timeSystem import TimeSystem
 from src.systems.bodySystem import BodySystem
@@ -99,7 +101,7 @@ class Controller:
         # VARS
         self.intro_shown_time = 0
         self.logger.info("CONTROLLER::GAME::INIT")
-        self.logger.info(f"PLAYER::DATA::IDENTITY::{0}")
+        self.logger.info(f"PLAYER::DATA::IDENTITY::{self.player.get_component(IdentityComponent).get_json()}")
         self.logger.info(f"PLAYER::DATA::DEATH::>>{self.player.death_cause}<<")
         self.logger.info(f"PLAYER::DATA::STATISTICS::{self.statisticsSystem.get_stats_as_json(self.player)}")
         self.logger.info(f"PLAYER::DATA::SENSES::{self.player.senses.get_json()}")

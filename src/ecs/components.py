@@ -13,6 +13,19 @@ class IdentityComponent(Component):
         self.species = species
         self.level = level
 
+    def get_json(self):
+        return {
+            "nickname": self.nick_name,
+            "first_name": self.first_name,
+            "second_name": self.second_name,
+            "family_name": self.family_name,
+            "second_family_name": self.second_family_name,
+            "gender": self.gender,
+            "age": self.age,
+            "species": self.species,
+            "level": self.level
+        }
+
 class HealthComponent(Component):
     def __init__(self, hp, hp_max):
         self.hp = hp

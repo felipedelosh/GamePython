@@ -24,15 +24,12 @@ class Player(Entity):
         super().__init__()
         assetManager = AssetManager.get_instance()
         self.senses = SensesComponent(config.get("playerSenses"))
-
-        # PLAYER BODY
-        brain = BrainComponent(self.senses)
-        bodyStatus = BodyStatusComponent()
-        self.add_component(BodyComponent(brain, bodyStatus))
+        self.brain = BrainComponent(self.senses)
+        self.bodyStatus = BodyStatusComponent()
         self.death_cause = random.choice(config.get("morte_list"))
-        # END-PLAYER BODY   
-        
 
+        self.add_component(BodyComponent(self.brain, self.bodyStatus))
+        # END-PLAYER BODY
 
         self.add_component(IdentityComponent(
             config.get("playerNickname"),

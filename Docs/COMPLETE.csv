@@ -8,6 +8,7 @@ A6|Textos del menú principal en LANG|No se debe de mostrar el texto de la máqu
 A7|Textos del menú pausa en LANG|No se debe de mostrar el texto de la máquina de estados correspondiente al menú pausa|🟢|SI
 A8|Todos los fondos e imagenes deben ser cargadas desde ASSET MANAGER|En el controller se están acumulando PHOTOIMAGE... centralizar todo en asset m.|🟡|SI
 B1|Implementar State Pattern|Estados del juego (Intro, Menu, Game) como clases.|🟢|SI
+B2|Transiciones de Estado Automatizadas|Eventos para cambiar estados (ej: OnStartGame).|🟡|SI
 B3|Pantalla de warning|Se debe de mostrar una pantalla de wasrning en donde se indique NSFW.|🟡|SI
 C1|Patrón Command para Acciones|Clases como MoveCommand, JumpCommand.|🟢|SI
 D1|ECS (Entity-Component-System)|Base para Player, Enemy, Obstacles.|🟢|SI

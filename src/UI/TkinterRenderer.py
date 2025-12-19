@@ -113,8 +113,11 @@ class TkinterRenderer(IUIRenderer):
         self.render_image(self.assetManager.get_image("mainMenu"), 0, 0, anchor="nw", tag="mainMenu")
         self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
         self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
+        self.render_rectangle(_x-80, _y-30, _x+80, _y+30, fill="red",tag="mainMenu")
         self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
         self.render_text(_x, _y, text=_text, tag="mainMenu")
+        self.render_rectangle(_x*0.85, _y+50, _x*1.15, _y+70, fill="snow",tag="mainMenu")
+        self.render_text(_x, _y+60, text=self.configuration.get("text_press_start"), tag="mainMenu")
 
     def render_game_intro(self):
         self.render_image(self.assetManager.get_image("intro"), 0, 0, anchor="nw", tag="intro")

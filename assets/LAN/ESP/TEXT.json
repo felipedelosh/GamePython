@@ -18,8 +18,5 @@
   "text_options": "opciones",
   "text_debug": "debug",
   "text_exit": "salir al menú",
-  "text_DICT_DEATHS" :
-  {
-    "DEATH": ""
-  }
+  "text_press_start": "Presiona Start"
 }

@@ -113,11 +113,18 @@ class TkinterRenderer(IUIRenderer):
         self.render_image(self.assetManager.get_image("mainMenu"), 0, 0, anchor="nw", tag="mainMenu")
         self.render_line(_x, _y-5, _x, _y-35, fill="red", arrow="last", tag="mainMenu")
         self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
+        
+        # Display OPTION POINTER
         self.render_rectangle(_x-80, _y-30, _x+80, _y+30, fill="red",tag="mainMenu")
         self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
         self.render_text(_x, _y, text=_text, tag="mainMenu")
+        
+        # HELP ACTIONS
         self.render_rectangle(_x*0.85, _y+50, _x*1.15, _y+70, fill="snow",tag="mainMenu")
         self.render_text(_x, _y+60, text=self.configuration.get("text_press_start"), tag="mainMenu")
+        # HELP MOUVE
+        self.render_rectangle(_x*1.265, _y*0.87, _x*1.35, _y*0.99, fill="white",tag="mainMenu")
+        self.render_rectangle(_x*1.265, _y*1.02, _x*1.35, _y*1.13, fill="white",tag="mainMenu")
 
     def render_game_intro(self):
         self.render_image(self.assetManager.get_image("intro"), 0, 0, anchor="nw", tag="intro")
@@ -218,7 +225,7 @@ class TkinterRenderer(IUIRenderer):
         try:
             _x = int(self.configuration.get("displayW"))
             _y = int(self.configuration.get("displayH"))
-            self.gamePauseOptionsAndCoors["title"] = "Game Pause"
+            self.gamePauseOptionsAndCoors["title"] = self.configuration.get("text_pause")
             self.gamePauseOptionsAndCoors["menuCoords"] = [_x * 0.65, 0, _x, _y]
             self.gamePauseOptionsAndCoors["items"] = [i for i in self.configuration.get("statesMachines")["pause"]["states"]]
 

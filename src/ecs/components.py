@@ -2,7 +2,7 @@ from src.ecs.component import Component
 from src.entities.statistics import Statistics
 
 class IdentityComponent(Component):
-    def __init__(self, nick_name, first_name, second_name, family_name, second_family_name, gender, age, species, level):
+    def __init__(self, nick_name, first_name, second_name, family_name, second_family_name, gender, age, species, level, playerBirthDateDD, playerBirthDateMM, playerBirthDateYYYY):
         self.nick_name = nick_name
         self.first_name = first_name
         self.second_name = second_name
@@ -12,6 +12,10 @@ class IdentityComponent(Component):
         self.age = age
         self.species = species
         self.level = level
+        self.playerBirthDateDD = playerBirthDateDD
+        self.playerBirthDateMM = playerBirthDateMM
+        self.playerBirthDateYYYY = playerBirthDateYYYY
+
 
     def get_json(self):
         return {

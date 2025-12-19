@@ -40,7 +40,10 @@ class Player(Entity):
             config.get("playerGender"),
             config.get("playerAge"),
             config.get("playerSpecies"),
-            config.get("playerLevel")
+            config.get("playerLevel"),
+            config.get("playerBirthDateDD"),
+            config.get("playerBirthDateMM"),
+            config.get("playerBirthDateYYYY")
         ))
         self.add_component(HealthComponent(
             config.get("playerHP"),

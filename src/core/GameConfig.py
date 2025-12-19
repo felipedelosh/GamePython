@@ -14,22 +14,26 @@ class GameConfig:
     def load(self, config_path: str) -> None:
         # LOAD CONFIG FILE
         try:
+            # GENERAL CONFIG
             with open(config_path, 'r', encoding='utf-8') as f:
                 self._config = json.load(f)
-        except:
-            self._config = self._default_config.copy()
 
-        # LOAD TEXT FILE
-        try:
+            # LANGUAGUE
             self.LAN = self._config["LAN"]
             text_path = f"assets/LAN/{self.LAN}/TEXT.json"
 
             with open(text_path, 'r', encoding='utf-8') as f:
                 text_data = json.load(f)
-
             self._config = {**self._config, **text_data}
+
+            # DATA
+            deaths_path = f"assets/LAN/{self.LAN}/DEATHS.json"
+
+            with open(deaths_path, 'r', encoding='utf-8') as f:
+                deaths_data = json.load(f)
+            self._config = {**self._config, **deaths_data}
         except:
-            pass
+            self._config = self._default_config.copy()
 
 
     def get(self, key: str, default=None):

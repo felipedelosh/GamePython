@@ -1,7 +1,6 @@
 ID|Tarea|Descripción|Prioridad|COMPETADA
 C2|Keybindings Dinámicos|Permitir reconfigurar controles en tiempo real.|🟡|NO
 D3|Mundo Escalable|Carga dinámica de "chunks" o niveles.|🔴|NO
-E1|Motor de UI Independiente|Menús/buttons con UIManager.|🟡|NO
 E2|Sistema de Partículas Básico|Efectos visuales para acciones.|🔴|NO
 F2|Suite de Pruebas Unitarias|Tests para InputHandler, GameConfig.|🔴|NO
 G1|Generador de Jugador Aleatorio|Generar jugadores con padres, sexo, contexto, estadísticas iniciales.|🟢|NO

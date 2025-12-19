@@ -17,5 +17,9 @@
   "text_save": "guardar partida",
   "text_options": "opciones",
   "text_debug": "debug",
-  "text_exit": "salir al menú"
+  "text_exit": "salir al menú",
+  "text_DICT_DEATHS" :
+  {
+    "DEATH": ""
+  }
 }

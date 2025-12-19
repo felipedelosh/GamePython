@@ -146,10 +146,10 @@ class Controller:
         self.assetManager.save_images_group("mainMenu" , f"assets/images/{self.config.get("displayH")}/mainMenu.gif")
 
         player_sprites = {
-            "up": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_up")}",
-            "left": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_left")}",
-            "right": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_right")}",
-            "down": f"assets/images/{self.config.get("displayH")}/player/{self.config.get("player_look_down")}"
+            "up": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_up")}",
+            "left": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_left")}",
+            "right": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_right")}",
+            "down": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_down")}"
         }
         self.assetManager.save_sprite_group("player", player_sprites)
 

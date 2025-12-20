@@ -14,7 +14,7 @@ class AssetManager:
         self._assets = {} # Control of duplicated: key = Entity_LOOK, VALUE = PhotoImage(Path)
         self.sprites = {} # "KEY": "PhotoImage(PATH)"
         self.images = {} # "KEY": "PhotoImage(PATH)"
-        self._sprite_groups: Dict[str, Dict[str, str]] = {} # Relation Entity>>PhotoImage using self._assets
+        self._sprite_groups: Dict[str, Dict[str, str]] = {} # Relation Entity>> [PhotoImage using self._assets]
 
     @classmethod
     def get_instance(cls):

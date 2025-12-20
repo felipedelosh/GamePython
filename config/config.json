@@ -33,6 +33,7 @@
   "player_look_left": "player_look_left.png",
   "player_look_right": "player_look_right.png",
   "player_look_down": "player_look_down.png",
+  "player_skin": "player",
   "player_w": 50,
   "player_h": 100,
   "key_UP": 38,
@@ -93,6 +94,27 @@
         "debug:options:controls:key_UP",
         "debug:exit:controls:key_DOWN",
         "exit:debug:controls:key_UP"
+      ]
+    },
+    "playerAnim": {
+      "initial": "STOP_D",
+      "states": ["STOP_D", "STOP_U", "STOP_L", "STOP_R", "WALK_D", "WALK_U", "WALK_L", "WALK_R"],
+      "conections": [
+        "STOP_D:STOP_R:controls:key_RIGTH",
+        "STOP_D:STOP_L:controls:key_LEFT",
+        "STOP_D:STOP_U:controls:key_UP",
+        
+        "STOP_R:STOP_D:controls:key_DOWN",
+        "STOP_R:STOP_L:controls:key_LEFT",
+        "STOP_R:STOP_U:controls:key_UP",
+
+        "STOP_U:STOP_L:controls:key_LEFT",
+        "STOP_U:STOP_D:controls:key_DOWN",
+        "STOP_U:STOP_R:controls:key_RIGTH",
+        
+        "STOP_L:STOP_D:controls:key_DOWN",
+        "STOP_L:STOP_R:controls:key_RIGTH",
+        "STOP_L:STOP_U:controls:key_UP"
       ]
     }
   },

@@ -1,0 +1,49 @@
+FelipedelosH
+
+Problema: Actualmente el juego tiene un sistema pobre y tosco para manejar
+el cambio de sprites según enventos del control Ejemplo: (Voverse).
+
+El sistema de animación no está estandarizado.
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"src/ecs/component.py"
+"src/ecs/components.py"
+"src/commands/movementCommands.py"
+"src/systems/movementSystem.py"
+"src/core/controller.py"
+"src/core/assetManager.py"
+"src/entities/player.py" 
+
+la cual resuelve:
+
+Todo empieza con declarar dict la relación entre un sprite y un movimiento y eso se hace en:
+controller: _load_assets()
+
+Allí se guardan los sprites del jugador por medio del:
+.save_sprite_group("player", dict <key>: 'path img')
+
+Se crea una maquina de estados para entidades animadas.
+
+Cada que el jugador realiza un comando se encarga de ejecutar un:
+movementCommands con el cual se manda un string y es el que permite 
+determinar que mostrar del diccionaro declarado en el controller.
+
+Existe el sistema:
+movementSystem
+
+El cual se encarga de orquestar la lógica para mandar un string al DirectionComponent.
+
+NUEVA IMPLEMENTACIÓN:
+
+Vamos a crear una máquina de estados en config la cual contendrá los estados de movimiento de las entidades.
+
+
+Dependencias:
+
+* Maquinas de estado.
+* Modelos.
+* Sistemas.
+* Comandos.
+* Componentes.
+* Controladores.

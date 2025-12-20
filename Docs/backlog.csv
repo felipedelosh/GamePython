@@ -19,6 +19,7 @@ G13|Renderizador de Libro Interactivo|Sistema gráfico tipo “libro” que mues
 G14|Manejador de Pérdida de Sentidos|Sistema para ceguera, sordera, etc., y cómo afecta las decisiones.|🔴|NO
 G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en sueños.|🔴|NO
 G19|Un estado de animacion independiente y renderizable para las entidades|Todas las entidades deben poder asociarse a maquina de estados que permita saber como animar (STOP, WALK_R) ... Crear maquina de estados y un sistema|🔴|NO
+G20|El assetManager se tiene que encargar de la logica para almacenar sprites|Mover toda la lógica del controlador al assetManager para el cargado de sprites|🔴|NO
 P1|Cuerpo del Jugador aplicable a otras futuras entidades|El jugador debe de poseer un cuerpo de momento con cerebro, corazón, pulmones.|🔴|NO
 P2|El jugador puede estar en 3 mododos VIVO, MUERTO, DORMIDO|El jugador debe tener varios estados de momento son: ALIVE, DEATH, SLEEP|🔴|NO
 M1|Mostrar teclas para ENTRAR/SALIR de los menús|Cuando se encuentre navegando por un menú se debe de mostrar icons y textos de botones para entrar y salir|🟡|NO

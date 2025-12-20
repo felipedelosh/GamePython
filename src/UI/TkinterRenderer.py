@@ -28,15 +28,20 @@ class TkinterRenderer(IUIRenderer):
         self.stats = self.player.get_component(StatisticsComponent)
         self.world = world
         self.IdTempWorldToPaint = ""
+        # VARS
+        self.spriteFPS = float(configuration.get("sprite_fps"))
+        self.spriteFrames = configuration.get("sprite_frames")
+        self.spriteFrameTime = 1 / self.spriteFPS
+        self.spriteElapsed = 0.0
+        self.currentSpriteDisplayed = 0
         self.currentSpriteDisplayed = 0
         self.animatingCounter = 0
+        w = configuration.get("sprite_width")
+        h = configuration.get("sprite_height")
         self.spritesCoords = [
-            (0, 0, 50, 100),
-            (50, 0, 50, 100),
-            (100, 0, 50, 100),
-            (150, 0, 50, 100)
+            (i * w, 0, w, h) for i in range(self.spriteFrames)
         ]
-        # VARS
+
         self.gamePauseOptionsAndCoors = {}
         self._defineGamePauseMenuElements()
         self._defineGamePausePlayerMenuElements()
@@ -73,10 +78,13 @@ class TkinterRenderer(IUIRenderer):
             self.canvas.create_rectangle(x1, y1, x2, y2, fill=_color, tag=tag)
         
     def render_player(self):
-        if self.animatingCounter > 1000:
-            self.animatingCounter = 0
-            self.currentSpriteDisplayed = self.currentSpriteDisplayed + 1
-            if self.currentSpriteDisplayed > 3:
+        self.spriteElapsed += self.FPS / 1000.0
+
+        if self.spriteElapsed >= self.spriteFrameTime:
+            self.spriteElapsed = 0
+            self.currentSpriteDisplayed += 1
+
+            if self.currentSpriteDisplayed >= self.spriteFrames:
                 self.currentSpriteDisplayed = 0
 
         sprite_x, sprite_y, w, h = self.spritesCoords[self.currentSpriteDisplayed]

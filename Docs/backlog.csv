@@ -18,7 +18,7 @@ G12|Sistema de Guardado y Carga|Guardar el estado del jugador y continuar partid
 G13|Renderizador de Libro Interactivo|Sistema gráfico tipo “libro” que muestra texto e imágenes con scroll.|🟡|NO
 G14|Manejador de Pérdida de Sentidos|Sistema para ceguera, sordera, etc., y cómo afecta las decisiones.|🔴|NO
 G15|Gestor de Puzzles y Sueños|Eventos especiales o acertijos que suceden en sueños.|🔴|NO
-G16|Estandar de 8 sprites por entidad|Cada entidad tiene que tener 8 sprites(png)|🔴|NO
+G18|Estandar de 8 sprites por entidad|Cada entidad tiene que tener 8 sprites(png)|🔴|NO
 P1|Cuerpo del Jugador aplicable a otras futuras entidades|El jugador debe de poseer un cuerpo de momento con cerebro, corazón, pulmones.|🔴|NO
 P2|El jugador puede estar en 3 mododos VIVO, MUERTO, DORMIDO|El jugador debe tener varios estados de momento son: ALIVE, DEATH, SLEEP|🔴|NO
 M1|Mostrar teclas para ENTRAR/SALIR de los menús|Cuando se encuentre navegando por un menú se debe de mostrar icons y textos de botones para entrar y salir|🟡|NO

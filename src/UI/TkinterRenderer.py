@@ -29,9 +29,8 @@ class TkinterRenderer(IUIRenderer):
         self.world = world
         self.IdTempWorldToPaint = ""
         self.currentSpriteDisplayed = 0
-        self.animating = False
         self.animatingCounter = 0
-        self.sprites = [
+        self.spritesCoords = [
             (0, 0, 50, 100),
             (50, 0, 50, 100),
             (100, 0, 50, 100),
@@ -80,7 +79,7 @@ class TkinterRenderer(IUIRenderer):
             if self.currentSpriteDisplayed > 3:
                 self.currentSpriteDisplayed = 0
 
-        sprite_x, sprite_y, w, h = self.sprites[self.currentSpriteDisplayed]
+        sprite_x, sprite_y, w, h = self.spritesCoords[self.currentSpriteDisplayed]
         _player_img = self.player.getPlayerSprite()
         _x, _y = self.player.getSpriteRenderCoords()
         sprite_img = tk.PhotoImage()

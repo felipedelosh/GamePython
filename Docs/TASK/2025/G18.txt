@@ -1,0 +1,54 @@
+FelipedelosH
+
+Problema: 
+
+Actualmente se tiene sprites básicos de solo 4 con una taza de refresco lenta...
+
+Se necesita empezar a contar con sprites de 8 [imagen .png] [400x100] en donde cada 
+50px ocurre el refresco de sprite.
+
+OJO: debera tener una imagen para cada acción:
+
+Estar quieto.
+Moverse a la derecha.
+Moverse a la izquierda.
+Moverse a Arriba.
+Moverse a Moverse abajo.
+
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"assets/images/<W_PX>/skins"
+"src/UI"
+"src/UI/UIRenderer.py"
+"src/UI/TkinterRenderer.py"
+
+
+la cual resuelve:
+
+Todas las imagenes se guardan en la carpeta "skins" que va a contener todos los skins
+para las entidade amadas.
+
+Existe el TkinterRenderer el cual se encarga de orquestar la lógica para:
+* Determinar que porción de imagen mostrar "self.currentSpriteDisplayed" id de sprite.
+* Contar para cambiar la animación "self.animatingCounter"
+* Varaiable que guarda las coordenadas de la imagen "self.spritesCoords" Es una matrix.
+
+Pero tebemos que establecer un contrato para poder graficar un sprite:
+"IUIRenderer"
+
+Y la implementación de dicho contrato se hace desde:
+TkinterRenderer
+
+En donde a base de condicionales y contadores:
+render_<ENTITY>:
+* verificar contador.
+* Establecer el limite de sprites.
+* Aumentar contador.
+* Pintar la imagen en la porción que diga spritesCoords[id]
+
+Dependencias:
+
+* Assets.
+* Controllers.
+* Renderer.

@@ -9,6 +9,7 @@ from src.ecs.components import (
     HealthComponent,
     PositionComponent,
     SizeComponent,
+    AnimationStateMachineComponent,
     VelocityComponent,
     DirectionComponent,
     SpriteCoordsComponent,
@@ -51,6 +52,7 @@ class Player(Entity):
         ))
         self.add_component(PositionComponent(config.get("displayW")/4,config.get("displayH")/4))
         self.add_component(SizeComponent(config.get("player_w"),config.get("player_h")))
+        self.add_component(AnimationStateMachineComponent("animatedEntity", config.get('statesMachines')['animatedEntity']['initial']))
         self.add_component(StatisticsComponent(config.get("statistics")))
         stats = self.get_component(StatisticsComponent).statistics
         self.add_component(VelocityComponent(int(stats.velocity)))
@@ -63,12 +65,20 @@ class Player(Entity):
         self.assetManager = assetManager
 
     def getPlayerSprite(self):
+        # UPDATE DIRECTION
         direction = self.get_component(DirectionComponent)
         if direction.current_directions:
             current_dir = next(iter(direction.current_directions))
         else:
             current_dir = direction.last_direction
-        return self.assetManager.get_sprite("player", current_dir)
+
+        # UPDATE ANIMATION
+        animation = self.get_component(AnimationStateMachineComponent)
+        return self.assetManager.get_sprite("animated", animation.state)
+    
+    def updateAnimationStateMachineComponent(self, animationPointer):
+        animation = self.get_component(AnimationStateMachineComponent)
+        animation.state = animationPointer
 
     def getSpriteRenderCoords(self):
         sprite_coords = self.get_component(SpriteCoordsComponent)

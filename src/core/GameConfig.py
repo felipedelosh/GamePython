@@ -40,6 +40,9 @@ class GameConfig:
         return self._config.get(key, default)
     
     def get_config_memory_kb(self) -> float:
+        """
+        Only for get X Kb of size in RAM.
+        """
         def deep_size(obj, seen=None):
             if seen is None:
                 seen = set()

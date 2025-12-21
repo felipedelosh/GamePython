@@ -7,15 +7,19 @@ El sistema de animación no está estandarizado.
 __________________________________________________________________________________________
 Para ello se creo: 
 
+"src/core/control.py"
 "src/ecs/component.py"
 "src/ecs/components.py"
 "src/commands/movementCommands.py"
 "src/systems/movementSystem.py"
 "src/core/controller.py"
 "src/core/assetManager.py"
+"src/core/inputHandler.py"
 "src/entities/player.py" 
 
 la cual resuelve:
+
+TODO evento de movimiento tiene que estar asociado al control.
 
 Todo empieza con declarar dict la relación entre un sprite y un movimiento y eso se hace en:
 controller: _load_assets()
@@ -24,6 +28,21 @@ Allí se guardan los sprites del jugador por medio del:
 .save_sprite_group("player", dict <key>: 'path img')
 
 Se crea una maquina de estados para entidades animadas.
+
+Ahora hay que guardar un sprite group por cada animación:
+itterStateAnimated in self.config.get("statesMachines")["<TYPE>Entity"]
+
+La entidad jugador tiene un método:
+Player.getPlayerSprite()
+
+Hay que acoplar el assetManager para mandarle todos los sprites...
+
+En donde se cambia la máqina de estados cuando el player se mueve?
+movementCommands Ahí tendremos que incluir la lógica que
+causa el movimiento de la mauina de estados.
+
+Luego hay que actualizar el contrato en Player.getPlayerSprite()
+para depender de nuestro nuevo AnimationStateMachineComponent.
 
 Cada que el jugador realiza un comando se encarga de ejecutar un:
 movementCommands con el cual se manda un string y es el que permite 
@@ -37,7 +56,17 @@ El cual se encarga de orquestar la lógica para mandar un string al DirectionCom
 NUEVA IMPLEMENTACIÓN:
 
 Vamos a crear una máquina de estados en config la cual contendrá los estados de movimiento de las entidades.
+statesMachines.animatedEntity
 
+Y para almacenar esos valores vamos a crear un nuevo componente:
+AnimationStateMachineComponent la cual va a contener
+* machine_id
+* state
+
+OJO: cada estado de la máquina anterior debe de tener su asset sking en .png
+
+Y por ultimo desde el inputHandler se actualiza el estado del jugador con:
+updateAnimationStateMachineComponent(pointer)
 
 Dependencias:
 

@@ -55,7 +55,7 @@ class StateMachine:
         Enter a symbol and the poiter mouve
         """
         for i in self.edges[self.pointer]:
-            if symbol == i[1]:
+            if str(symbol) == str(i[1]):
                 #print("Me he movido a", i[0])
                 # Mouve a pivot
                 self.pointer = i[0]

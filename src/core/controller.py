@@ -44,7 +44,8 @@ class Controller:
         self.dt = 1.0 / float(self.config.get("FPS"))
         self.logger = GameLogger.get_instance(self.config)
         self.logger.info(f"CONTROLLERGAME::MEMORY::DATA::SIZE:{self.config.get_config_memory_kb():.2f}KB")
-        self.logger.info(f"CONTROLLERGAME::GAME::STATE_MACHINES::{self.config.get("statesMachines")}")
+        self.logger.info(f"CONTROLLERGAME::GAME::STATE_MACHINES::{self.config.get("statesMachines").keys()}")
+        print(self.config.get("statesMachines"))
         self.control = Control(
             self.config.get('key_UP'),
             self.config.get('key_RIGTH'),
@@ -59,10 +60,10 @@ class Controller:
             self.config.get('key_L'),
             self.config.get('key_R')
         )
-        # Player
-        self.player = Player(self.config)
         # Sprites & IMAGES
         self.assetManager = AssetManager.get_instance()
+        # Player
+        self.player = Player(self.config)
         self._load_assets()
         # Game fun Machines
         self.current_state = None
@@ -145,13 +146,22 @@ class Controller:
         self.assetManager.save_images_group("advisory" , f"assets/images/{self.config.get("displayH")}/advisory.gif")
         self.assetManager.save_images_group("mainMenu" , f"assets/images/{self.config.get("displayH")}/mainMenu.gif")
 
-        player_sprites = {
-            "up": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_up")}",
-            "left": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_left")}",
-            "right": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_right")}",
-            "down": f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_down")}"
-        }
-        self.assetManager.save_sprite_group("player", player_sprites)
+        _animated_sprite_group = {}
+        for itterStateAnimated in self.config.get("statesMachines")["animatedEntity"]["states"]:
+            _sprite = itterStateAnimated
+            _pathSprite = f"assets/images/{self.config.get("displayH")}/skins/player/{_sprite}.png"
+            _animated_sprite_group[_sprite] = _pathSprite
+            
+        _animated_sprite_group["up"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_up")}"
+        _animated_sprite_group["left"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_left")}"
+        _animated_sprite_group["right"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_right")}"
+        _animated_sprite_group["down"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_down")}"
+
+        try:
+            self.assetManager.save_sprite_group("animated", _animated_sprite_group)
+        except Exception as e:
+            self.logger.error(f"CONTROLLER::GAME::CREATE_SPRITES::FAILED_GROUP::{_animated_sprite_group}")
+            self.logger.error(f"CONTROLLERGAME::GAME::CREATE_SPRITES::ASSET_MANAGER_ERROR::{type(e).__name__}::{e}")
 
     def _exitGame(self, data):
         self.logger.info(f"CONTROLLERGAME::GAME::{data}::EXIT")

@@ -44,6 +44,9 @@ class InputHandler:
             command = self.press_commands.get(keycode)
             if command:
                 command.execute(self.player)
+                self.gameStateManager.getStateMachine("animatedEntity").mouvePointer(str(keycode))
+                self.player.updateAnimationStateMachineComponent(self.gameStateManager.getStateMachine("animatedEntity").pointer)
+
             if keycode == self.control.key_B:
                 print("B")
             if keycode == self.control.key_A:

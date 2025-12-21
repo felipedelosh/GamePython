@@ -96,25 +96,49 @@
         "exit:debug:controls:key_UP"
       ]
     },
-    "playerAnim": {
+    "animatedEntity": {
       "initial": "STOP_D",
       "states": ["STOP_D", "STOP_U", "STOP_L", "STOP_R", "WALK_D", "WALK_U", "WALK_L", "WALK_R"],
       "conections": [
         "STOP_D:STOP_R:controls:key_RIGTH",
         "STOP_D:STOP_L:controls:key_LEFT",
         "STOP_D:STOP_U:controls:key_UP",
+        "STOP_D:WALK_D:controls:key_DOWN",
         
         "STOP_R:STOP_D:controls:key_DOWN",
         "STOP_R:STOP_L:controls:key_LEFT",
         "STOP_R:STOP_U:controls:key_UP",
+        "STOP_R:WALK_R:controls:key_RIGTH",
 
         "STOP_U:STOP_L:controls:key_LEFT",
         "STOP_U:STOP_D:controls:key_DOWN",
         "STOP_U:STOP_R:controls:key_RIGTH",
+        "STOP_U:WALK_U:controls:key_UP",
         
         "STOP_L:STOP_D:controls:key_DOWN",
         "STOP_L:STOP_R:controls:key_RIGTH",
-        "STOP_L:STOP_U:controls:key_UP"
+        "STOP_L:STOP_U:controls:key_UP",
+        "STOP_L:WALK_L:controls:key_LEFT",
+
+        "WALK_D:WALK_D:controls:key_DOWN",
+        "WALK_D:STOP_D:controls:key_UP",
+        "WALK_D:STOP_L:controls:key_LEFT",
+        "WALK_D:STOP_R:controls:key_RIGTH",
+        
+        "WALK_U:WALK_U:controls:key_UP",
+        "WALK_U:STOP_L:controls:key_LEFT",
+        "WALK_U:STOP_R:controls:key_RIGTH",
+        "WALK_U:STOP_D:controls:key_DOWN",
+
+        "WALK_R:WALK_R:controls:key_RIGTH",
+        "WALK_R:STOP_R:controls:key_LEFT",
+        "WALK_R:STOP_U:controls:key_LEFT",
+        "WALK_R:STOP_D:controls:key_DOWN",
+
+        "WALK_L:WALK_L:controls:key_LEFT",
+        "WALK_L:STOP_D:controls:key_DOWN",
+        "WALK_L:STOP_U:controls:key_UP",
+        "WALK_L:STOP_L:controls:key_RIGTH"
       ]
     }
   },

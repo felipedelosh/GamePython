@@ -22,3 +22,26 @@ class Control(object):
         self.keyResult = [key_UP, key_RIGTH, key_DOWN, key_LEFT, key_SELECT, key_START, key_B, key_A, key_Y, key_X, key_L, key_R] # Save all number code of keyboard
         self.direction_buttons = [key_UP, key_RIGTH, key_DOWN, key_LEFT]
         self.action_buttons = [key_B, key_A, key_Y, key_X, key_L, key_R]
+
+        self.key_map = {
+            key_UP: "key_UP",
+            key_RIGTH: "key_RIGTH",
+            key_DOWN: "key_DOWN",
+            key_LEFT: "key_LEFT",
+            key_SELECT: "key_SELECT",
+            key_START: "key_START",
+            key_B: "key_B",
+            key_A: "key_A",
+            key_Y: "key_Y",
+            key_X: "key_X",
+            key_L: "key_L",
+            key_R: "key_R"
+        }
+
+    def getNameByInput(self, input):
+        """
+        Return str name of key event
+    
+        :param input: KEY PRESS EVENT
+        """
+        return self.key_map.get(input, None)

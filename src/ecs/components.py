@@ -144,6 +144,11 @@ class SizeComponent(Component):
         self.w = w
         self.h = h
 
+class AnimationStateMachineComponent(Component):
+    def __init__(self, machine_id: str, initial_state: str = None):
+        self.machine_id = machine_id
+        self.state = initial_state
+
 class VelocityComponent(Component):
     def __init__(self, velocity=0):
         self.velocity = velocity

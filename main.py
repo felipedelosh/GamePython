@@ -17,7 +17,8 @@ class Software:
 
 
     def showDisplay(self):
-        self.display.title(self.controller.config.get("gameTitle"))
+        _title = f"{self.controller.config.get("gameTitle")} v{self.controller.config.get("version")}"
+        self.display.title(_title)
         self.display.geometry(f"{self.controller.config.get("displayW")}x{self.controller.config.get("displayH")}")
         self.canvas['height']=int(self.controller.config.get("displayH"))
         self.canvas['width']=int(self.controller.config.get("displayW"))

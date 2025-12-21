@@ -1,4 +1,5 @@
 {
+  "version": "0.0.1",
   "displayW": 640,
   "displayH": 480,
   "floorW": 84,
@@ -51,7 +52,7 @@
   "statesMachines": {
     "game": {
       "initial": "intro",
-      "states": ["intro", "advisory", "mainMenu", "gameStart", "gamePause", "gameOptions"],
+      "states": ["intro", "advisory", "mainMenu", "gameStart", "gamePause", "gameOptions", "gameTextDisplayed"],
       "conections": [
         "intro:advisory:symbol:a",
         "advisory:mainMenu:symbol:t",
@@ -63,6 +64,8 @@
         "gameOptions:gamePause:controls:key_START",
         "gamePause:gameOptions:symbol:gameOptions",
         "gameStart:gamePause:controls:key_START",
+        "gameStart:gameTextDisplayed:symbol:t",
+        "gameTextDisplayed:gameStart:symbol:g",
         "gamePause:gameStart:controls:key_START"
       ]
     },

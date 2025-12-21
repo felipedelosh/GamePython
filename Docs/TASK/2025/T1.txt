@@ -1,0 +1,33 @@
+FelipedelosH
+
+Problema: Se necesita un estado de pausa del juego para mostrar textos
+al jugador, se sabe que hay que crear estados y código en muchas partes.
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"config/config.json"
+"src/core/gameStateManager.py"
+"src/core/inputHandler.py"
+
+
+la cual resuelve:
+
+Existe una máquina de estados registrada en: "statesMachines.game" allí se encuentran los estados posibles de juego...
+Hay que añadir un nuevo estado:
+gameTextDisplayed
+
+Y ese estado tiene que tener una transición vamos a tomar de ejemplo:
+
+Para el inputHandler existen 2 estados que vamos a tomar de ejemplo:
+if _pivot == "gameStart":
+elif _pivot == "gamePause":
+
+Vamos a incluir el nuevo...
+
+
+
+Dependencias:
+
+* Configuración.
+* Handlers.
+* State Machines.

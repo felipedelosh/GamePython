@@ -151,11 +151,6 @@ class Controller:
             _sprite = itterStateAnimated
             _pathSprite = f"assets/images/{self.config.get("displayH")}/skins/player/{_sprite}.png"
             _animated_sprite_group[_sprite] = _pathSprite
-            
-        _animated_sprite_group["up"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_up")}"
-        _animated_sprite_group["left"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_left")}"
-        _animated_sprite_group["right"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_right")}"
-        _animated_sprite_group["down"] = f"assets/images/{self.config.get("displayH")}/skins/player/{self.config.get("player_look_down")}"
 
         try:
             self.assetManager.save_sprite_group("animated", _animated_sprite_group)

@@ -8,7 +8,7 @@
   "intro_duration": 200,
   "advisory_duration": 300,
   "env": "dev",
-  "logging": false,
+  "logging": true,
   "sprite_fps": 8,
   "sprite_frames": 8,
   "sprite_width": 50,

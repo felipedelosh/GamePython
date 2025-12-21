@@ -43,26 +43,28 @@ class InputHandler:
         if _pivot == "gameStart":
             command = self.press_commands.get(keycode)
             if command:
+                self.logger.info(f"INPUTHANDLER::EXECUTE::{keycode}")
                 command.execute(self.player)
                 self.gameStateManager.getStateMachine("animatedEntity").mouvePointer(str(keycode))
                 self.player.updateAnimationStateMachineComponent(self.gameStateManager.getStateMachine("animatedEntity").pointer)
 
             if keycode == self.control.key_B:
-                print("B")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::B::{keycode}")
             if keycode == self.control.key_A:
-                print("A")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::A::{keycode}")
             if keycode == self.control.key_Y:
-                print("Y")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::Y::{keycode}")
             if keycode == self.control.key_X:
-                print("X")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::X::{keycode}")
             if keycode == self.control.key_SELECT:
-                print("Select")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::SELECT::{keycode}")
             if keycode == self.control.key_START:
+                self.logger.info(f"INPUTHANDLER::EXECUTE::START::{keycode}")
                 self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_START)
             if keycode == self.control.key_L:
-                print("L")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::L::{keycode}")
             if keycode == self.control.key_R:
-                print("R")
+                self.logger.info(f"INPUTHANDLER::EXECUTE::R::{keycode}")
 
         elif _pivot == "gamePause":
             current_option = self.gameStateManager.getStateMachine("pause").pointer

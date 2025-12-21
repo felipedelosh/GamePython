@@ -25,18 +25,19 @@ class GameLogger:
         self.env = config.get("env", "dev") if config else "dev"
         self.enabled = config.get("logging", False) if config else False
 
-        if not os.path.exists("logs"):
-            os.makedirs("logs")
+        if self.enabled:
+            if not os.path.exists("logs"):
+                os.makedirs("logs")
 
-        log_filename = f"logs/game_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
-        logging.basicConfig(
-            filename=log_filename,
-            level=logging.DEBUG,
-            format="%(asctime)s [%(levelname)s] %(message)s",
-            datefmt="%H:%M:%S"
-        )
+            log_filename = f"logs/game_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+            logging.basicConfig(
+                filename=log_filename,
+                level=logging.DEBUG,
+                format="%(asctime)s [%(levelname)s] %(message)s",
+                datefmt="%H:%M:%S"
+            )
 
-        self.logger = logging.getLogger("GameLogger")
+            self.logger = logging.getLogger("GameLogger")
         GameLogger._instance = self
 
     def info(self, message):

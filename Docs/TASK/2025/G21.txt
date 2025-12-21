@@ -1,0 +1,28 @@
+FelipedelosH
+
+Problema: El sistema de LOGs no estpa implementado y se requiere que cuando
+sea seteada: config["logging"] = False no puede crear archivo LOG y tampoco se deben
+de mostrar los LOGS por consola. 
+
+__________________________________________________________________________________________
+Para ello se creo: 
+
+"config/config.json"
+"src/core/GameConfig.py" 
+"src/core/gameLoger.py"
+
+la cual resuelve:
+
+Hay una variable bool en la config llamada "logging" la cual determina 
+si se muestra y registran los LOGS.
+Pero si se settea en false.
+Está bien la parte de que no muestra nada por consola pero crea el archivo de log.
+
+NO DEBERIA CREARLO... se corrige mediante la condición:
+if self.enabled
+
+Dependencias:
+
+* Configuración.
+* Controladores.
+* LOGGER.

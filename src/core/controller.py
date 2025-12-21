@@ -45,7 +45,8 @@ class Controller:
         self.logger = GameLogger.get_instance(self.config)
         self.logger.info(f"CONTROLLERGAME::MEMORY::DATA::SIZE:{self.config.get_config_memory_kb():.2f}KB")
         self.logger.info(f"CONTROLLERGAME::GAME::STATE_MACHINES::{self.config.get("statesMachines").keys()}")
-        print(self.config.get("statesMachines"))
+        if self.logger.enabled:
+            print(self.config.get("statesMachines"))
         self.control = Control(
             self.config.get('key_UP'),
             self.config.get('key_RIGTH'),

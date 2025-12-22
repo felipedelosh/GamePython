@@ -212,7 +212,7 @@ class TkinterRenderer(IUIRenderer):
             
             _totalPages = f"{self.gameTextOptionsAndCoords["textInfoCurrentPages"]} of {self.gameTextOptionsAndCoords["textInfoTotalPages"]}"
             self.render_big_text(
-                x2 * 0.8,
+                x2 * 0.82,
                 y1 * 1.55,
                 _totalPages,
                 tag="gameText",

@@ -22,3 +22,4 @@ G18|Estandar de 8 sprites por entidad|Cada entidad tiene que tener 8 sprites(png
 G21|Arreglar el sistema de LOGs|El LOGs tiene que ser opcional y configurable... implementado en el juego.|🟢|SI
 S2|Todos los textos extraidos desde JSON LAN|Debe de existir un archivo el cual se encargue de contener todos los textos|🔴|SI
 S4|Salir del juego habilitado desde el menú principal|Se necesita habilitar que la opción del menú principal EXIT cierre el programa|🔴|SI
+T1|Nuevo estado de MOSTRAR TEXTO|Se requere un estado que pause el juego y permita la renderización de un texto|🔴|SI

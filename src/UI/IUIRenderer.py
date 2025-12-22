@@ -48,7 +48,7 @@ class IUIRenderer(ABC):
     def _reset_game_pause_menu(self): pass
 
     @abstractmethod
-    def _updates_game_text_displayed(self, text, totalPages): pass
+    def _updates_game_text_displayed(self, text, currentPage, totalPages): pass
 
     @abstractmethod
     def _updates_game_pause_player_menu_info(self): pass

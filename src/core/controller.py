@@ -133,15 +133,17 @@ class Controller:
         if new_state_name == "gameTextDisplayed":
             self.player.clearCurrentDirections() # Force to Stop Player
             text = self.textPaginator.current_page()
+            currentPage = self.textPaginator.get_number_of_current_page()
             totalPages = self.textPaginator.total_pages()
-            self.renderer._updates_game_text_displayed(text, totalPages)
+            self.renderer._updates_game_text_displayed(text, currentPage, totalPages)
 
         self.logger.info(f"CONTROLLERGAME::GAME::CHANGE::{new_state_name}")
 
     def _text_paginator_next_page(self):
         text = self.textPaginator.next_page()
+        currentPage = self.textPaginator.get_number_of_current_page()
         totalPages = self.textPaginator.total_pages()
-        self.renderer._updates_game_text_displayed(text, totalPages)
+        self.renderer._updates_game_text_displayed(text, currentPage, totalPages)
 
         if self.textPaginator.is_last_page():
             if self.isLastPageRead:

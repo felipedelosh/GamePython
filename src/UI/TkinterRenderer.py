@@ -210,7 +210,7 @@ class TkinterRenderer(IUIRenderer):
                 max_width=int(x2 - x1 - (padding * 2))
             )
             
-            _totalPages = f"X of {self.gameTextOptionsAndCoords["textInfoTotalPages"]}"
+            _totalPages = f"{self.gameTextOptionsAndCoords["textInfoCurrentPages"]} of {self.gameTextOptionsAndCoords["textInfoTotalPages"]}"
             self.render_big_text(
                 x2 * 0.8,
                 y1 * 1.55,
@@ -344,8 +344,9 @@ class TkinterRenderer(IUIRenderer):
         except:
             pass
 
-    def _updates_game_text_displayed(self, text, totalPages):
+    def _updates_game_text_displayed(self, text, currentPage, totalPages):
         self.gameTextOptionsAndCoords["textAreaText"] = text
+        self.gameTextOptionsAndCoords["textInfoCurrentPages"] = currentPage
         self.gameTextOptionsAndCoords["textInfoTotalPages"] = totalPages
         self.gameTextOptionsAndCoords["isUpdateInformation"] = True
 

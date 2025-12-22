@@ -30,6 +30,25 @@ class TextPaginator:
     def is_last_page(self) -> bool:
         return self.index + self.words_per_page >= len(self.words)
     
+    def get_all_pages(self) -> list[str]:
+        pages = []
+        total_words = len(self.words)
+
+        for i in range(0, total_words, self.words_per_page):
+            page_words = self.words[i:i + self.words_per_page]
+            pages.append(" ".join(page_words))
+
+        return pages
+    
+    def get_number_of_current_page(self) -> int:
+        pages = self.get_all_pages()
+        current_text = self.current_page()
+
+        try:
+            return pages.index(current_text) + 1
+        except ValueError:
+            return 0
+    
     def total_pages(self) -> int:
         if not self.words:
             return 0

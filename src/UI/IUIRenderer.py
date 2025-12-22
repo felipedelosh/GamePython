@@ -12,7 +12,7 @@ class IUIRenderer(ABC):
     def render_line(self, x1, y1, x2, y2, fill, arrow, tag): pass
 
     @abstractmethod
-    def render_rectangle(self, x1, y1, x2, y2, fill, tag): pass
+    def render_rectangle(self, x1, y1, x2, y2, width, fill, tag): pass
 
     @abstractmethod
     def render_circle(self, x, y, r, color, tag): pass

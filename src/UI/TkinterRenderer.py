@@ -54,8 +54,8 @@ class TkinterRenderer(IUIRenderer):
     def render_line(self, x1, y1, x2, y2, fill="black", arrow=None, tag=None):
         return self.canvas.create_line(x1, y1, x2, y2, fill=fill, arrow=arrow, tag=tag)
 
-    def render_rectangle(self, x1, y1, x2, y2, fill="", tag=None):
-        return self.canvas.create_rectangle(x1, y1, x2, y2, fill=fill, tag=tag)
+    def render_rectangle(self, x1, y1, x2, y2, width=0, fill="", tag=None):
+        return self.canvas.create_rectangle(x1, y1, x2, y2, width=width, fill=fill, tag=tag)
     
     def render_circle(self, x, y, r, color, tag):
         self.canvas.create_oval(x - r, y - r, x + r, y + r, fill=color, tag=tag)
@@ -139,16 +139,16 @@ class TkinterRenderer(IUIRenderer):
         self.render_line(_x, _y+15, _x, _y+35, fill="red", arrow="last", tag="mainMenu")
         
         # Display OPTION POINTER
-        self.render_rectangle(_x-80, _y-30, _x+80, _y+30, fill="red",tag="mainMenu")
-        self.render_rectangle(_x-50, _y-20, _x+50, _y+20, fill="snow",tag="mainMenu")
+        self.render_rectangle(_x-80, _y-30, _x+80, _y+30, 1, fill="red",tag="mainMenu")
+        self.render_rectangle(_x-50, _y-20, _x+50, _y+20, 1, fill="snow",tag="mainMenu")
         self.render_text(_x, _y, text=_text, tag="mainMenu")
         
         # HELP ACTIONS
-        self.render_rectangle(_x*0.85, _y+50, _x*1.15, _y+70, fill="snow",tag="mainMenu")
+        self.render_rectangle(_x*0.85, _y+50, _x*1.15, _y+70, 1, fill="snow",tag="mainMenu")
         self.render_text(_x, _y+60, text=self.configuration.get("text_press_start"), tag="mainMenu")
         # HELP MOUVE
-        self.render_rectangle(_x*1.265, _y*0.87, _x*1.35, _y*0.99, fill="white",tag="mainMenu")
-        self.render_rectangle(_x*1.265, _y*1.02, _x*1.35, _y*1.13, fill="white",tag="mainMenu")
+        self.render_rectangle(_x*1.265, _y*0.87, _x*1.35, _y*0.99, 1, fill="white",tag="mainMenu")
+        self.render_rectangle(_x*1.265, _y*1.02, _x*1.35, _y*1.13, 1, fill="white",tag="mainMenu")
 
     def render_game_intro(self):
         self.render_image(self.assetManager.get_image("intro"), 0, 0, anchor="nw", tag="intro")
@@ -164,7 +164,7 @@ class TkinterRenderer(IUIRenderer):
                                 self.gamePauseOptionsAndCoors["menuCoords"][1],
                                 self.gamePauseOptionsAndCoors["menuCoords"][2],
                                 self.gamePauseOptionsAndCoors["menuCoords"][3],
-                                fill="snow",tag="gamePause")
+                                1, fill="snow",tag="gamePause")
             
             self.render_text(self.gamePauseOptionsAndCoors["menuCoords"][0]*1.25,
                              self.gamePauseOptionsAndCoors["menuCoords"][3]*0.05,
@@ -188,7 +188,7 @@ class TkinterRenderer(IUIRenderer):
             self._delete_no_game_items()
 
             x1, y1, x2, y2 = self.gameTextOptionsAndCoords["textAreaCoords"]
-            self.render_rectangle(x1, y1, x2, y2, fill="snow", tag="gameText")
+            self.render_rectangle(x1, y1, x2, y2, 1, fill="snow", tag="gameText")
 
             # WIP: DISPLAU DIALOG
             padding = 20
@@ -230,6 +230,7 @@ class TkinterRenderer(IUIRenderer):
                 self.gamePauseOptionsAndCoors["playerPanelCoords"][1],
                 self.gamePauseOptionsAndCoors["playerPanelCoords"][2],
                 self.gamePauseOptionsAndCoors["playerPanelCoords"][3],
+                1,
                 fill="snow",
                 tag="gamePause:player"
             )
@@ -239,6 +240,7 @@ class TkinterRenderer(IUIRenderer):
                 self.gamePauseOptionsAndCoors["playerAvatarCoords"][1],
                 self.gamePauseOptionsAndCoors["playerAvatarCoords"][2],
                 self.gamePauseOptionsAndCoors["playerAvatarCoords"][3],
+                1,
                 "blue",
                 "gamePause:player"
             )
@@ -276,11 +278,8 @@ class TkinterRenderer(IUIRenderer):
 
             for i in range(0, self.world.h):
                 for j in range(0, self.world.w):
-                    _data = self.world.collider[i][j]
-                    if _data:
-                        self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="black", tags="world")
-                    else:
-                        self.canvas.create_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill="red", tags="world")
+                    _data = self.world.color[i][j]
+                    self.render_rectangle(_x*j,_y*i,_x*(j+1),_y*(i+1), fill=_data, tag="world")
 
             self.IdTempWorldToPaint = self.world.id
 

@@ -13,8 +13,10 @@ class World:
         # VARS
         self.id = "0"
         self.collider = []
+        self.color = []
 
     def load_map(self, path: str):
         data = MapLoader.load(path)
         self.id = data["id"]
         self.collider = data["collider"]
+        self.color = data["color"]

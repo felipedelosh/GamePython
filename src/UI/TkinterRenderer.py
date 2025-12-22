@@ -337,7 +337,7 @@ class TkinterRenderer(IUIRenderer):
             _x = int(self.configuration.get("displayW"))
             _y = int(self.configuration.get("displayH"))
 
-            self.gameTextOptionsAndCoords["textAreaCoords"] = [0, _y * 0.6, _x, _y]
+            self.gameTextOptionsAndCoords["textAreaCoords"] = [_x * 0.01, _y * 0.6, _x * 0.99, _y*0.99]
 
             self.gameTextOptionsAndCoords["isUpdateInformation"] = True
         except:

@@ -2,6 +2,7 @@
 FelipedelosH
 This is the main controller to load setting of config/config.json
 """
+import os
 import json
 import sys
 
@@ -17,21 +18,30 @@ class GameConfig:
             # GENERAL CONFIG
             with open(config_path, 'r', encoding='utf-8') as f:
                 self._config = json.load(f)
-
-            # LANGUAGUE
             self.LAN = self._config["LAN"]
-            text_path = f"assets/LAN/{self.LAN}/TEXT.json"
 
-            with open(text_path, 'r', encoding='utf-8') as f:
-                text_data = json.load(f)
-            self._config = {**self._config, **text_data}
+            # OTHER CONFIG
+            _BASE_PATH_ASSETS = f"assets/LAN/{self.LAN}"
+            assets_arr = os.listdir(_BASE_PATH_ASSETS)
+            parse_data = {}
+            for itterAssetFile in assets_arr:
+                if ".json" in itterAssetFile:
+                    _PATH = f"{_BASE_PATH_ASSETS}/{itterAssetFile}"
+                    with open(_PATH, 'r', encoding='utf-8') as f:
+                        parse_data = json.load(f)
+                    self._config = {**self._config, **parse_data}
+                elif ".txt" in itterAssetFile:
+                    _PATH = f"{_BASE_PATH_ASSETS}/{itterAssetFile}"
+                    txt = ""
+                    with open(_PATH, 'r', encoding='utf-8') as f:
+                        txt = f.read()
 
-            # DATA
-            deaths_path = f"assets/LAN/{self.LAN}/DEATHS.json"
+                    _key = str(itterAssetFile).split(".txt")[0]
+                    parse_data = {_key: txt}
 
-            with open(deaths_path, 'r', encoding='utf-8') as f:
-                deaths_data = json.load(f)
-            self._config = {**self._config, **deaths_data}
+                    self._config = {**self._config, **parse_data}
+                else:
+                    pass
         except:
             self._config = self._default_config.copy()
 

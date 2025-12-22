@@ -45,6 +45,8 @@ class TkinterRenderer(IUIRenderer):
         self.gamePauseOptionsAndCoors = {}
         self._defineGamePauseMenuElements()
         self._defineGamePausePlayerMenuElements()
+        self.gameTextOptionsAndCoords = {}
+        self._defineGameTextDisplayed()
 
     def render_image(self, image, x, y, anchor="nw", tag=None):
         return self.canvas.create_image(x, y, image=image, anchor=anchor, tag=tag)
@@ -60,6 +62,21 @@ class TkinterRenderer(IUIRenderer):
 
     def render_text(self, x, y, text, tag=None):
         return self.canvas.create_text(x, y, text=text, tag=tag)
+    
+    def render_big_text(self, x, y, text, tag=None, max_width=None):
+        if max_width is None:
+            max_width = int(self.configuration.get("displayW")) * 0.9
+
+        return self.canvas.create_text(
+            x, y,
+            text=text,
+            tag=tag,
+            fill="black",
+            width=max_width,
+            anchor="nw",
+            justify="left",
+            font=("Consolas", 18, "bold")
+        )
     
     def render_progress_bar(self, x1, y1, x2, y2, percent, tag=""):
         _baseColor = "blue"
@@ -165,7 +182,37 @@ class TkinterRenderer(IUIRenderer):
             _x = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][0] * 0.9
             _y = self.gamePauseOptionsAndCoors["itemsCoords"][self.gamePauseOptionsAndCoors["currentOption"]][1]
             self.render_circle(_x, _y, 10, "red", "gamePause:currentOption")
-            
+
+    def render_game_text_displayed(self):
+        if self.gameTextOptionsAndCoords["isUpdateInformation"]:
+            self._delete_no_game_items()
+
+            x1, y1, x2, y2 = self.gameTextOptionsAndCoords["textAreaCoords"]
+            self.render_rectangle(x1, y1, x2, y2, fill="snow", tag="gameText")
+
+            # WIP: DISPLAU DIALOG
+            padding = 20
+            title = "LOREM"
+            self.render_big_text(
+                x1 + padding,
+                y1 * 1.02,
+                title,
+                tag="gameText",
+                max_width=int(x2 - x1 - (padding * 2))
+            )
+
+            text = self.gameTextOptionsAndCoords["textAreaText"]
+            self.render_big_text(
+                x1 + padding,
+                y1 * 1.16,
+                text,
+                tag="gameText",
+                max_width=int(x2 - x1 - (padding * 2))
+            )
+
+            self.gameTextOptionsAndCoords["isUpdateInformation"] = False
+
+
     def render_game_pause_player_menu(self):
         if self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"]:
             self._delete_no_game_items()
@@ -276,10 +323,27 @@ class TkinterRenderer(IUIRenderer):
 
     def _updates_game_pause_player_menu_info(self):
         self.gamePauseOptionsAndCoors["isUpdateInformationInPlayer"] = True
-    
+
+    def _defineGameTextDisplayed(self):
+        try:
+            _x = int(self.configuration.get("displayW"))
+            _y = int(self.configuration.get("displayH"))
+
+            self.gameTextOptionsAndCoords["textAreaCoords"] = [0, _y * 0.6, _x, _y]
+
+            self.gameTextOptionsAndCoords["isUpdateInformation"] = True
+        except:
+            pass
+
+    def _updates_game_text_displayed(self, text):
+        self.gameTextOptionsAndCoords["textAreaText"] = text
+        self.gameTextOptionsAndCoords["textInfoTotalPages"] = 10
+        self.gameTextOptionsAndCoords["isUpdateInformation"] = True
+
     def _delete_no_game_items(self):
         self._clear_by_tag("intro")
         self._clear_by_tag("mainMenu")
+        self._clear_by_tag("gameText")
         self._clear_by_tag("gamePause")
         self._clear_by_tag("gamePause:title")
         self._clear_by_tag("gamePause:option")

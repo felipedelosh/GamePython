@@ -6,6 +6,7 @@ import sys
 # LOGs
 from src.core.gameLoger import GameLogger
 # CONFIG
+from src.core.TextPaginator import TextPaginator
 from src.core.GameConfig import GameConfig
 from src.core.control import Control
 from src.core.inputHandler import InputHandler
@@ -14,6 +15,7 @@ from src.core.gameState import (
     AdvisoryState,
     MainMenuState,
     GameState,
+    GameTextDisplayedState,
     GamePauseState,
     GameOptionsState
 )
@@ -73,12 +75,19 @@ class Controller:
             "advisory": AdvisoryState(self),
             "mainMenu": MainMenuState(self),
             "gameStart": GameState(self),
+            "gameTextDisplayed": GameTextDisplayedState(self),
             "gamePause": GamePauseState(self),
             "gameOptions": GameOptionsState(self)
         }
         self.change_state("intro")
         self.gameStateManager = GameStateManager(self.config.get("statesMachines"), self.control)
         self.inputHandler = InputHandler(self.player, self.control, self.gameStateManager, self)
+        # TEXTS
+        self.isLastPageRead = False
+        self.textPaginator = TextPaginator(
+            self.config.get("DIALOG_LOREM"),
+            self.config.get("displayed_words_counter")
+        )
         # World
         self.world = World(self.config)
         self.world.load_map(f"assets/world/{self.config.get("playerLocation")}.json")
@@ -121,7 +130,24 @@ class Controller:
             self.renderer._reset_game_pause_menu()
             self.renderer._updates_game_pause_player_menu_info()
 
+        if new_state_name == "gameTextDisplayed":
+            self.player.clearCurrentDirections() # Force to Stop Player
+            text = self.textPaginator.current_page()
+            self.renderer._updates_game_text_displayed(text)
+
         self.logger.info(f"CONTROLLERGAME::GAME::CHANGE::{new_state_name}")
+
+    def _text_paginator_next_page(self):
+        text = self.textPaginator.next_page()
+        totalPages = self.textPaginator.total_pages()
+        self.renderer._updates_game_text_displayed(text)
+
+        if self.textPaginator.is_last_page():
+            if self.isLastPageRead:
+                self.gameStateManager.getStateMachine("game").mouvePointer("g")
+            self.isLastPageRead = True
+
+        self.logger.info(f"CONTROLLERGAME::GAME::CHANGE::TEXT")
 
     def update(self):
         current_state_name = self.gameStateManager.getStateMachine("game").pointer

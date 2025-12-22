@@ -56,7 +56,6 @@ class StateMachine:
         """
         for i in self.edges[self.pointer]:
             if str(symbol) == str(i[1]):
-                #print("Me he movido a", i[0])
                 # Mouve a pivot
                 self.pointer = i[0]
                 break

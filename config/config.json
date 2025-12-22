@@ -8,6 +8,7 @@
   "FPS": 120,
   "intro_duration": 200,
   "advisory_duration": 300,
+  "displayed_words_counter": 17,
   "env": "dev",
   "logging": true,
   "sprite_fps": 8,
@@ -59,12 +60,13 @@
         "mainMenu:gameStart:symbol:gameStart",
         "mainMenu:gameOptions:symbol:gameOptions",
         "gameStart:gameStart:controls:direction_buttons", 
-        "gameStart:gameStart:controls:action_buttons",
         "gameOptions:gameStart:symbol:gameStart",
         "gameOptions:gamePause:controls:key_START",
         "gamePause:gameOptions:symbol:gameOptions",
         "gameStart:gamePause:controls:key_START",
+        "gameStart:gameTextDisplayed:controls:key_L",
         "gameStart:gameTextDisplayed:symbol:t",
+        "gameTextDisplayed:gamePause:controls:key_START",
         "gameTextDisplayed:gameStart:symbol:g",
         "gamePause:gameStart:controls:key_START"
       ]

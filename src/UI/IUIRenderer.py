@@ -21,6 +21,9 @@ class IUIRenderer(ABC):
     def render_text(self, x, y, text, tag): pass
 
     @abstractmethod
+    def render_big_text(self, x, y, text, tag=None, max_width=None): pass
+
+    @abstractmethod
     def render_player(self): pass
 
     @abstractmethod
@@ -36,10 +39,16 @@ class IUIRenderer(ABC):
     def render_game_pause(self): pass
 
     @abstractmethod
+    def render_game_text_displayed(self): pass
+
+    @abstractmethod
     def render_game_pause_player_menu(self): pass
 
     @abstractmethod
     def _reset_game_pause_menu(self): pass
+
+    @abstractmethod
+    def _updates_game_text_displayed(self, text): pass
 
     @abstractmethod
     def _updates_game_pause_player_menu_info(self): pass

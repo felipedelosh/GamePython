@@ -24,6 +24,9 @@ class UIManager:
         self.renderer.render_floor()
         self.renderer.render_player()
 
+    def showGameTextDisplayed(self):
+        self.renderer.render_game_text_displayed()
+
     def showPauseGame(self):
         self.renderer.render_game_pause()
 

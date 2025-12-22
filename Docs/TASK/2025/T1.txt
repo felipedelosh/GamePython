@@ -6,9 +6,13 @@ ________________________________________________________________________________
 Para ello se creo: 
 
 "config/config.json"
+"src/core/controller.py"
 "src/core/gameStateManager.py"
+"src/core/gameState.py"
 "src/core/inputHandler.py"
-
+"src/UI/UIManager.py"
+"src/UI/IUIRenderer.py"
+"src/UI/TkinterRenderer.py"
 
 la cual resuelve:
 
@@ -24,10 +28,29 @@ elif _pivot == "gamePause":
 
 Vamos a incluir el nuevo...
 
+Todo empieza en el controller en donde existen los imports gameState.
+Tenemos que importar el nuevo. Luego agregarlo al ARR de estados.
 
+El evento que dispara el cambio de estado se hace en inputHandler con el método:
+self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_?)
+
+Y luego de ello tenemos que declarar un contrato para renderizar el nuevo estado:
+"IUIRenderer"
+
+Y ese contrato se implementará en:
+"TkinterRenderer"
+
+Y se invocará desde: "UIManager.showGameTextDisplayed()"
+
+Pero su orquestación se hace desde: "gameState.GameTextDisplayedState.render()"
+Y ese contro se va hacia: main.render
 
 Dependencias:
 
 * Configuración.
 * Handlers.
 * State Machines.
+
+
+OJO SE quito esto del config.json:
+        "gameStart:gameStart:controls:action_buttons",

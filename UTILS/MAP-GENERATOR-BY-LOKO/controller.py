@@ -17,7 +17,8 @@ class Controller:
         self.imgColor = None
         self.json_template = {
             "id": 0,
-            "collider": []
+            "collider": [],
+            "color": []
         }
 
 
@@ -85,9 +86,16 @@ class Controller:
 
     def _convert(self, key):
         try:
+            self.json_template["id"] = key
             _path_collider = f"{self.path}/INPUT/{key}/collider.gif"
             self.imgCollider = PhotoImage(_path_collider)
             toConverCollider = imgConvert.open(_path_collider)
+
+            _path_color = f"{self.path}/INPUT/{key}/color.gif"
+            self.imgColor = PhotoImage(_path_color)
+            toConverColor = imgConvert.open(_path_color)
+
+            _isfinalDataOk = True
 
             if toConverCollider.size == (84, 48):
                 data = list(toConverCollider.getdata())
@@ -112,10 +120,37 @@ class Controller:
                         _aux_collider = []
                         count_break = 0
             
-
-                self.json_template["id"] = key
                 self.json_template["collider"] = _collider
+            else:
+                _isfinalDataOk = _isfinalDataOk and False
 
+            if toConverColor.size == (84, 48):
+                im = toConverColor.convert("RGBA")
+                pixels = im.load()
+                count_break = 0
+
+                _color = []
+                _aux_color = []
+                for y in range(48):
+                    for x in range(84):
+                        r, g, b, a = pixels[x, y]
+
+                        if a == 0:
+                            _aux_color.append(str("#000000"))
+                        else:
+                            _aux_color.append(str(f"#{r:02x}{g:02x}{b:02x}"))
+
+                        count_break = count_break + 1
+                        if count_break == 84:
+                            _color.append(_aux_color.copy())
+                            _aux_color = []
+                            count_break = 0
+
+                self.json_template["color"] = _color
+            else:
+                _isfinalDataOk = _isfinalDataOk and False
+
+            if _isfinalDataOk:
                 self._save_collider_json(f"{self.path}/OUTPUT/{key}.json", self.json_template)
             return True
         except:
@@ -126,12 +161,19 @@ class Controller:
             f.write('{\n')
             f.write(f'    "id": "{json_template["id"]}",\n')
             f.write(f'    "collider": [\n')
-
             for i, row in enumerate(json_template["collider"]):
                 line = "        [" + ", ".join(str(cell) for cell in row) + "]"
                 if i < len(json_template["collider"]) - 1:
                     line += ","
                 f.write(line + "\n")
+            f.write('    ],\n')
 
+            f.write(f'    "color": [\n')
+            for i, row in enumerate(json_template["color"]):
+                line = "        [" + ", ".join(f'"{cell}"' for cell in row) + "]"
+                if i < len(json_template["color"]) - 1:
+                    line += ","
+                f.write(line + "\n")
             f.write('    ]\n')
+
             f.write('}\n')

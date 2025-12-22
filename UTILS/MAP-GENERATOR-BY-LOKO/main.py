@@ -13,7 +13,7 @@ class Software:
         self.canvas = Canvas(self.screem)
         self.lblBannerProgram = Label(self.canvas, text="Generate a MAP using IMAGE")
         self.lblIntroLoadImage = Label(self.canvas, text="Select image FILE: ")
-        self.cmbxOptionsImagesToConvert = ttk.Combobox(self.screem, values=self.controller._images)
+        self.cmbxOptionsImagesToConvert = ttk.Combobox(self.screem, values=self.controller.dataToConverArray)
         self.cmbxOptionsImagesToConvert.current(0)
         self.btnConvert = Button(self.screem, text="CONVERT", command=self.convert)
         self.lblFooterProgram = Label(self.canvas, text="FelipedelosH")

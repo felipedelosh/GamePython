@@ -11,8 +11,10 @@ class Controller:
     def __init__(self) -> None:
         self.path = str(os.path.dirname(os.path.abspath(__file__)))
         self.OUTPUT_DATA = {}
-        self._images = self._loadImages()
-        self.img = None
+        self.dataToConverArray = self._loadDataToConvert()
+        self.dataToConverDict = {}
+        self.imgCollider = None
+        self.imgColor = None
         self.json_template = {
             "id": 0,
             "collider": []
@@ -26,6 +28,19 @@ class Controller:
             return f.read()
         except:
             return info
+        
+    def getAllFoldersInInputPath(self):
+        _paths = []
+
+        try:
+            path = f"{self.path}/INPUT"
+            for i in scandir(path):
+                if i.is_dir():
+                    _paths.append(i.name)
+        except:
+            pass
+
+        return _paths
 
 
     def rtnArchieveFilesNames(self):
@@ -54,17 +69,28 @@ class Controller:
 
         return _data
     
+    def _loadDataToConvert(self):
+        _dataToConvert = []
+        _dataPaths = self.getAllFoldersInInputPath()
 
-    def _convert(self, img):
+        for itterPath in _dataPaths:
+            file_path_collider = f"{self.path}/INPUT/{itterPath}/collider.gif"
+            file_path_color = f"{self.path}/INPUT/{itterPath}/color.gif"
+
+            if os.path.isfile(file_path_collider) and os.path.isfile(file_path_color):
+                _dataToConvert.append(itterPath)
+
+        return _dataPaths
+    
+
+    def _convert(self, key):
         try:
-            _path = f"{self.path}/INPUT/{img}.gif"
-            self.img = PhotoImage(_path)
+            _path_collider = f"{self.path}/INPUT/{key}/collider.gif"
+            self.imgCollider = PhotoImage(_path_collider)
+            toConverCollider = imgConvert.open(_path_collider)
 
-            toConvert = imgConvert.open(_path)
-            data = ""
-
-            if toConvert.size == (84, 48):
-                data = list(toConvert.getdata())
+            if toConverCollider.size == (84, 48):
+                data = list(toConverCollider.getdata())
 
                 data = str(data)
                 data = data.replace("[", "")
@@ -76,9 +102,9 @@ class Controller:
                 count_break = 0
                 for i in data.split(","):
                     if int(i) > 50:
-                        _aux_collider.append(0)
-                    else:
                         _aux_collider.append(1)
+                    else:
+                        _aux_collider.append(0)
 
                     count_break = count_break + 1
                     if count_break == 84:
@@ -87,10 +113,10 @@ class Controller:
                         count_break = 0
             
 
-                self.json_template["id"] = img
+                self.json_template["id"] = key
                 self.json_template["collider"] = _collider
 
-                self._save_collider_json(f"{self.path}/OUTPUT/{img}.json", self.json_template)
+                self._save_collider_json(f"{self.path}/OUTPUT/{key}.json", self.json_template)
             return True
         except:
             return False

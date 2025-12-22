@@ -192,7 +192,7 @@ class TkinterRenderer(IUIRenderer):
 
             # WIP: DISPLAU DIALOG
             padding = 20
-            title = "LOREM"
+            title = self.gameTextOptionsAndCoords["textAreaTitle"]
             self.render_big_text(
                 x1 + padding,
                 y1 * 1.02,
@@ -344,7 +344,8 @@ class TkinterRenderer(IUIRenderer):
         except:
             pass
 
-    def _updates_game_text_displayed(self, text, currentPage, totalPages):
+    def _updates_game_text_displayed(self, title, text, currentPage, totalPages):
+        self.gameTextOptionsAndCoords["textAreaTitle"] = title
         self.gameTextOptionsAndCoords["textAreaText"] = text
         self.gameTextOptionsAndCoords["textInfoCurrentPages"] = currentPage
         self.gameTextOptionsAndCoords["textInfoTotalPages"] = totalPages

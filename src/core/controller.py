@@ -85,6 +85,7 @@ class Controller:
         # TEXTS
         self.isLastPageRead = False
         self.textPaginator = TextPaginator(
+            "DIALOG_LOREM",
             self.config.get("DIALOG_LOREM"),
             self.config.get("displayed_words_counter")
         )
@@ -132,18 +133,20 @@ class Controller:
 
         if new_state_name == "gameTextDisplayed":
             self.player.clearCurrentDirections() # Force to Stop Player
+            title = self.textPaginator.get_title()
             text = self.textPaginator.current_page()
             currentPage = self.textPaginator.get_number_of_current_page()
             totalPages = self.textPaginator.total_pages()
-            self.renderer._updates_game_text_displayed(text, currentPage, totalPages)
+            self.renderer._updates_game_text_displayed(title, text, currentPage, totalPages)
 
         self.logger.info(f"CONTROLLERGAME::GAME::CHANGE::{new_state_name}")
 
     def _text_paginator_next_page(self):
+        title = self.textPaginator.get_title()
         text = self.textPaginator.next_page()
         currentPage = self.textPaginator.get_number_of_current_page()
         totalPages = self.textPaginator.total_pages()
-        self.renderer._updates_game_text_displayed(text, currentPage, totalPages)
+        self.renderer._updates_game_text_displayed(title, text, currentPage, totalPages)
 
         if self.textPaginator.is_last_page():
             if self.isLastPageRead:

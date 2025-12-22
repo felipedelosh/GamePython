@@ -5,9 +5,13 @@ FelipedelosH
 Enter a LONG TEXT and Display in parts.
 """
 class TextPaginator:
-    def __init__(self, text: str, words_per_page: int = 10):
+    def __init__(self, title: str, text: str, words_per_page: int = 10):
+        self.title = title
         self.words_per_page = max(1, int(words_per_page))
         self.set_text(text)
+
+    def get_title(self):
+        return str(self.title).split("_")[1]
 
     def set_text(self, text: str):
         self.words = (text or "").split()

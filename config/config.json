@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.3.1",
   "displayW": 640,
   "displayH": 480,
   "floorW": 84,
@@ -10,7 +10,7 @@
   "advisory_duration": 300,
   "displayed_words_counter": 17,
   "env": "dev",
-  "logging": true,
+  "logging": false,
   "sprite_fps": 8,
   "sprite_frames": 8,
   "sprite_width": 50,

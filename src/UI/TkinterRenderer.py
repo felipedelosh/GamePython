@@ -288,7 +288,7 @@ class TkinterRenderer(IUIRenderer):
             _x = int(self.configuration.get("displayW"))
             _y = int(self.configuration.get("displayH"))
             self.gamePauseOptionsAndCoors["title"] = self.configuration.get("text_pause")
-            self.gamePauseOptionsAndCoors["menuCoords"] = [_x * 0.65, 0, _x, _y]
+            self.gamePauseOptionsAndCoors["menuCoords"] = [_x * 0.65, _y * 0.01, _x * 0.99, _y * 0.99]
             self.gamePauseOptionsAndCoors["items"] = [i for i in self.configuration.get("statesMachines")["pause"]["states"]]
 
             self.gamePauseOptionsAndCoors["itemsCoords"] = {}

@@ -65,7 +65,6 @@ class InputHandler:
                 self.logger.info(f"INPUTHANDLER::GAME_START::EXECUTE::L::{keycode}")
                 # WIP >> ONLY FOR TEST...
                 self.gameStateManager.getStateMachine("game").mouvePointer(self.control.key_L)
-                print(self.gameStateManager.getStateMachine("game").pointer)
                 # DELETE THEM
             if keycode == self.control.key_R:
                 self.logger.info(f"INPUTHANDLER::GAME_START::EXECUTE::R::{keycode}")

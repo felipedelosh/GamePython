@@ -12,7 +12,8 @@
 5. [Mecánicas de Juego](#-mecánicas-de-juego)
 6. [Estilo Visual](#-estilo-visual)
 7. [Audio y Música](#-audio-y-música)
-8. [Referencias](#-referencias)
+8. [OPCIONES](#-opciones)
+9. [Referencias](#-referencias)
 
 ---
 
@@ -238,7 +239,24 @@ Géneros principales:
 Temas recurrentes:
 Compositores de referencia:
 
-📚 Referencias
+## ⚙️ Opciones
+
+Se lanzará el menú de opciones desde:
+
+- Menú principal.
+- GAME START.
+
+Las opciones del menú serán:
+
+- Controles (Redefinir teclas).
+- Datos (SAVE&LOAD).
+- VIDEO (LANG, SIZE, EFFECTS).
+- AUDIO (VOL MUSIK & EFFECTS).
+- VISUALES (EFECTOS).
+- Manual del usuario (IMGs que representan un PDF).
+- Regresar (Regresar al juego o al menú principal).
+
+## 📚 Referencias
 
 - TAMAGOCHI.
 - GAMEBOY ADVANCE.

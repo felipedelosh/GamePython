@@ -89,7 +89,7 @@ class Controller:
             self.json_template["id"] = key
             _path_collider = f"{self.path}/INPUT/{key}/collider.gif"
             self.imgCollider = PhotoImage(_path_collider)
-            toConverCollider = imgConvert.open(_path_collider)
+            toConverCollider = imgConvert.open(_path_collider).convert("L")
 
             _path_color = f"{self.path}/INPUT/{key}/color.gif"
             self.imgColor = PhotoImage(_path_color)
@@ -109,7 +109,7 @@ class Controller:
                 _aux_collider = []
                 count_break = 0
                 for i in data.split(","):
-                    if int(i) > 50:
+                    if int(i) < 127:
                         _aux_collider.append(1)
                     else:
                         _aux_collider.append(0)
@@ -152,6 +152,7 @@ class Controller:
 
             if _isfinalDataOk:
                 self._save_collider_json(f"{self.path}/OUTPUT/{key}.json", self.json_template)
+
             return True
         except:
             return False

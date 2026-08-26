@@ -12,6 +12,7 @@ from src.controllers.FolderController import FolderController
 class Controller:
     def __init__(self, path) -> None:
         self.path = path
+        FolderController.createInitalFolders(self.path)
 
     def _convert(self, key):
         try:

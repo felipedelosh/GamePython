@@ -11,7 +11,7 @@ class FolderController:
         raise TypeError("FolderController cannot be instantiated")
 
     @staticmethod
-    def createInitalFolders(path, logger):
+    def createInitalFolders(path):
         # MAIN FOLDERS
         _folders = [
             "OUTPUT",

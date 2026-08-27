@@ -10,23 +10,30 @@ This is a standalone Python utility designed to convert black-and-white images i
 
 ## 📘 Description
 
-The tool reads an image B&W (`.gif`) with resolution (84x48)p * K where:
+The tool reads an image B&W (`map.png`) with resolution (84x48)p * K where:
 
+- **called allways map.png*** the imput file that script read call map.png.
 - **K** is a integer number for example 3 = (252x144)p or biger.
 - **White pixels** (`#FFFFFF`) represent walkable tiles (1)
 - **Black pixels** (`#000000`) represent solid/blocked tiles (0)
 
-The resulting output is a 2D matrix that can be exported as a JSON with propietes:
+The resulting output pieces is a 2D matrix that can be exported as a JSON with propietes:
+```
+{
+    "id": "map_name",
+    "collider": [],
+    "color": []
+}
+```
+The piece is cut in chunks (84x48)p that reprecen a part of map:
 
-- `collider`: Matrix [0, 1] that represents a space hable to mouve.
-- `color`: Matrix [0, 1] that represents a color to display.
-
+"in chunks"
 ---
 
 ## :hammer:Funtions:
 
-- `Function 1`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
-- `Function 2`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
+- `Function 1`: Read all map.png in folder INPUT.<br>
+- `Function 2`: Verify map.png hav resolution base on (84x48)p.<br>
 - `Function 3`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
 - `Function 3a`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>
 - `Function 4`: Neque porro quisquam est qui dolorem ipsum quia dolor sit amet.<br>

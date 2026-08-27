@@ -2,8 +2,8 @@
 FelipedelosH
 2026
 
-Read a INPUT/MAP/*.gif and generate .json map in pieces: 
-OUTPUT/MAP_N/map.json
+Read a INPUT/MAP/*.png and generate .json map in pieces: 
+OUTPUT/MAP_M_N/map.json
 """
 import os
 from tkinter import *

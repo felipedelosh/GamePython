@@ -13,6 +13,10 @@ class Controller:
     def __init__(self, path) -> None:
         self.path = path
         FolderController.createInitalFolders(self.path)
+        self.dataToConverArray = self._loadDataToConvert()
+
+    def _loadDataToConvert(self):
+        return ["test"]
 
     def _convert(self, key):
         try:

@@ -3,7 +3,7 @@ FelipedelosH
 2026
 
 Read a INPUT/MAP/*.gif and generate .json map in pieces: 
-OUTPUT/MAP_N/map_n.json
+OUTPUT/MAP_N/map.json
 """
 import os
 from tkinter import *

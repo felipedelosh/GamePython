@@ -6,6 +6,7 @@
 # ASSETS IN WORK DIRS
 # -------------------------------
 UTILS/MAP-GENERATOR-BY-LOKO-v2/INPUT/**/*.png
+UTILS/MAP-GENERATOR-BY-LOKO-v2/OUTPUT/**
 
 # -------------------------------
 # SYSTEM/SO

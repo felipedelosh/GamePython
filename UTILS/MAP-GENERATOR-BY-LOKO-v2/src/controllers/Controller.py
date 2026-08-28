@@ -70,10 +70,14 @@ class Controller:
             print(f"Controller::_convert::HEADER::{header}")
 
             _image = PngImagePlugin.PngImageFile(_path_file) # USE to generate a colors
-
             print(f"Controller::_convert::FORMAT::{_image.format}")
             print(f"Controller::_convert::MODE::{_image.mode}")
             print(f"Controller::_convert::SIZE::{_image.size}")
+            isValidSizeImg = self._validateImgChunkeableSize(_image)
+            if not isValidSizeImg:
+                width, height = _image.size
+                print(f"Controller::_convert::ERR_IMG_PNG_SIZE::ERR::{width}::ERR::{height}")
+                return False
 
             # Convert B&W
             _collider = _image.convert("L")
@@ -82,4 +86,20 @@ class Controller:
             return True
         except Exception as e:
             print(f"Controller::_convert::ERROR::{str(e)}")
+            return False
+
+    def _validateImgChunkeableSize(self, _image):
+        try:
+            width, height = _image.size
+
+            if width % 84 != 0:
+                print(f"Controller::_validateImgChunkeableSize::INVALID_WIDTH::{width}::MUST_BE_MULTIPLE_OF_84")
+                return False
+
+            if height % 48 != 0:
+                print(f"Controller::_validateImgChunkeableSize::INVALID_HEIGHT::{height}::MUST_BE_MULTIPLE_OF_48")
+                return False
+
+            return True
+        except:
             return False

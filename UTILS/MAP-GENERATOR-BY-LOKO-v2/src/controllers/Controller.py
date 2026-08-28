@@ -187,6 +187,13 @@ class Controller:
                 f"TOTAL::{_totalChunks}::"
                 f"TIME::{total_time / 60:.2f}_MIN"
             )
+
+            # SAVE WORLD
+            status_save_world = self.saveWorld(key)
+            if not status_save_world:
+                print(f"Controller::_convert::ERR_DONT_SAVE_FINAL_WORLD")
+                return False
+
             return True
         except Exception as e:
             print(f"Controller::_convert::ERROR::{str(e)}")
@@ -295,4 +302,59 @@ class Controller:
             return _color
         except Exception as e:
             print(f"Controller::convertChunkColorInColor::ERROR::{str(e)}")
+            return None
+
+    def saveWorld(self, key):
+        """
+        1. Generate a main folder
+        2. Generate a subfolder
+        3. PUT data in map.json
+        """
+        try:
+            _main_path = f"{self.path}/OUTPUT/{key}/"
+            if not os.path.isdir(_main_path):
+                os.mkdir(_main_path)
+
+            _totalChunks = len(self._CHUNK_KEYS_SET)
+            if _totalChunks == 0:
+                print("Controller::saveWorld::NO_CHUNKS")
+                return False
+            print(f"Controller::saveWorld::TOTAL::{_totalChunks}")
+
+            for i in self._CHUNK_KEYS_SET:
+                _chunk_path = f"{_main_path}/{i}/"
+                if not os.path.isdir(_chunk_path):
+                    os.mkdir(_chunk_path)
+                path = f"{_chunk_path}/map.json"
+                world = self._CHUNKS.get(i)
+
+                if world is None:
+                    print(f"Controller::saveWorld::ERR_CHUNK_NOT_FOUND::{i}")
+                    return False
+
+                json_template = world.to_dict()
+                with open(path, "w", encoding="utf-8") as f:
+                    f.write('{\n')
+                    f.write(f'    "id": "{json_template["id"]}",\n')
+                    f.write(f'    "collider": [\n')
+                    for i, row in enumerate(json_template["collider"]):
+                        line = "        [" + ", ".join(str(cell) for cell in row) + "]"
+                        if i < len(json_template["collider"]) - 1:
+                            line += ","
+                        f.write(line + "\n")
+                    f.write('    ],\n')
+
+                    f.write(f'    "color": [\n')
+                    for i, row in enumerate(json_template["color"]):
+                        line = "        [" + ", ".join(f'"{cell}"' for cell in row) + "]"
+                        if i < len(json_template["color"]) - 1:
+                            line += ","
+                        f.write(line + "\n")
+                    f.write('    ]\n')
+
+                    f.write('}\n')
+
+            return True
+        except Exception as e:
+            print(f"Controller::saveWorld::ERR_FATAL::{str(e)}")
             return None

@@ -19,6 +19,7 @@ class Config:
             # CONFIG ENV VARS
             # self.config[""] = os.getenv("")
             self.config["MAX_IMAGE_PIXELS"] = os.getenv("MAX_IMAGE_PIXELS")
+            self.config["MAX_IMAGE_PIXELS"] = int(self.config["MAX_IMAGE_PIXELS"])
 
             self.config["VALIDATION_IMAGE_SIZE_WIDTH_CHUNK"] = os.getenv("VALIDATION_IMAGE_SIZE_WIDTH_CHUNK")
             self.config["VALIDATION_IMAGE_SIZE_WIDTH_CHUNK"] = int(self.config["VALIDATION_IMAGE_SIZE_WIDTH_CHUNK"])

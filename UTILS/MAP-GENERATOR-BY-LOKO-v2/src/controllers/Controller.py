@@ -87,6 +87,8 @@ class Controller:
 
             # Convert B&W
             _collider = _image.convert("L")
+            _temp_path = f"{self.path}/TEMP/{key}_collider.png"
+            _collider.save(_temp_path, "PNG")
             
             # Chunked
             _image_chunked_dict = self._splitImageInChunks(key, _image)

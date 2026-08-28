@@ -7,6 +7,7 @@
 # -------------------------------
 UTILS/MAP-GENERATOR-BY-LOKO-v2/INPUT/**/*.png
 UTILS/MAP-GENERATOR-BY-LOKO-v2/OUTPUT/**
+UTILS/MAP-GENERATOR-BY-LOKO-v2/TEMP/**
 
 # -------------------------------
 # SYSTEM/SO
